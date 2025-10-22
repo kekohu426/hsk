@@ -1,0 +1,244 @@
+[
+  {
+    "title": "我的一天",
+    "titleEn": "My Day",
+    "slug": "wo-de-yi-tian",
+    "content": [
+      {
+        "type": "paragraph",
+        "cn": "早上七点，我起床。",
+        "pinyin": "Zǎo shang qī diǎn, wǒ qǐ chuáng.",
+        "en": "At seven in the morning, I get up."
+      },
+      {
+        "type": "paragraph",
+        "cn": "我刷牙、洗脸、吃早饭。",
+        "pinyin": "Wǒ shuā yá, xǐ liǎn, chī zǎo fàn.",
+        "en": "I brush my teeth, wash my face, and eat breakfast."
+      },
+      {
+        "type": "paragraph",
+        "cn": "八点，我去学校。我是学生。",
+        "pinyin": "Bā diǎn, wǒ qù xué xiào. Wǒ shì xué sheng.",
+        "en": "At eight o'clock, I go to school. I am a student."
+      },
+      {
+        "type": "paragraph",
+        "cn": "中午十二点，我吃午饭。下午我上课。",
+        "pinyin": "Zhōng wǔ shí èr diǎn, wǒ chī wǔ fàn. Xià wǔ wǒ shàng kè.",
+        "en": "At noon twelve o'clock, I eat lunch. In the afternoon I have classes."
+      },
+      {
+        "type": "paragraph",
+        "cn": "晚上六点，我回家。我做作业，看电视。",
+        "pinyin": "Wǎn shang liù diǎn, wǒ huí jiā. Wǒ zuò zuò yè, kàn diàn shì.",
+        "en": "At six in the evening, I go home. I do homework and watch TV."
+      },
+      {
+        "type": "paragraph",
+        "cn": "十点，我睡觉。这是我的一天。",
+        "pinyin": "Shí diǎn, wǒ shuì jiào. Zhè shì wǒ de yī tiān.",
+        "en": "At ten o'clock, I sleep. This is my day."
+      }
+    ],
+    "excerpt": "了解一个中国学生的日常生活，从早上起床到晚上睡觉。",
+    "level": "BEGINNER",
+    "hskLevel": "HSK 1-2",
+    "readTime": 3,
+    "wordCount": 89,
+    "newWords": [
+      {"word": "起床", "pinyin": "qǐ chuáng", "meaning": "get up", "hsk": 1},
+      {"word": "刷牙", "pinyin": "shuā yá", "meaning": "brush teeth", "hsk": 2},
+      {"word": "洗脸", "pinyin": "xǐ liǎn", "meaning": "wash face", "hsk": 2},
+      {"word": "学校", "pinyin": "xué xiào", "meaning": "school", "hsk": 1},
+      {"word": "午饭", "pinyin": "wǔ fàn", "meaning": "lunch", "hsk": 1},
+      {"word": "作业", "pinyin": "zuò yè", "meaning": "homework", "hsk": 2},
+      {"word": "睡觉", "pinyin": "shuì jiào", "meaning": "sleep", "hsk": 1}
+    ],
+    "quiz": [
+      {
+        "question": "作者早上几点起床？",
+        "options": ["六点", "七点", "八点", "九点"],
+        "answer": 1,
+        "explanation": "文章说：早上七点，我起床"
+      },
+      {
+        "question": "作者是做什么的？",
+        "options": ["老师", "学生", "医生", "司机"],
+        "answer": 1,
+        "explanation": "文章说：我是学生"
+      }
+    ],
+    "coverImage": "/images/articles/my-day.jpg",
+    "metaTitle": "我的一天 - 初级中文阅读 | HSK 1-2",
+    "metaDescription": "通过简单的中文文章学习日常活动词汇。适合HSK 1-2级别学习者。",
+    "publishedAt": "2025-10-17T08:00:00Z",
+    "viewCount": 156
+  },
+  {
+    "title": "在餐厅",
+    "titleEn": "At the Restaurant",
+    "slug": "zai-can-ting",
+    "content": [
+      {
+        "type": "dialogue",
+        "cn": "服务员：您好！请坐。",
+        "pinyin": "Fú wù yuán: Nín hǎo! Qǐng zuò.",
+        "en": "Waiter: Hello! Please sit."
+      },
+      {
+        "type": "dialogue",
+        "cn": "客人：谢谢。我要一杯茶。",
+        "pinyin": "Kè rén: Xiè xie. Wǒ yào yī bēi chá.",
+        "en": "Guest: Thank you. I want a cup of tea."
+      },
+      {
+        "type": "dialogue",
+        "cn": "服务员：好的。您要吃什么？",
+        "pinyin": "Fú wù yuán: Hǎo de. Nín yào chī shén me?",
+        "en": "Waiter: Okay. What would you like to eat?"
+      },
+      {
+        "type": "dialogue",
+        "cn": "客人：我要一碗米饭和一个菜。",
+        "pinyin": "Kè rén: Wǒ yào yī wǎn mǐ fàn hé yī gè cài.",
+        "en": "Guest: I want a bowl of rice and a dish."
+      },
+      {
+        "type": "dialogue",
+        "cn": "服务员：好的。请等一下。",
+        "pinyin": "Fú wù yuán: Hǎo de. Qǐng děng yī xià.",
+        "en": "Waiter: Okay. Please wait a moment."
+      },
+      {
+        "type": "paragraph",
+        "cn": "（三十分钟后）",
+        "pinyin": "(Sān shí fēn zhōng hòu)",
+        "en": "(Thirty minutes later)"
+      },
+      {
+        "type": "dialogue",
+        "cn": "客人：服务员，买单！",
+        "pinyin": "Kè rén: Fú wù yuán, mǎi dān!",
+        "en": "Guest: Waiter, check please!"
+      },
+      {
+        "type": "dialogue",
+        "cn": "服务员：一共五十块。",
+        "pinyin": "Fú wù yuán: Yī gòng wǔ shí kuài.",
+        "en": "Waiter: Fifty yuan in total."
+      }
+    ],
+    "excerpt": "学习在餐厅点餐的基本对话和常用词汇。",
+    "level": "BEGINNER",
+    "hskLevel": "HSK 1-2",
+    "readTime": 4,
+    "wordCount": 112,
+    "newWords": [
+      {"word": "餐厅", "pinyin": "cān tīng", "meaning": "restaurant", "hsk": 2},
+      {"word": "服务员", "pinyin": "fú wù yuán", "meaning": "waiter", "hsk": 2},
+      {"word": "客人", "pinyin": "kè rén", "meaning": "guest", "hsk": 2},
+      {"word": "米饭", "pinyin": "mǐ fàn", "meaning": "rice", "hsk": 1},
+      {"word": "菜", "pinyin": "cài", "meaning": "dish", "hsk": 1},
+      {"word": "等", "pinyin": "děng", "meaning": "wait", "hsk": 1},
+      {"word": "买单", "pinyin": "mǎi dān", "meaning": "pay the bill", "hsk": 3}
+    ],
+    "quiz": [
+      {
+        "question": "客人要喝什么？",
+        "options": ["咖啡", "茶", "水", "果汁"],
+        "answer": 1,
+        "explanation": "客人说：我要一杯茶"
+      },
+      {
+        "question": "一共多少钱？",
+        "options": ["三十块", "四十块", "五十块", "六十块"],
+        "answer": 2,
+        "explanation": "服务员说：一共五十块"
+      }
+    ],
+    "coverImage": "/images/articles/restaurant.jpg",
+    "metaTitle": "在餐厅 - 学习餐厅对话 | HSK 1-2",
+    "metaDescription": "通过实用对话学习在中国餐厅点餐。包含常用词汇和表达。",
+    "publishedAt": "2025-10-16T10:00:00Z",
+    "viewCount": 234
+  },
+  {
+    "title": "我的家",
+    "titleEn": "My Home",
+    "slug": "wo-de-jia",
+    "content": [
+      {
+        "type": "paragraph",
+        "cn": "我家有四口人：爸爸、妈妈、妹妹和我。",
+        "pinyin": "Wǒ jiā yǒu sì kǒu rén: bà ba, mā ma, mèi mei hé wǒ.",
+        "en": "There are four people in my family: dad, mom, younger sister and me."
+      },
+      {
+        "type": "paragraph",
+        "cn": "爸爸是医生，妈妈是老师。",
+        "pinyin": "Bà ba shì yī shēng, mā ma shì lǎo shī.",
+        "en": "Dad is a doctor, mom is a teacher."
+      },
+      {
+        "type": "paragraph",
+        "cn": "妹妹今年五岁，她很可爱。",
+        "pinyin": "Mèi mei jīn nián wǔ suì, tā hěn kě ài.",
+        "en": "My sister is five years old this year, she is very cute."
+      },
+      {
+        "type": "paragraph",
+        "cn": "我们住在一个大房子里。房子有三个卧室，一个客厅，一个厨房和两个卫生间。",
+        "pinyin": "Wǒ men zhù zài yī gè dà fáng zi lǐ. Fáng zi yǒu sān gè wò shì, yī gè kè tīng, yī gè chú fáng hé liǎng gè wèi shēng jiān.",
+        "en": "We live in a big house. The house has three bedrooms, one living room, one kitchen and two bathrooms."
+      },
+      {
+        "type": "paragraph",
+        "cn": "我的卧室很漂亮。有一张床，一张桌子和一个书架。",
+        "pinyin": "Wǒ de wò shì hěn piào liang. Yǒu yī zhāng chuáng, yī zhāng zhuō zi hé yī gè shū jià.",
+        "en": "My bedroom is very beautiful. There is a bed, a desk and a bookshelf."
+      },
+      {
+        "type": "paragraph",
+        "cn": "我爱我的家！",
+        "pinyin": "Wǒ ài wǒ de jiā!",
+        "en": "I love my home!"
+      }
+    ],
+    "excerpt": "介绍家庭成员和房子的结构，学习家庭和房间相关词汇。",
+    "level": "BEGINNER",
+    "hskLevel": "HSK 1-2",
+    "readTime": 3,
+    "wordCount": 128,
+    "newWords": [
+      {"word": "家", "pinyin": "jiā", "meaning": "home, family", "hsk": 1},
+      {"word": "爸爸", "pinyin": "bà ba", "meaning": "dad", "hsk": 1},
+      {"word": "妈妈", "pinyin": "mā ma", "meaning": "mom", "hsk": 1},
+      {"word": "妹妹", "pinyin": "mèi mei", "meaning": "younger sister", "hsk": 1},
+      {"word": "医生", "pinyin": "yī shēng", "meaning": "doctor", "hsk": 1},
+      {"word": "卧室", "pinyin": "wò shì", "meaning": "bedroom", "hsk": 2},
+      {"word": "客厅", "pinyin": "kè tīng", "meaning": "living room", "hsk": 2},
+      {"word": "厨房", "pinyin": "chú fáng", "meaning": "kitchen", "hsk": 2}
+    ],
+    "quiz": [
+      {
+        "question": "作者家有几口人？",
+        "options": ["三口", "四口", "五口", "六口"],
+        "answer": 1,
+        "explanation": "文章开头说：我家有四口人"
+      },
+      {
+        "question": "妈妈是做什么的？",
+        "options": ["医生", "老师", "护士", "学生"],
+        "answer": 1,
+        "explanation": "文章说：妈妈是老师"
+      }
+    ],
+    "coverImage": "/images/articles/my-home.jpg",
+    "metaTitle": "我的家 - 学习家庭和房间词汇 | HSK 1-2",
+    "metaDescription": "通过描述家庭成员和房子结构学习中文。适合初级学习者。",
+    "publishedAt": "2025-10-15T09:00:00Z",
+    "viewCount": 189
+  }
+]
+

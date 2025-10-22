@@ -1,0 +1,193 @@
+[
+  {
+    "chinese": "你好",
+    "pinyin": "nǐ hǎo",
+    "pinyinNumeric": "ni3 hao3",
+    "englishDefinition": "hello; hi",
+    "hskLevel": 1,
+    "slug": "ni-hao",
+    "exampleSentences": [
+      {
+        "cn": "你好！我叫李明。",
+        "pinyin": "Nǐ hǎo! Wǒ jiào Lǐ Míng.",
+        "en": "Hello! My name is Li Ming."
+      },
+      {
+        "cn": "你好吗？",
+        "pinyin": "Nǐ hǎo ma?",
+        "en": "How are you?"
+      }
+    ],
+    "characterBreakdown": {
+      "你": {"pinyin": "nǐ", "meaning": "you", "radical": "亻", "strokes": 7},
+      "好": {"pinyin": "hǎo", "meaning": "good", "radical": "女", "strokes": 6}
+    },
+    "relatedWords": {
+      "synonyms": [{"word": "您好", "pinyin": "nín hǎo", "meaning": "hello (polite)"}],
+      "collocations": [{"word": "你好吗", "pinyin": "nǐ hǎo ma", "meaning": "how are you"}]
+    },
+    "faqs": [
+      {
+        "question": "When should I use 你好?",
+        "answer": "你好 is used as a greeting when you meet someone. It's the most common way to say hello in Chinese."
+      }
+    ],
+    "frequency": 1000,
+    "difficulty": 1,
+    "source": "HSK"
+  },
+  {
+    "chinese": "谢谢",
+    "pinyin": "xiè xie",
+    "pinyinNumeric": "xie4 xie4",
+    "englishDefinition": "thank you; thanks",
+    "hskLevel": 1,
+    "slug": "xie-xie",
+    "exampleSentences": [
+      {
+        "cn": "谢谢你的帮助。",
+        "pinyin": "Xiè xie nǐ de bāng zhù.",
+        "en": "Thank you for your help."
+      },
+      {
+        "cn": "非常谢谢！",
+        "pinyin": "Fēi cháng xiè xie!",
+        "en": "Thank you very much!"
+      }
+    ],
+    "characterBreakdown": {
+      "谢": {"pinyin": "xiè", "meaning": "thank", "radical": "讠", "strokes": 12}
+    },
+    "relatedWords": {
+      "synonyms": [{"word": "感谢", "pinyin": "gǎn xiè", "meaning": "thank (formal)"}],
+      "collocations": [{"word": "谢谢你", "pinyin": "xiè xie nǐ", "meaning": "thank you"}]
+    },
+    "faqs": [
+      {
+        "question": "How do I respond to 谢谢?",
+        "answer": "You can respond with 不客气 (bù kè qi) which means 'you're welcome'."
+      }
+    ],
+    "frequency": 950,
+    "difficulty": 1,
+    "source": "HSK"
+  },
+  {
+    "chinese": "我",
+    "pinyin": "wǒ",
+    "pinyinNumeric": "wo3",
+    "englishDefinition": "I; me",
+    "hskLevel": 1,
+    "slug": "wo",
+    "exampleSentences": [
+      {
+        "cn": "我是学生。",
+        "pinyin": "Wǒ shì xuésheng.",
+        "en": "I am a student."
+      },
+      {
+        "cn": "我喜欢中文。",
+        "pinyin": "Wǒ xǐ huan zhōng wén.",
+        "en": "I like Chinese."
+      }
+    ],
+    "characterBreakdown": {
+      "我": {"pinyin": "wǒ", "meaning": "I, me", "radical": "戈", "strokes": 7}
+    },
+    "relatedWords": {
+      "synonyms": [],
+      "collocations": [
+        {"word": "我们", "pinyin": "wǒ men", "meaning": "we, us"},
+        {"word": "我的", "pinyin": "wǒ de", "meaning": "my, mine"}
+      ]
+    },
+    "faqs": [
+      {
+        "question": "What's the difference between 我 and 我们?",
+        "answer": "我 means 'I' (singular), while 我们 means 'we' (plural). Add 们 to make it plural."
+      }
+    ],
+    "frequency": 1200,
+    "difficulty": 1,
+    "source": "HSK"
+  },
+  {
+    "chinese": "是",
+    "pinyin": "shì",
+    "pinyinNumeric": "shi4",
+    "englishDefinition": "to be; yes",
+    "hskLevel": 1,
+    "slug": "shi",
+    "exampleSentences": [
+      {
+        "cn": "她是老师。",
+        "pinyin": "Tā shì lǎo shī.",
+        "en": "She is a teacher."
+      },
+      {
+        "cn": "这是我的书。",
+        "pinyin": "Zhè shì wǒ de shū.",
+        "en": "This is my book."
+      }
+    ],
+    "characterBreakdown": {
+      "是": {"pinyin": "shì", "meaning": "to be", "radical": "日", "strokes": 9}
+    },
+    "relatedWords": {
+      "antonyms": [{"word": "不是", "pinyin": "bù shì", "meaning": "is not"}],
+      "collocations": [{"word": "是的", "pinyin": "shì de", "meaning": "yes"}]
+    },
+    "faqs": [
+      {
+        "question": "When do I use 是?",
+        "answer": "是 is used to link a noun with another noun or to confirm something, like 'I AM a student' or 'This IS a book'."
+      }
+    ],
+    "frequency": 1300,
+    "difficulty": 1,
+    "source": "HSK"
+  },
+  {
+    "chinese": "的",
+    "pinyin": "de",
+    "pinyinNumeric": "de5",
+    "englishDefinition": "possessive particle; of",
+    "hskLevel": 1,
+    "slug": "de",
+    "exampleSentences": [
+      {
+        "cn": "我的书。",
+        "pinyin": "Wǒ de shū.",
+        "en": "My book."
+      },
+      {
+        "cn": "老师的家。",
+        "pinyin": "Lǎo shī de jiā.",
+        "en": "The teacher's home."
+      }
+    ],
+    "characterBreakdown": {
+      "的": {"pinyin": "de", "meaning": "possessive particle", "radical": "白", "strokes": 8}
+    },
+    "relatedWords": {
+      "collocations": [
+        {"word": "我的", "pinyin": "wǒ de", "meaning": "my"},
+        {"word": "你的", "pinyin": "nǐ de", "meaning": "your"}
+      ]
+    },
+    "faqs": [
+      {
+        "question": "How do I use 的 in Chinese?",
+        "answer": "的 is used to show possession or to modify nouns, similar to 's in English or 'of'. Place it between the owner and the thing owned."
+      }
+    ],
+    "frequency": 1500,
+    "difficulty": 2,
+    "source": "HSK"
+  }
+]
+
+
+
+
+

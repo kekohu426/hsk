@@ -1,0 +1,416 @@
+import prisma from '../utils/prisma.js';
+import { AppError } from '../middleware/errorHandler.js';
+
+const safeParseJSON = (value, fallback) => {
+  if (!value) return fallback;
+  if (typeof value !== 'string') return value;
+  try {
+    return JSON.parse(value);
+  } catch (error) {
+    console.warn('[WordController] JSON 解析失败，返回默认值:', error.message);
+    return fallback;
+  }
+};
+
+const ensureArray = (value) => (Array.isArray(value) ? value : []);
+const ensureObject = (value) => (value && typeof value === 'object' && !Array.isArray(value) ? value : {});
+
+const normalizeExampleSentences = (sentences) =>
+  ensureArray(sentences).map((sentence, index) => {
+    const normalized = ensureObject(sentence);
+    const image = ensureObject(normalized.image);
+    const fallbackAlt = normalized.cn ? `${normalized.cn} 场景图` : `示例句图片 ${index + 1}`;
+    return {
+      cn: normalized.cn || '',
+      pinyin: normalized.pinyin || '',
+      en: normalized.en || '',
+      usageNote: normalized.usageNote || '',
+      image: {
+        alt: image.alt || fallbackAlt,
+        caption: image.caption || fallbackAlt,
+        prompt: image.prompt || '',
+        url: image.url || null,
+        source: image.source || null,
+        placement: image.placement || null
+      }
+    };
+  });
+
+const transformWordRecord = (word) => {
+  if (!word) return null;
+
+  const exampleSentences = normalizeExampleSentences(safeParseJSON(word.exampleSentences, []));
+  const characterBreakdown = ensureObject(safeParseJSON(word.characterBreakdown, {}));
+  const rawRelatedWords = ensureObject(safeParseJSON(word.relatedWords, {}));
+  const faqs = ensureArray(safeParseJSON(word.faqs, []));
+
+  const seoExtras = ensureObject(rawRelatedWords.seoExtras);
+  const longForm = seoExtras.longForm || { sections: [] };
+
+  return {
+    ...word,
+    exampleSentences,
+    characterBreakdown,
+    relatedWords: {
+      synonyms: ensureArray(rawRelatedWords.synonyms),
+      antonyms: ensureArray(rawRelatedWords.antonyms),
+      collocations: ensureArray(rawRelatedWords.collocations)
+    },
+    faqs,
+    longForm,
+    englishSummary: seoExtras.englishSummary || '',
+    keywords: ensureArray(seoExtras.keywords),
+    relatedLinks: ensureArray(seoExtras.relatedLinks),
+    mainImages: ensureArray(seoExtras.mainImages)
+  };
+};
+
+const buildWordFromLandingPage = (landingPage, slug) => {
+  if (!landingPage) return null;
+  const content = landingPage.jsonContent || {};
+  const vocabCard = content.vocabCard || {};
+  const hero = content.hero || {};
+  const related = content.relatedWords || {};
+
+  return {
+    id: `landing-${landingPage.id}`,
+    chinese: vocabCard.word || hero.h1 || landingPage.word || slug.replace(/-/g, ' '),
+    pinyin: vocabCard.pinyin || '',
+    pinyinNumeric: vocabCard.pinyinNumeric || '',
+    englishDefinition: vocabCard.coreMeaning || hero.tagline || '',
+    hskLevel: landingPage.hskLevel || 1,
+    slug,
+    exampleSentences: Array.isArray(content.exampleSentences)
+      ? content.exampleSentences.map((item, index) => ({
+          cn: item?.cn || '',
+          pinyin: item?.pinyin || '',
+          en: item?.en || '',
+          usageNote: item?.usageNote || '',
+          image: item?.image || null
+        }))
+      : [],
+    keywords: Array.isArray(content.meta?.keywords) ? content.meta.keywords : [],
+    relatedWords: {
+      synonyms: Array.isArray(related.synonyms)
+        ? related.synonyms.map((item) => ({
+            chinese: item?.word || '',
+            pinyin: item?.pinyin || '',
+            meaning: item?.meaning || ''
+          })).filter((item) => item.chinese)
+        : [],
+      antonyms: Array.isArray(related.antonyms)
+        ? related.antonyms.map((item) => ({
+            chinese: item?.word || '',
+            pinyin: item?.pinyin || '',
+            meaning: item?.meaning || ''
+          })).filter((item) => item.chinese)
+        : []
+    },
+    faqs: Array.isArray(content.faq) ? content.faq : [],
+    source: 'landing-page'
+  };
+};
+
+// GET /api/words?level=2&page=1&limit=20
+export const getWords = async (req, res, next) => {
+  try {
+    const {
+      level,
+      page = 1,
+      limit = 20,
+      search
+    } = req.query;
+
+    const skip = (parseInt(page) - 1) * parseInt(limit);
+
+    const where = {
+      isPublished: true,
+      ...(level && { hskLevel: parseInt(level) }),
+      ...(search && {
+        OR: [
+          { chinese: { contains: search } },
+          { pinyin: { contains: search } },
+          { englishDefinition: { contains: search } }
+        ]
+      })
+    };
+
+    const [words, total] = await Promise.all([
+      prisma.word.findMany({
+        where,
+        skip,
+        take: parseInt(limit),
+        orderBy: [
+          { frequency: 'desc' },
+          { chinese: 'asc' }
+        ],
+        select: {
+          id: true,
+          chinese: true,
+          pinyin: true,
+          englishDefinition: true,
+          hskLevel: true,
+          slug: true,
+          audioUrl: true
+        }
+      }),
+      prisma.word.count({ where })
+    ]);
+
+    res.json({
+      words,
+      pagination: {
+        page: parseInt(page),
+        limit: parseInt(limit),
+        total,
+        totalPages: Math.ceil(total / parseInt(limit))
+      }
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// GET /api/words/:id
+export const getWordById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const word = await prisma.word.findFirst({
+      where: { id, isPublished: true }
+    });
+
+    if (!word) {
+      throw new AppError('Word not found', 404);
+    }
+
+    // If user is logged in, check if word is in their bank
+    let userWordStatus = null;
+    if (req.user) {
+      const userWord = await prisma.userWord.findUnique({
+        where: {
+          userId_wordId: {
+            userId: req.user.userId,
+            wordId: word.id
+          }
+        },
+        select: {
+          status: true,
+          isFavorite: true,
+          nextReview: true
+        }
+      });
+      userWordStatus = userWord;
+    }
+
+    res.json({
+      word: transformWordRecord(word),
+      userWordStatus
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// GET /api/words/slug/:slug
+export const getWordBySlug = async (req, res, next) => {
+  try {
+    const { slug } = req.params;
+
+    const word = await prisma.word.findFirst({
+      where: { slug, isPublished: true }
+    });
+
+    if (!word) {
+      throw new AppError('Word not found', 404);
+    }
+
+    // If user is logged in, check if word is in their bank
+    let userWordStatus = null;
+    if (req.user) {
+      const userWord = await prisma.userWord.findUnique({
+        where: {
+          userId_wordId: {
+            userId: req.user.userId,
+            wordId: word.id
+          }
+        },
+        select: {
+          status: true,
+          isFavorite: true,
+          nextReview: true
+        }
+      });
+      userWordStatus = userWord;
+    }
+
+    res.json({
+      word: transformWordRecord(word),
+      userWordStatus
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// GET /api/words/hsk/levels
+export const getHSKLevels = async (req, res, next) => {
+  try {
+    const levels = await prisma.word.groupBy({
+      by: ['hskLevel'],
+      where: { isPublished: true },
+      _count: { id: true },
+      orderBy: { hskLevel: 'asc' }
+    });
+
+    const formattedLevels = levels.map(level => ({
+      level: level.hskLevel,
+      wordCount: level._count.id,
+      description: getHSKDescription(level.hskLevel)
+    }));
+
+    res.json({ levels: formattedLevels });
+  } catch (error) {
+    next(error);
+  }
+};
+
+function getHSKDescription(level) {
+  const descriptions = {
+    1: 'Basic everyday expressions and simple phrases',
+    2: 'Simple conversations about familiar topics',
+    3: 'Daily life communication with moderate fluency',
+    4: 'Complex topics and abstract concepts',
+    5: 'Read newspapers and magazines, express yourself fluently',
+    6: 'Comprehensive Chinese proficiency, near-native level'
+  };
+  return descriptions[level] || '';
+}
+
+export const getWordSlugs = async (req, res, next) => {
+  try {
+    const page = Math.max(1, parseInt(req.query.page || '1', 10));
+    const limit = Math.min(1000, Math.max(1, parseInt(req.query.limit || '500', 10)));
+    const skip = (page - 1) * limit;
+
+    const [words, landingPages] = await Promise.all([
+      prisma.word.findMany({
+        where: { isPublished: true },
+        select: {
+          slug: true,
+          updatedAt: true
+        },
+        orderBy: { updatedAt: 'desc' },
+        skip,
+        take: limit
+      }),
+      prisma.wordLandingPage.findMany({
+        where: { status: 'PUBLISHED' },
+        select: {
+          slug: true,
+          updatedAt: true
+        },
+        orderBy: { updatedAt: 'desc' },
+        skip,
+        take: limit
+      })
+    ]);
+
+    const mergedMap = new Map();
+    [...words, ...landingPages].forEach((item) => {
+      if (item?.slug) {
+        const existing = mergedMap.get(item.slug);
+        if (!existing || existing.updatedAt < item.updatedAt) {
+          mergedMap.set(item.slug, item);
+        }
+      }
+    });
+
+    let mergedList = Array.from(mergedMap.values()).sort(
+      (a, b) => b.updatedAt.getTime() - a.updatedAt.getTime()
+    );
+    mergedList = mergedList.slice(0, limit);
+
+    res.json({
+      slugs: mergedList.map((item) => item.slug),
+      words: mergedList,
+      page,
+      limit,
+      count: mergedList.length
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// 统一词汇详情API - 整合Words + WordLandingPage + UserWord
+export const getWordDetail = async (req, res, next) => {
+  try {
+    const { slug } = req.params;
+    const userId = req.user?.id;
+
+    // 1. 获取落地页内容（如果存在）
+    const landingPageRecord = await prisma.wordLandingPage.findFirst({
+      where: { 
+        slug,
+        status: 'PUBLISHED'
+      }
+    });
+    const landingPage = landingPageRecord
+      ? {
+          ...landingPageRecord,
+          jsonContent: safeParseJSON(landingPageRecord.jsonContent, null)
+        }
+      : null;
+
+    // 2. 获取基础词汇数据
+    const wordRecord = await prisma.word.findFirst({
+      where: { slug }
+    });
+
+    if (!wordRecord && !landingPage) {
+      throw new AppError('Word not found', 404);
+    }
+
+    const word = wordRecord?.isPublished ? wordRecord : null;
+
+    // 3. 获取用户学习数据（如果已登录）
+    let userProgress = null;
+    if (userId && wordRecord?.id) {
+      userProgress = await prisma.userWord.findFirst({
+        where: {
+          userId,
+          wordId: wordRecord.id
+        }
+      });
+    }
+
+    // 4. 返回整合数据
+    res.json({
+      word: word ? transformWordRecord(word) : buildWordFromLandingPage(landingPage, slug),
+      landingPage: landingPage ? {
+        content: landingPage.jsonContent,
+        metrics: {
+          seoScore: landingPage.seoScore,
+          wordCount: landingPage.wordCount,
+          exampleCount: landingPage.exampleCount,
+          faqCount: landingPage.faqCount
+        }
+      } : null,
+      userProgress: userProgress ? {
+        id: userProgress.id,
+        level: userProgress.level,
+        repetitions: userProgress.repetitions,
+        interval: userProgress.interval,
+        nextReviewDate: userProgress.nextReviewDate,
+        correctCount: userProgress.correctCount,
+        wrongCount: userProgress.wrongCount,
+        notes: userProgress.notes,
+        addedAt: userProgress.createdAt
+      } : null,
+      hasLandingPage: !!landingPage
+    });
+  } catch (error) {
+    next(error);
+  }
+};

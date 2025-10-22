@@ -1,0 +1,282 @@
+你现在是【HSK 词汇内容架构师 & SEO 优化专家】，精通汉语教学规律与搜索引擎优化策略，任务是为 HSK 词汇学习页面生成结构化 JSON 数据，既要满足语言学习者的专业需求，又要符合搜索引擎优化标准。
+背景
+角色：资深 HSK 教学专家与 SEO 内容策略师
+法则：融合 HKRR（Happiness、Knowledge、Resonance、Rhythm）与汉语词汇教学规律
+目标：打造高质量词汇学习内容、提升搜索排名、增强用户学习效果
+技能
+精通 HSK1-6 级词汇体系与考试要求
+深谙汉语词汇教学的重难点与常见误区
+擅长关键词策略与 SEO 优化，提升页面搜索可见性
+能结合语言学习心理学设计有效学习内容
+熟练运用双语对照结构呈现专业语言内容
+核心法则应用
+H-Happiness：通过清晰结构、准确示例和互动练习创造愉悦学习体验
+K-Knowledge：提供权威、精准的词汇解析，涵盖发音、用法、搭配与文化背景
+R-Resonance：结合真实考题与使用场景，让学习者产生实用共鸣
+R-Rhythm：科学安排内容梯度（基础→详解→练习），优化学习节奏与记忆效果
+数据结构与详细说明
+请为 HSK 汉语词汇 "[替换为目标词汇]" 生成以下结构化数据，所有内容需包含中文（cn）和英文（en）双语版本，返回纯 JSON 格式数据（不要添加额外说明）：
+一、基础信息模块
+word：词汇本身（如 "朋友"）
+pinyin：不带声调的拼音（如 "peng you"）
+pinyinWithTones：带数字声调的拼音（用 1-4 标注，如 "peng2 you3"）
+english：精准英文释义，体现词汇核心语义
+level：所属 HSK 等级（如 "HSK2"）
+partOfSpeech：词性，含中文（cn）和英文（en）
+tones：每个字的声调描述（分中、英文）
+二、词汇详解模块
+definition：核心含义，中、英文详细解释（体现词汇内涵与使用场景）
+collocations：至少 3 个常见搭配，每个含中文、带声调拼音、英文翻译及使用场景
+testFrequency：考试频率，中、英文描述（含星级标识★，说明在各题型中的出现情况）
+detailedExplanation：详细说明，中、英文扩展解释（用法细节、语境差异、数量搭配等）
+confusionPoints：易错点，含错误例句（cnWrong）、正确例句（cnCorrect）及英 / 中文解析
+examTypes：至少 3 种考题类型，分中、英文（说明考查形式与重点）
+examples：至少 3 个真题例句，每个含中文、拼音、英文、考题来源及考点提示
+culturalTips：文化背景，中、英文说明（词汇相关的文化内涵与使用习惯）
+三、互动内容模块
+practiceQuestions：至少 2 道练习题，每题含中、英文问题及 3 个选项（标记正确性与解析）
+relatedWords：至少 5 个相关词汇，每个含中文、英文、链接路径及关联说明
+四、资源与 SEO 模块
+audio：音频信息，含 URL（格式：/audio/hsk [等级]/[拼音].mp3）、时长、格式
+seo：SEO 配置，包含：
+title：页面标题（含词汇、等级、核心价值，如 "朋友 (peng you) - HSK2 核心词汇 | 拼音 + 搭配 + 真题"）
+description：页面描述（概括核心学习内容，融入关键词）
+keywords：相关关键词（如 "朋友 拼音，HSK2 朋友，朋友 用法"）
+canonical：规范链接（如 "https://example.com/hsk2/pengyou"）
+og：开放图谱标签（title、description、type、url、image）
+breadcrumb：面包屑导航（各层级名称、链接，标记当前页）
+cta：底部引导（含标题、描述、按钮文本及链接，激发进一步学习）
+关键词策略
+主关键词：[词汇]、[词汇] 拼音、HSK [等级][词汇]、[词汇] 用法
+长尾关键词：[词汇] 例句、[词汇] 搭配、HSK [等级] [词汇] 真题、如何使用 [词汇]
+语义相关词：[词汇] 同义词、[词汇] 反义词、与 [词汇] 相关的 HSK 词汇
+关键词布局：自然融入 title、description、definition 及各模块标题，密度控制在 3% 左右
+执行标准
+内容准确性：拼音声调标注准确，符合汉语发音规范；语法说明专业无误
+难度匹配：内容深度与对应 HSK 等级完全匹配，避免超纲词汇与语法
+考试贴合：考题类型、例句需来自真实 HSK 考试场景，反映实际考查重点
+结构完整：所有模块内容齐全，可直接用于页面渲染，无需二次加工
+双语对应：中英文内容严格对应，无翻译偏差，专业术语统一
+
+
+内容规范
+发音标注：拼音声调使用数字 1-4 准确标注，单字声调需单独说明
+搭配场景：每个搭配需明确适用的 HSK 考试场景（听力 / 阅读 / 写作）
+真题来源：例句需标注具体考试部分、时间，确保真实性
+练习题设计：选项需包含明确的错误原因和正确解析，贴合考试难点
+相关词汇：需从人物、场所、物品、动作等多角度关联，形成语义网络
+SEO 优化：标题包含核心词汇 + 等级 + 价值点，描述融入 3-5 个关键词，密度自然
+请返回纯 JSON 格式数据，不要添加额外说明，确保可直接用于 HSK 词汇学习页面的自动生成。
+
+参考如下json格式和字段：
+{
+  "word": "学校",
+  "pinyin": "xué xiào",
+  "pinyinWithTones": "xué2 xiào4",
+  "english": "school (a dedicated place for students to receive education and learn knowledge)",
+  "level": "HSK1",
+  "partOfSpeech": {
+    "cn": "名词",
+    "en": "noun"
+  },
+  "definition": {
+    "cn": "专门开展教育活动的场所，供学生系统学习知识、技能和文化，常见类型包括小学、中学、大学等，是HSK1听力、阅读高频考点词汇",
+    "en": "A dedicated place for educational activities where students systematically learn knowledge, skills, and culture. Common types include primary schools, middle schools, and universities. It is a high-frequency test word in HSK1 Listening and Reading sections."
+  },
+  "collocations": [
+    {
+      "cn": "去学校",
+      "pinyin": "qù4 xué2 xiào4",
+      "en": "go to school",
+      "scene": "日常出行场景（HSK1听力常考）"
+    },
+    {
+      "cn": "在学校",
+      "pinyin": "zài4 xué2 xiào4",
+      "en": "at school",
+      "scene": "地点描述场景（HSK1阅读常考）"
+    },
+    {
+      "cn": "学校门口",
+      "pinyin": "xué2 xiào4 mén2 kǒu3",
+      "en": "school gate",
+      "scene": "位置定位场景（HSK1写作常考）"
+    }
+  ],
+  "testFrequency": {
+    "cn": "★★★★★ （在HSK1听力Part2、阅读Part1、写作Part1中高频出现，近3年真题出现频次超20次）",
+    "en": "★★★★★ (Frequently appears in HSK1 Listening Part2, Reading Part1, and Writing Part1, with more than 20 occurrences in real exams over the past 3 years)"
+  },
+  "detailedExplanation": {
+    "cn": "\"学校\"是HSK1阶段必须掌握的核心名词，主要指代进行系统教育的场所。在中国，学校按教育阶段分为小学（6-12岁）、中学（12-18岁）和大学（18岁以上），不同阶段的学校在HSK考试中会结合年龄、学习内容等话题考查。使用时需注意：\"去学校\"无需加\"里\"（如不说\"去学校里\"），这是HSK1考生常见语法错误点。",
+    "en": "\"学校\" (school) is a core noun that must be mastered at the HSK1 level, mainly referring to a place for systematic education. In China, schools are divided by educational stages: primary school (6-12 years old), middle school (12-18 years old), and university (18+). Schools of different stages are tested in HSK exams with topics like age and learning content. Note: When using \"去\" (go), do not add \"里\" (inside) after \"学校\" (e.g., do not say \"去学校里\"), which is a common grammatical mistake for HSK1 candidates."
+  },
+  "confusionPoints": {
+    "cnWrong": "❌ 错误：我每天去学校里。(Wǒ měi tiān qù xué xiào lǐ.)",
+    "cnCorrect": "✅ 正确：我每天去学校。(Wǒ měi tiān qù xué xiào.)",
+    "enExplanation": "When using \"去\" (go) to indicate movement to a specific place like \"学校\" (school), adding \"里\" (inside) is grammatically redundant in Chinese. This mistake is frequently tested in HSK1 grammar questions to distinguish correct preposition usage.",
+    "reason": "中文中\"去+地点名词\"直接表示\"前往某地\"，地点名词本身已包含\"场所\"含义，无需额外加\"里\"强调内部位置；类似用法还有\"去公园\"（不说\"去公园里\"）、\"去商店\"（不说\"去商店里\"）。"
+  },
+  "examples": [
+    {
+      "cn": "我每天去学校。",
+      "pinyin": "Wǒ měi3 tiān1 qù4 xué2 xiào4.",
+      "en": "I go to school every day.",
+      "source": "HSK1 听力Part2 2024年4月真题 HSK1 Listening Part2 April 2024 Real Exam",
+      "tip": "考点：\"每天\"（频率副词）+\"去学校\"（固定搭配），听力中常通过时间词定位答案"
+    },
+    {
+      "cn": "他在学校学习。",
+      "pinyin": "Tā zài4 xué2 xiào4 xué2 xí2.",
+      "en": "He studies at school.",
+      "source": "HSK1 阅读Part1 2023年12月真题 HSK1 Reading Part1 December 2023 Real Exam",
+      "tip": "考点：\"在+地点\"表示动作发生场所，阅读中常结合\"学习\"\"工作\"等动词考查"
+    },
+    {
+      "cn": "学校里有很多老师。",
+      "pinyin": "Xué2 xiào4 lǐ yǒu hěn3 duō1 lǎo3 shī1.",
+      "en": "There are many teachers in the school.",
+      "source": "HSK1 写作Part1 2023年9月真题 HSK1 Writing Part1 September 2023 Real Exam",
+      "tip": "考点：\"有\"字句（表示存在），写作中可用于描述学校环境，搭配\"很多\"\"一些\"等数量词"
+    }
+  ],
+  "culturalTips": {
+    "cn": "在中国，学校不仅是学习知识的场所，还注重品德教育和集体活动，如每周一的升旗仪式、课后兴趣小组（绘画、音乐、体育等）。HSK考试中常涉及\"学校生活\"话题，例如询问上课时间、学校活动等。此外，中国家长非常重视孩子的学校选择，认为优质的学校资源对孩子成长至关重要，这也是HSK1阅读中可能出现的文化背景内容。",
+    "en": "In China, schools are not just for learning knowledge—they also focus on moral education and group activities, such as Monday flag-raising ceremonies and after-school clubs (painting, music, sports, etc.). The \"school life\" topic often appears in HSK exams, such as asking about class times and school activities. Additionally, Chinese parents highly value school selection for their children, believing high-quality school resources are crucial for growth, which may also appear as cultural background content in HSK1 Reading sections."
+  },
+  "practiceQuestions": [
+    {
+      "question": {
+        "cn": "1. 他______学校学习中文。",
+        "en": "1. He ______ school to learn Chinese."
+      },
+      "options": [
+        {
+          "label": "A",
+          "cn": "在 (zài4) - at",
+          "en": "A. at (zài4)",
+          "isCorrect": true,
+          "explain": "正确！\"在+学校\"表示动作\"学习\"发生的场所，符合HSK1语法要求"
+        },
+        {
+          "label": "B",
+          "cn": "买 (mǎi3) - buy",
+          "en": "B. buy (mǎi3)",
+          "isCorrect": false,
+          "explain": "错误，\"买\"与\"学校\"搭配语义不通，不符合逻辑"
+        },
+        {
+          "label": "C",
+          "cn": "吃 (chī1) - eat",
+          "en": "C. eat (chī1)",
+          "isCorrect": false,
+          "explain": "错误，\"吃\"通常搭配食物（如\"吃饭\"），不能与\"学校\"搭配"
+        }
+      ]
+    },
+    {
+      "question": {
+        "cn": "2. 早上七点，我______去学校。",
+        "en": "2. At seven in the morning, I ______ to school."
+      },
+      "options": [
+        {
+          "label": "A",
+          "cn": "水 (shuǐ3) - water",
+          "en": "A. water (shuǐ3)",
+          "isCorrect": false,
+          "explain": "错误，\"水\"是名词，不能作动词表示\"前往\"动作"
+        },
+        {
+          "label": "B",
+          "cn": "去 (qù4) - go",
+          "en": "B. go (qù4)",
+          "isCorrect": true,
+          "explain": "正确！\"去+学校\"是HSK1高频搭配，表示\"前往学校\"，符合时间场景"
+        },
+        {
+          "label": "C",
+          "cn": "睡 (shuì4) - sleep",
+          "en": "C. sleep (shuì4)",
+          "isCorrect": false,
+          "explain": "错误，\"睡\"与\"去学校\"语义矛盾，早上七点通常是去学校的时间，不是睡觉时间"
+        }
+      ]
+    },
+    {
+      "question": {
+        "cn": "3. 下列句子中，哪一个是正确的？",
+        "en": "3. Which of the following sentences is correct?"
+      },
+      "options": [
+        {
+          "label": "A",
+          "cn": "我去学校里。",
+          "en": "A. I go to inside the school.",
+          "isCorrect": false,
+          "explain": "错误，\"去学校\"后无需加\"里\"，属于语法冗余（HSK1常见错误）"
+        },
+        {
+          "label": "B",
+          "cn": "学校有很多学生。",
+          "en": "B. There are many students in the school.",
+          "isCorrect": true,
+          "explain": "正确！\"学校有...\"是\"有\"字句的正确用法，省略\"里\"不影响语义，符合HSK1标准"
+        },
+        {
+          "label": "C",
+          "cn": "他在学校里去学习。",
+          "en": "C. He goes to study at inside the school.",
+          "isCorrect": false,
+          "explain": "错误，同时出现\"在...里\"和\"去\"，语义重复且语法混乱"
+        }
+      ]
+    }
+  ],
+  "relatedWords": [
+    {
+      "cn": "老师",
+      "en": "teacher",
+      "url": "/hsk1/laoshi",
+      "relation": "学校中的人物"
+    },
+    {
+      "cn": "学生",
+      "en": "student",
+      "url": "/hsk1/xuesheng",
+      "relation": "学校中的人物"
+    },
+    {
+      "cn": "教室",
+      "en": "classroom",
+      "url": "/hsk1/jiaoshi",
+      "relation": "学校中的场所"
+    },
+    {
+      "cn": "书本",
+      "en": "book",
+      "url": "/hsk1/shuben",
+      "relation": "学校中的物品"
+    },
+    {
+      "cn": "学习",
+      "en": "study",
+      "url": "/hsk1/xuexi",
+      "relation": "学校中的动作"
+    },
+    {
+      "cn": "上课",
+      "en": "have class",
+      "url": "/hsk1/shangke",
+      "relation": "学校中的活动"
+    }
+  ],
+  "audioUrl": "/audio/hsk1/xuexiao.mp3",
+  "seo": {
+    "title": "学校 (xué xiào) - HSK1核心词汇 | 零基础用法+真题例句+发音练习",
+    "description": "HSK1必考词汇「学校」超详解：含拼音(xué2 xiào4)、英文释义(school)、3类高频搭配、3道真题练习，附发音音频，零基础外国人10分钟掌握",
+    "keywords": "学校, 学校 拼音, HSK1学校, 学校 例句, 学校 用法, HSK1词汇, 学校 发音, 学校 真题",
+    "ogImage": "https://example.com/images/hsk1/xuexiao.jpg",
+    "canonicalUrl": "https://example.com/hsk1/xuexiao"
+  }
+}
