@@ -1,0 +1,58 @@
+{
+  "name": "chinesemaster",
+  "version": "1.0.0",
+  "description": "ChineseMaster - HSK Learning Platform with AI-powered content generation",
+  "main": "api/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "nodemon api/server.js",
+    "start": "node api/server.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:push": "prisma db push",
+    "prisma:studio": "prisma studio",
+    "prisma:seed": "node prisma/seed.js",
+    "worker": "node api/workers/generation-worker.js",
+    "build:html": "node api/services/seo/html-generator.js",
+    "admin:dev": "cd admin && npm run dev",
+    "admin:build": "cd admin && npm run build",
+    "admin:install": "cd admin && npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hsk",
+    "chinese",
+    "learning",
+    "ai",
+    "education"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/client": "^5.20.0",
+    "axios": "^1.7.7",
+    "bcryptjs": "^2.4.3",
+    "bullmq": "^5.17.0",
+    "cors": "^2.8.5",
+    "csv-parser": "^3.0.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-rate-limit": "^7.4.1",
+    "handlebars": "^4.7.8",
+    "helmet": "^8.0.0",
+    "ioredis": "^5.4.1",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.3",
+    "nodejieba": "^2.6.0",
+    "pinyin": "^3.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7",
+    "prisma": "^5.20.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}
