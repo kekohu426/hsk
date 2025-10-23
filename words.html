@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Words - ChineseMaster</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="container header-content">
+            <div class="header-brand">
+                <a href="index.html" class="brand-link">
+                    <span class="logo">🎓</span>
+                    <span class="brand-name">ChineseMaster</span>
+                </a>
+            </div>
+            <nav class="header-nav">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="articles.html">Daily Articles</a>
+                <a href="analyzer.html">Text Analyzer</a>
+                <a href="words.html" class="active">My Words</a>
+                <a href="hsk-library.html">HSK Library</a>
+                <a href="stats.html">Statistics</a>
+            </nav>
+            <div class="header-user">
+                <button class="btn btn-icon">🔔</button>
+                <div class="user-menu">
+                    <img src="https://i.pravatar.cc/100?img=20" alt="User" class="user-avatar">
+                    <span>Sarah</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="container">
+            <!-- Header -->
+            <div class="welcome-section">
+                <div class="welcome-text">
+                    <h1>📚 My Word Bank</h1>
+                    <p>Manage your personal vocabulary collection</p>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="words-stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📖</div>
+                    <div class="stat-content">
+                        <div class="stat-number">750</div>
+                        <div class="stat-label">Total Words</div>
+                    </div>
+                </div>
+                <div class="stat-card new">
+                    <div class="stat-icon">🆕</div>
+                    <div class="stat-content">
+                        <div class="stat-number">100</div>
+                        <div class="stat-label">To Learn</div>
+                    </div>
+                </div>
+                <div class="stat-card learning">
+                    <div class="stat-icon">📝</div>
+                    <div class="stat-content">
+                        <div class="stat-number">200</div>
+                        <div class="stat-label">Learning</div>
+                    </div>
+                </div>
+                <div class="stat-card mastered">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-content">
+                        <div class="stat-number">450</div>
+                        <div class="stat-label">Mastered</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="words-filters">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Search vocabulary..." id="searchInput">
+                </div>
+                <select class="filter-select">
+                    <option value="all">All Levels</option>
+                    <option value="1">HSK 1</option>
+                    <option value="2">HSK 2</option>
+                    <option value="3">HSK 3</option>
+                    <option value="4">HSK 4</option>
+                    <option value="5">HSK 5</option>
+                    <option value="6">HSK 6</option>
+                </select>
+                <select class="filter-select">
+                    <option value="recent">Most Recent</option>
+                    <option value="alphabetical">Alphabetical</option>
+                    <option value="frequency">By Frequency</option>
+                    <option value="difficulty">By Difficulty</option>
+                </select>
+            </div>
+
+            <!-- Tabs -->
+            <div class="words-tabs">
+                <button class="words-tab active" onclick="switchWordsTab('new')">
+                    To Learn (100)
+                </button>
+                <button class="words-tab" onclick="switchWordsTab('learning')">
+                    Learning (200)
+                </button>
+                <button class="words-tab" onclick="switchWordsTab('mastered')">
+                    Mastered (450)
+                </button>
+                <button class="words-tab" onclick="switchWordsTab('favorites')">
+                    ⭐ Favorites (45)
+                </button>
+            </div>
+
+            <!-- Words List -->
+            <div id="newWords" class="words-content active">
+                <div class="words-grid">
+                    <!-- Word Card 1 -->
+                    <div class="word-bank-card">
+                        <div class="word-card-header">
+                            <div class="word-chinese-large">学习</div>
+                            <button class="btn-icon-sm">⭐</button>
+                        </div>
+                        <div class="word-pinyin-large">xuéxí</div>
+                        <div class="word-english-large">to study, to learn</div>
+                        <div class="word-meta-row">
+                            <span class="badge badge-sm">HSK 2</span>
+                            <span class="word-date">Added 2 days ago</span>
+                        </div>
+                        <div class="word-progress-row">
+                            <span class="progress-label">Next review: Today</span>
+                            <span class="progress-status status-new">New</span>
+                        </div>
+                        <div class="word-actions">
+                            <button class="btn btn-primary btn-sm btn-block" onclick="startLearning('学习', 'new')">
+                                Start Learning
+                            </button>
+                            <div class="word-mini-actions">
+                                <button class="btn btn-sm btn-ghost" onclick="viewDetail('学习')">View</button>
+                                <button class="btn btn-sm btn-ghost" onclick="playAudio()">🔊</button>
+                                <button class="btn btn-sm btn-ghost" onclick="deleteWord('学习')">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Word Card 2 -->
+                    <div class="word-bank-card">
+                        <div class="word-card-header">
+                            <div class="word-chinese-large">认识</div>
+                            <button class="btn-icon-sm">⭐</button>
+                        </div>
+                        <div class="word-pinyin-large">rènshi</div>
+                        <div class="word-english-large">to know, to recognize</div>
+                        <div class="word-meta-row">
+                            <span class="badge badge-sm">HSK 2</span>
+                            <span class="word-date">Added today</span>
+                        </div>
+                        <div class="word-progress-row">
+                            <span class="progress-label">Next review: Today</span>
+                            <span class="progress-status status-new">New</span>
+                        </div>
+                        <div class="word-actions">
+                            <button class="btn btn-primary btn-sm btn-block" onclick="startLearning('认识', 'new')">
+                                Start Learning
+                            </button>
+                            <div class="word-mini-actions">
+                                <button class="btn btn-sm btn-ghost" onclick="viewDetail('认识')">View</button>
+                                <button class="btn btn-sm btn-ghost" onclick="playAudio()">🔊</button>
+                                <button class="btn btn-sm btn-ghost" onclick="deleteWord('认识')">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Word Card 3 -->
+                    <div class="word-bank-card">
+                        <div class="word-card-header">
+                            <div class="word-chinese-large">重要</div>
+                            <button class="btn-icon-sm starred">⭐</button>
+                        </div>
+                        <div class="word-pinyin-large">zhòngyào</div>
+                        <div class="word-english-large">important</div>
+                        <div class="word-meta-row">
+                            <span class="badge badge-sm">HSK 3</span>
+                            <span class="word-date">Added 3 days ago</span>
+                        </div>
+                        <div class="word-progress-row">
+                            <span class="progress-label">Next review: Tomorrow</span>
+                            <span class="progress-status status-new">New</span>
+                        </div>
+                        <div class="word-actions">
+                            <button class="btn btn-primary btn-sm btn-block" onclick="startLearning('重要', 'new')">
+                                Start Learning
+                            </button>
+                            <div class="word-mini-actions">
+                                <button class="btn btn-sm btn-ghost" onclick="viewDetail('重要')">View</button>
+                                <button class="btn btn-sm btn-ghost" onclick="playAudio()">🔊</button>
+                                <button class="btn btn-sm btn-ghost" onclick="deleteWord('重要')">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add more word cards... -->
+                    <div class="word-bank-card">
+                        <div class="word-card-header">
+                            <div class="word-chinese-large">机会</div>
+                            <button class="btn-icon-sm">⭐</button>
+                        </div>
+                        <div class="word-pinyin-large">jīhuì</div>
+                        <div class="word-english-large">opportunity, chance</div>
+                        <div class="word-meta-row">
+                            <span class="badge badge-sm">HSK 4</span>
+                            <span class="word-date">Added 1 week ago</span>
+                        </div>
+                        <div class="word-progress-row">
+                            <span class="progress-label">Next review: In 2 days</span>
+                            <span class="progress-status status-new">New</span>
+                        </div>
+                        <div class="word-actions">
+                            <button class="btn btn-primary btn-sm btn-block" onclick="startLearning('机会', 'new')">
+                                Start Learning
+                            </button>
+                            <div class="word-mini-actions">
+                                <button class="btn btn-sm btn-ghost" onclick="viewDetail('机会')">View</button>
+                                <button class="btn btn-sm btn-ghost" onclick="playAudio()">🔊</button>
+                                <button class="btn btn-sm btn-ghost" onclick="deleteWord('机会')">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="words-pagination">
+                    <button class="btn btn-outline">← Previous</button>
+                    <span class="pagination-info">Showing 1-12 of 100</span>
+                    <button class="btn btn-outline">Next →</button>
+                </div>
+            </div>
+
+            <div id="learningWords" class="words-content">
+                <p class="empty-message">Learning words will appear here...</p>
+            </div>
+
+            <div id="masteredWords" class="words-content">
+                <div class="words-grid">
+                    <!-- Mastered Word Card 1 -->
+                    <div class="word-bank-card mastered">
+                        <div class="word-card-header">
+                            <div class="word-chinese-large">你好</div>
+                            <button class="btn-icon-sm starred">⭐</button>
+                        </div>
+                        <div class="word-pinyin-large">nǐ hǎo</div>
+                        <div class="word-english-large">hello</div>
+                        <div class="word-meta-row">
+                            <span class="badge badge-sm">HSK 1</span>
+                            <span class="word-date">Added 2 months ago</span>
+                        </div>
+                        <div class="word-progress-row">
+                            <span class="progress-label">Last reviewed: 3 days ago</span>
+                            <span class="progress-status status-mastered">✅ Mastered</span>
+                        </div>
+                        <div class="word-actions">
+                            <button class="btn btn-primary btn-sm btn-block" onclick="startLearning('你好', 'mastered')">
+                                Quick Review
+                            </button>
+                            <div class="word-mini-actions">
+                                <button class="btn btn-sm btn-ghost" onclick="viewDetail('你好')">View</button>
+                                <button class="btn btn-sm btn-ghost" onclick="playAudio()">🔊</button>
+                                <button class="btn btn-sm btn-ghost" onclick="deleteWord('你好')">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mastered Word Card 2 -->
+                    <div class="word-bank-card mastered">
+                        <div class="word-card-header">
+                            <div class="word-chinese-large">谢谢</div>
+                            <button class="btn-icon-sm">⭐</button>
+                        </div>
+                        <div class="word-pinyin-large">xièxie</div>
+                        <div class="word-english-large">thank you</div>
+                        <div class="word-meta-row">
+                            <span class="badge badge-sm">HSK 1</span>
+                            <span class="word-date">Added 2 months ago</span>
+                        </div>
+                        <div class="word-progress-row">
+                            <span class="progress-label">Last reviewed: 1 week ago</span>
+                            <span class="progress-status status-mastered">✅ Mastered</span>
+                        </div>
+                        <div class="word-actions">
+                            <button class="btn btn-primary btn-sm btn-block" onclick="startLearning('谢谢', 'mastered')">
+                                Quick Review
+                            </button>
+                            <div class="word-mini-actions">
+                                <button class="btn btn-sm btn-ghost" onclick="viewDetail('谢谢')">View</button>
+                                <button class="btn btn-sm btn-ghost" onclick="playAudio()">🔊</button>
+                                <button class="btn btn-sm btn-ghost" onclick="deleteWord('谢谢')">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="favoritesWords" class="words-content">
+                <p class="empty-message">Favorited words will appear here...</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="mock-data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        function switchWordsTab(tab) {
+            // Remove active from all tabs
+            document.querySelectorAll('.words-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.words-content').forEach(c => c.classList.remove('active'));
+            
+            // Add active to selected
+            event.target.classList.add('active');
+            
+            const contentMap = {
+                'new': 'newWords',
+                'learning': 'learningWords',
+                'mastered': 'masteredWords',
+                'favorites': 'favoritesWords'
+            };
+            
+            document.getElementById(contentMap[tab]).classList.add('active');
+        }
+
+        function startLearning(word, status) {
+            // 根据词汇状态智能跳转
+            if (status === 'new' || status === 'learning') {
+                // 新词和学习中的词 → 去详情页（完整学习流程）
+                showNotification(`📖 Opening learning materials for "${word}"...`, 'info');
+                setTimeout(() => {
+                    window.location.href = `word-detail.html?from=my-words&word=${encodeURIComponent(word)}`;
+                }, 500);
+            } else if (status === 'mastered') {
+                // 已掌握的词 → 直接去测试（快速复习）
+                showNotification(`🎯 Starting quick review for "${word}"...`, 'info');
+                setTimeout(() => {
+                    window.location.href = `learning.html?word=${encodeURIComponent(word)}`;
+                }, 500);
+            }
+        }
+
+        function viewDetail(word) {
+            window.location.href = `word-detail.html?from=my-words&word=${encodeURIComponent(word)}`;
+        }
+
+        function deleteWord(word) {
+            if (confirm(`确定要删除 "${word}" 吗？`)) {
+                showNotification(`🗑️ Deleted "${word}" from your word bank`, 'success');
+            }
+        }
+    </script>
+    <style>
+        .words-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .stat-card.new { border-left: 4px solid var(--info); }
+        .stat-card.learning { border-left: 4px solid var(--warning); }
+        .stat-card.mastered { border-left: 4px solid var(--success); }
+
+        .stat-icon {
+            font-size: 2.5rem;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            color: var(--gray-600);
+        }
+
+        .words-filters {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: var(--spacing-md);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 2.5rem;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+        }
+
+        .filter-select {
+            padding: var(--spacing-md);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .words-tabs {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-xl);
+            border-bottom: 2px solid var(--gray-200);
+            overflow-x: auto;
+        }
+
+        .words-tab {
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gray-600);
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .words-tab:hover {
+            color: var(--primary);
+        }
+
+        .words-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .words-content {
+            display: none;
+        }
+
+        .words-content.active {
+            display: block;
+        }
+
+        .words-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .word-bank-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .word-bank-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .word-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .word-chinese-large {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: var(--font-chinese);
+        }
+
+        .btn-icon-sm {
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.2s;
+        }
+
+        .btn-icon-sm:hover {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .btn-icon-sm.starred {
+            opacity: 1;
+            filter: drop-shadow(0 0 8px gold);
+        }
+
+        .word-pinyin-large {
+            color: var(--primary);
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .word-english-large {
+            color: var(--gray-700);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .word-meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .word-date {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        .word-progress-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+            font-size: 0.875rem;
+        }
+
+        .progress-label {
+            color: var(--gray-600);
+        }
+
+        .progress-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        .progress-status.status-new {
+            background: var(--info);
+            color: white;
+        }
+
+        .progress-status.status-learning {
+            background: var(--warning);
+            color: white;
+        }
+
+        .progress-status.status-mastered {
+            background: var(--success);
+            color: white;
+        }
+
+        .word-actions {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .word-mini-actions {
+            display: flex;
+            gap: var(--spacing-xs);
+        }
+
+        .words-pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-lg) 0;
+        }
+
+        .pagination-info {
+            color: var(--gray-600);
+        }
+
+        .empty-message {
+            text-align: center;
+            color: var(--gray-500);
+            padding: var(--spacing-2xl);
+            font-size: 1.125rem;
+        }
+
+        @media (max-width: 768px) {
+            .words-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>
+

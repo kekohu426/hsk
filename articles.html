@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily HSK Reading Practice | ChineseMaster</title>
+    <meta name="description" content="Browse curated daily Chinese reading articles with pinyin, translations, and vocabulary lists mapped to HSK levels to accelerate your exam prep.">
+    <link rel="canonical" href="https://www.chinesemaster.com/articles/">
+    <meta property="og:title" content="Daily HSK Reading Practice | ChineseMaster">
+    <meta property="og:description" content="Authentic Mandarin articles tagged by HSK level with instant vocabulary highlights and practice activities.">
+    <meta property="og:type" content="collection">
+    <meta property="og:url" content="https://www.chinesemaster.com/articles/">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "ChineseMaster Daily Articles",
+        "description": "Authentic Mandarin readings organized by HSK level with annotations and study tools.",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "url": "https://www.chinesemaster.com/article/beijing-food-culture",
+                "name": "北京的美食文化"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "url": "https://www.chinesemaster.com/article/coffee-shop-dialogue",
+                "name": "在咖啡店"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "url": "https://www.chinesemaster.com/article/weekend-park",
+                "name": "周末去公园"
+            }
+        ]
+    }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="container header-content">
+            <div class="header-brand">
+                <a href="index.html" class="brand-link">
+                    <span class="logo">🎓</span>
+                    <span class="brand-name">ChineseMaster</span>
+                </a>
+            </div>
+            <nav class="header-nav">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="articles.html" class="active">Daily Articles</a>
+                <a href="analyzer.html">Text Analyzer</a>
+                <a href="words.html">My Words</a>
+                <a href="hsk-library.html">HSK Library</a>
+                <a href="stats.html">Statistics</a>
+            </nav>
+            <div class="header-user">
+                <button class="btn btn-icon">🔔</button>
+                <div class="user-menu">
+                    <img src="https://i.pravatar.cc/100?img=20" alt="User" class="user-avatar">
+                    <span>Sarah</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav">
+        <a href="dashboard.html">
+            <span>🏠</span>
+            <span>Home</span>
+        </a>
+        <a href="hsk-library.html">
+            <span>📚</span>
+            <span>Library</span>
+        </a>
+        <a href="stats.html">
+            <span>📊</span>
+            <span>Stats</span>
+        </a>
+        <a href="#">
+            <span>👤</span>
+            <span>Profile</span>
+        </a>
+    </div>
+
+    <main class="dashboard-main">
+        <div class="container">
+            <!-- Header -->
+            <div class="welcome-section">
+                <div class="welcome-text">
+                    <h1>📰 Daily Articles</h1>
+                    <p>Read authentic Chinese content with pinyin, translations, and vocabulary highlights</p>
+                </div>
+                <div class="welcome-streak">
+                    <div class="level-badge">
+                        <span class="level-icon">📖</span>
+                        <div>
+                            <div class="level-number">25</div>
+                            <div class="level-label">Articles Read</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" onclick="filterArticles('all')">All Levels</button>
+                <button class="filter-tab" onclick="filterArticles('beginner')">Beginner</button>
+                <button class="filter-tab" onclick="filterArticles('intermediate')">Intermediate</button>
+                <button class="filter-tab" onclick="filterArticles('advanced')">Advanced</button>
+            </div>
+
+            <!-- Today's Featured Article -->
+            <div class="featured-article-card">
+                <div class="featured-badge">
+                    <span class="badge badge-gold">⭐ Today's Featured</span>
+                </div>
+                <div class="featured-content">
+                    <div class="featured-main">
+                        <h2>北京的美食文化</h2>
+                        <h3 class="article-subtitle">Beijing's Food Culture</h3>
+                        <p class="article-excerpt">
+                            北京不仅是中国的首都，也是中国美食文化的重要中心之一。从传统的烤鸭到街边小吃，北京的美食反映了这座城市悠久的历史和多元的文化...
+                        </p>
+                        <div class="article-meta" role="list">
+                            <span class="badge">HSK 3-4</span>
+                            <span class="meta-item" role="listitem">⏱️ 5 min read</span>
+                            <span class="meta-item" role="listitem">📝 280 characters</span>
+                            <span class="meta-item" role="listitem">🆕 12 new words</span>
+                        </div>
+                        <div class="featured-cta-group">
+                            <button class="btn btn-primary" onclick="window.location.href='article-detail.html'">
+                                Start Reading →
+                            </button>
+                            <a href="/guides/hsk-exam-overview.html" class="btn btn-outline">
+                                📘 HSK Exam Guide
+                            </a>
+                        </div>
+                    </div>
+                    <div class="featured-image">
+                        <div class="article-placeholder">🍜</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Articles Grid -->
+            <h2 class="section-header">Recent Articles</h2>
+            <div class="articles-grid">
+                <!-- Article Card 1 -->
+                <div class="article-card" data-level="beginner">
+                    <div class="article-card-header">
+                        <span class="article-emoji">☕</span>
+                        <span class="badge badge-sm">HSK 2</span>
+                    </div>
+                    <h3 class="article-title">在咖啡店</h3>
+                    <p class="article-title-en">At the Coffee Shop</p>
+                    <p class="article-excerpt-sm">
+                        今天天气很好。我和朋友去咖啡店喝咖啡。咖啡店里有很多人...
+                    </p>
+                    <div class="article-stats">
+                        <span>⏱️ 3 min</span>
+                        <span>📝 150字</span>
+                        <span>🆕 8词</span>
+                    </div>
+                    <button class="btn btn-outline btn-sm btn-block" onclick="window.location.href='article-detail.html'">
+                        Read Article
+                    </button>
+                </div>
+
+                <!-- Article Card 2 -->
+                <div class="article-card" data-level="beginner">
+                    <div class="article-card-header">
+                        <span class="article-emoji">🏞️</span>
+                        <span class="badge badge-sm">HSK 2</span>
+                    </div>
+                    <h3 class="article-title">周末去公园</h3>
+                    <p class="article-title-en">Weekend at the Park</p>
+                    <p class="article-excerpt-sm">
+                        上个周末，我和家人去公园玩儿。公园里的花很漂亮，天气也很好...
+                    </p>
+                    <div class="article-stats">
+                        <span>⏱️ 4 min</span>
+                        <span>📝 180字</span>
+                        <span>🆕 10词</span>
+                    </div>
+                    <button class="btn btn-outline btn-sm btn-block" onclick="window.location.href='article-detail.html'">
+                        Read Article
+                    </button>
+                </div>
+
+                <!-- Article Card 3 -->
+                <div class="article-card" data-level="intermediate">
+                    <div class="article-card-header">
+                        <span class="article-emoji">🎓</span>
+                        <span class="badge badge-sm">HSK 3</span>
+                    </div>
+                    <h3 class="article-title">中国的教育系统</h3>
+                    <p class="article-title-en">China's Education System</p>
+                    <p class="article-excerpt-sm">
+                        中国的教育系统包括小学、中学和大学。学生需要参加各种考试...
+                    </p>
+                    <div class="article-stats">
+                        <span>⏱️ 6 min</span>
+                        <span>📝 320字</span>
+                        <span>🆕 15词</span>
+                    </div>
+                    <button class="btn btn-outline btn-sm btn-block" onclick="window.location.href='article-detail.html'">
+                        Read Article
+                    </button>
+                    <a href="hsk-hub.html" class="pill-link">HSK 3 Roadmap →</a>
+                </div>
+
+                <!-- Article Card 4 -->
+                <div class="article-card" data-level="intermediate">
+                    <div class="article-card-header">
+                        <span class="article-emoji">🚗</span>
+                        <span class="badge badge-sm">HSK 3</span>
+                    </div>
+                    <h3 class="article-title">中国的交通发展</h3>
+                    <p class="article-title-en">Transportation Development in China</p>
+                    <p class="article-excerpt-sm">
+                        近年来，中国的交通系统发展很快。高铁网络连接了全国各地...
+                    </p>
+                    <div class="article-stats">
+                        <span>⏱️ 7 min</span>
+                        <span>📝 350字</span>
+                        <span>🆕 18词</span>
+                    </div>
+                    <button class="btn btn-outline btn-sm btn-block" onclick="window.location.href='article-detail.html'">
+                        Read Article
+                    </button>
+                </div>
+
+                <!-- Article Card 5 -->
+                <div class="article-card" data-level="advanced">
+                    <div class="article-card-header">
+                        <span class="article-emoji">💼</span>
+                        <span class="badge badge-sm">HSK 4-5</span>
+                    </div>
+                    <h3 class="article-title">中国的创业文化</h3>
+                    <p class="article-title-en">China's Startup Culture</p>
+                    <p class="article-excerpt-sm">
+                        近十年来，中国的创业环境发生了巨大变化。从互联网到人工智能...
+                    </p>
+                    <div class="article-stats">
+                        <span>⏱️ 10 min</span>
+                        <span>📝 500字</span>
+                        <span>🆕 25词</span>
+                    </div>
+                    <button class="btn btn-outline btn-sm btn-block" onclick="window.location.href='article-detail.html'">
+                        Read Article
+                    </button>
+                </div>
+
+                <!-- Article Card 6 -->
+                <div class="article-card" data-level="advanced">
+                    <div class="article-card-header">
+                        <span class="article-emoji">🎭</span>
+                        <span class="badge badge-sm">HSK 5</span>
+                    </div>
+                    <h3 class="article-title">京剧艺术的传承</h3>
+                    <p class="article-title-en">The Heritage of Peking Opera</p>
+                    <p class="article-excerpt-sm">
+                        京剧作为中国传统戏曲的代表，拥有两百多年的历史。它融合了...
+                    </p>
+                    <div class="article-stats">
+                        <span>⏱️ 12 min</span>
+                        <span>📝 600字</span>
+                        <span>🆕 30词</span>
+                    </div>
+                    <button class="btn btn-outline btn-sm btn-block" onclick="window.location.href='article-detail.html'">
+                        Read Article
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loading More -->
+            <div class="loading-more">
+                <button class="btn btn-outline btn-lg">
+                    Load More Articles
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="mock-data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        function filterArticles(level) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.filter-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            
+            // Filter articles
+            const articles = document.querySelectorAll('.article-card');
+            articles.forEach(article => {
+                if (level === 'all') {
+                    article.style.display = 'block';
+                } else {
+                    const articleLevel = article.dataset.level;
+                    article.style.display = articleLevel === level ? 'block' : 'none';
+                }
+            });
+        }
+
+    </script>
+    <style>
+        .filter-tabs {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-xl);
+            border-bottom: 2px solid var(--gray-200);
+            padding-bottom: var(--spacing-sm);
+            overflow-x: auto;
+        }
+
+        .filter-tab {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gray-600);
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .filter-tab:hover {
+            color: var(--primary);
+        }
+
+        .filter-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .featured-article-card {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .featured-badge {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .featured-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .article-subtitle {
+            color: var(--gray-600);
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .article-excerpt {
+            font-family: var(--font-chinese);
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: var(--spacing-lg);
+            color: var(--gray-700);
+        }
+
+        .article-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .meta-item {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        .featured-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .article-placeholder {
+            width: 200px;
+            height: 200px;
+            background: white;
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .section-header {
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.75rem;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .article-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .article-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .article-emoji {
+            font-size: 2.5rem;
+        }
+
+        .article-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            font-family: var(--font-chinese);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .article-title-en {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .article-excerpt-sm {
+            font-family: var(--font-chinese);
+            color: var(--gray-700);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.6;
+        }
+
+        .article-stats {
+            display: flex;
+            gap: var(--spacing-md);
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        .loading-more {
+            text-align: center;
+            margin-top: var(--spacing-2xl);
+        }
+
+        @media (max-width: 768px) {
+            .featured-content {
+                grid-template-columns: 1fr;
+            }
+
+            .article-placeholder {
+                width: 150px;
+                height: 150px;
+                font-size: 4rem;
+            }
+        }
+    </style>
+</body>
+</html>
+

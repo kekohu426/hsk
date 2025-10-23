@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started - ChineseMaster</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="onboarding-body">
+    <div class="onboarding-container">
+        <!-- Progress Bar -->
+        <div class="onboarding-progress">
+            <div class="progress-steps">
+                <div class="progress-step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Goal</div>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Level</div>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Setup</div>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="4">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Learn</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 1: Goal Setting -->
+        <div class="onboarding-step active" id="step1">
+            <div class="step-content">
+                <div class="step-icon">🎯</div>
+                <h1>What brings you here?</h1>
+                <p>Help us personalize your learning experience</p>
+
+                <div class="goal-options">
+                    <label class="goal-option">
+                        <input type="radio" name="goal" value="hsk">
+                        <div class="option-card">
+                            <div class="option-icon">📝</div>
+                            <h3>Pass HSK Exam</h3>
+                            <p>Prepare for official Chinese proficiency test</p>
+                        </div>
+                    </label>
+
+                    <label class="goal-option">
+                        <input type="radio" name="goal" value="career">
+                        <div class="option-card">
+                            <div class="option-icon">💼</div>
+                            <h3>Career Advancement</h3>
+                            <p>Learn business Chinese for work</p>
+                        </div>
+                    </label>
+
+                    <label class="goal-option">
+                        <input type="radio" name="goal" value="travel">
+                        <div class="option-card">
+                            <div class="option-icon">✈️</div>
+                            <h3>Travel to China</h3>
+                            <p>Communicate during trips</p>
+                        </div>
+                    </label>
+
+                    <label class="goal-option">
+                        <input type="radio" name="goal" value="interest">
+                        <div class="option-card">
+                            <div class="option-icon">❤️</div>
+                            <h3>Personal Interest</h3>
+                            <p>Love Chinese culture and language</p>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- HSK Specific Options -->
+                <div class="hsk-details" style="display: none;">
+                    <div class="form-group">
+                        <label>Which HSK level are you targeting?</label>
+                        <select class="form-select">
+                            <option value="">Select level...</option>
+                            <option value="1">HSK 1 - Beginner</option>
+                            <option value="2">HSK 2 - Elementary</option>
+                            <option value="3">HSK 3 - Intermediate</option>
+                            <option value="4">HSK 4 - Upper Intermediate</option>
+                            <option value="5">HSK 5 - Advanced</option>
+                            <option value="6">HSK 6 - Proficiency</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>When is your exam?</label>
+                        <input type="date" class="form-input">
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button class="btn btn-primary btn-lg" onclick="nextStep()">
+                        Next
+                        <span class="btn-icon">→</span>
+                    </button>
+                    <button class="btn btn-ghost" onclick="skipOnboarding()">Skip for now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Level Assessment -->
+        <div class="onboarding-step" id="step2">
+            <div class="step-content">
+                <div class="step-icon">📊</div>
+                <h1>Let's find your starting point</h1>
+                <p>Quick quiz (2 minutes) to assess your current level</p>
+
+                <div class="quiz-container">
+                    <div class="quiz-question active" id="q1">
+                        <div class="question-number">Question 1/10</div>
+                        <h3>What does "你好" mean?</h3>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="a">
+                                <div>A) Goodbye</div>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="b">
+                                <div>B) Hello</div>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="c">
+                                <div>C) Thank you</div>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="d">
+                                <div>D) Excuse me</div>
+                            </label>
+                        </div>
+                        <button class="btn btn-primary" onclick="nextQuestion()">Next</button>
+                    </div>
+
+                    <div class="quiz-question" id="q2">
+                        <div class="question-number">Question 2/10</div>
+                        <h3>Choose the correct pinyin for "学习":</h3>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="a">
+                                <div>A) xuéxí</div>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="b">
+                                <div>B) xúexì</div>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="c">
+                                <div>C) xuēxī</div>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="d">
+                                <div>D) xuéxǐ</div>
+                            </label>
+                        </div>
+                        <button class="btn btn-primary" onclick="completeQuiz()">Finish Quiz</button>
+                    </div>
+                </div>
+
+                <div class="quiz-result" style="display: none;">
+                    <div class="result-icon">🎉</div>
+                    <h2>Assessment Complete!</h2>
+                    <div class="result-card">
+                        <div class="result-score">
+                            <div class="score-circle">
+                                <svg width="120" height="120">
+                                    <circle cx="60" cy="60" r="50" fill="none" stroke="#e5e7eb" stroke-width="8"></circle>
+                                    <circle cx="60" cy="60" r="50" fill="none" stroke="#10b981" stroke-width="8" 
+                                            stroke-dasharray="314" stroke-dashoffset="94" 
+                                            transform="rotate(-90 60 60)"></circle>
+                                </svg>
+                                <div class="score-text">70%</div>
+                            </div>
+                        </div>
+                        <div class="result-recommendation">
+                            <h3>Recommended Level: HSK 2</h3>
+                            <p>You have a good foundation! We recommend starting with HSK 2 vocabulary and progressing to HSK 3.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+                    <button class="btn btn-primary btn-lg" onclick="nextStep()">
+                        Continue
+                        <span class="btn-icon">→</span>
+                    </button>
+                    <button class="btn btn-ghost" onclick="skipAssessment()">Skip - I'm a beginner</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Personalization -->
+        <div class="onboarding-step" id="step3">
+            <div class="step-content">
+                <div class="step-icon">⚙️</div>
+                <h1>Customize your learning</h1>
+                <p>Help us create your perfect study plan</p>
+
+                <div class="form-section">
+                    <label class="form-label">Daily study time goal</label>
+                    <div class="time-options">
+                        <label class="time-option">
+                            <input type="radio" name="time" value="10">
+                            <div>10 mins</div>
+                        </label>
+                        <label class="time-option">
+                            <input type="radio" name="time" value="20" checked>
+                            <div>20 mins</div>
+                        </label>
+                        <label class="time-option">
+                            <input type="radio" name="time" value="30">
+                            <div>30+ mins</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <label class="form-label">Preferred learning style (select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" checked>
+                            <div>
+                                <span class="option-icon">📖</span>
+                                <span>Reading articles</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" checked>
+                            <div>
+                                <span class="option-icon">🎴</span>
+                                <span>Flashcard drills</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox">
+                            <div>
+                                <span class="option-icon">🎥</span>
+                                <span>Video lessons</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox">
+                            <div>
+                                <span class="option-icon">🎮</span>
+                                <span>Interactive games</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <label class="form-label">Reminder notifications</label>
+                    <div class="notification-options">
+                        <label class="notification-option">
+                            <input type="radio" name="notification" value="yes" checked>
+                            <div>
+                                <span>✅ Daily reminder at</span>
+                                <select class="inline-select">
+                                    <option value="9">9:00 AM</option>
+                                    <option value="12">12:00 PM</option>
+                                    <option value="18">6:00 PM</option>
+                                    <option value="20">8:00 PM</option>
+                                </select>
+                            </div>
+                        </label>
+                        <label class="notification-option">
+                            <input type="radio" name="notification" value="no">
+                            <div>❌ No thanks</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+                    <button class="btn btn-primary btn-lg" onclick="nextStep()">
+                        Continue
+                        <span class="btn-icon">→</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4: First Win -->
+        <div class="onboarding-step" id="step4">
+            <div class="step-content">
+                <div class="step-icon">🎉</div>
+                <h1>Let's learn your first 5 words!</h1>
+                <p>Quick interactive tutorial to get you started</p>
+
+                <div class="flashcard-container">
+                    <div class="flashcard" id="flashcard">
+                        <div class="flashcard-front">
+                            <div class="word-chinese-large">你好</div>
+                            <div class="word-pinyin-large">nǐ hǎo</div>
+                            <button class="btn btn-ghost" onclick="flipCard()">
+                                <span>🔊</span> Play Audio
+                            </button>
+                            <button class="btn btn-primary" onclick="flipCard()">
+                                Show Meaning
+                            </button>
+                        </div>
+                        <div class="flashcard-back" style="display: none;">
+                            <div class="word-meaning">Hello / Hi</div>
+                            <div class="word-example">
+                                <p class="example-chinese">你好，很高兴认识你。</p>
+                                <p class="example-pinyin">Nǐ hǎo, hěn gāoxìng rènshi nǐ.</p>
+                                <p class="example-english">Hello, nice to meet you.</p>
+                            </div>
+                            <div class="flashcard-actions">
+                                <button class="btn btn-outline" onclick="nextCard()">
+                                    I got it! Next →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="learning-progress">
+                        <div class="progress-label">Progress: 2/5</div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" style="width: 40%"></div>
+                        </div>
+                        <div class="progress-encouragement">💡 Great! Keep going!</div>
+                    </div>
+                </div>
+
+                <div class="completion-screen" style="display: none;">
+                    <div class="completion-icon">🎊</div>
+                    <h2>Congratulations!</h2>
+                    <p>You've mastered your first 5 words</p>
+                    
+                    <div class="achievement-unlocked">
+                        <div class="achievement-badge unlocked glow">
+                            <div class="badge-icon">🏁</div>
+                            <div class="badge-shine"></div>
+                        </div>
+                        <div class="achievement-text">
+                            <h3>Achievement Unlocked!</h3>
+                            <p>"First Steps" Badge</p>
+                            <div class="xp-earned">+50 XP</div>
+                        </div>
+                    </div>
+
+                    <div class="step-actions">
+                        <a href="dashboard.html" class="btn btn-primary btn-lg">
+                            Enter Dashboard
+                            <span class="btn-icon">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="mock-data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Onboarding specific logic
+        let currentStep = 1;
+        let currentQuestion = 1;
+        let currentCard = 1;
+
+        function nextStep() {
+            document.getElementById('step' + currentStep).classList.remove('active');
+            document.querySelector(`.progress-step[data-step="${currentStep}"]`).classList.remove('active');
+            document.querySelector(`.progress-step[data-step="${currentStep}"]`).classList.add('completed');
+            
+            currentStep++;
+            
+            document.getElementById('step' + currentStep).classList.add('active');
+            document.querySelector(`.progress-step[data-step="${currentStep}"]`).classList.add('active');
+            
+            window.scrollTo(0, 0);
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                document.getElementById('step' + currentStep).classList.remove('active');
+                document.querySelector(`.progress-step[data-step="${currentStep}"]`).classList.remove('active');
+                
+                currentStep--;
+                
+                document.getElementById('step' + currentStep).classList.add('active');
+                document.querySelector(`.progress-step[data-step="${currentStep}"]`).classList.remove('completed');
+                
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function nextQuestion() {
+            document.getElementById('q' + currentQuestion).classList.remove('active');
+            currentQuestion++;
+            if (currentQuestion <= 2) {
+                document.getElementById('q' + currentQuestion).classList.add('active');
+            }
+        }
+
+        function completeQuiz() {
+            document.querySelector('.quiz-container').style.display = 'none';
+            document.querySelector('.quiz-result').style.display = 'block';
+        }
+
+        function skipAssessment() {
+            document.querySelector('.quiz-container').style.display = 'none';
+            document.querySelector('.quiz-result').style.display = 'block';
+        }
+
+        function skipOnboarding() {
+            window.location.href = 'dashboard.html';
+        }
+
+        function flipCard() {
+            const front = document.querySelector('.flashcard-front');
+            const back = document.querySelector('.flashcard-back');
+            front.style.display = 'none';
+            back.style.display = 'block';
+        }
+
+        function nextCard() {
+            currentCard++;
+            if (currentCard > 5) {
+                document.querySelector('.flashcard-container').style.display = 'none';
+                document.querySelector('.completion-screen').style.display = 'block';
+            } else {
+                // Reset card
+                document.querySelector('.flashcard-front').style.display = 'block';
+                document.querySelector('.flashcard-back').style.display = 'none';
+                
+                // Update progress
+                const progressBar = document.querySelector('.progress-bar-fill');
+                progressBar.style.width = (currentCard / 5 * 100) + '%';
+                document.querySelector('.progress-label').textContent = `Progress: ${currentCard}/5`;
+            }
+        }
+
+        // Goal selection interaction
+        document.querySelectorAll('input[name="goal"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const hskDetails = document.querySelector('.hsk-details');
+                if (e.target.value === 'hsk') {
+                    hskDetails.style.display = 'block';
+                } else {
+                    hskDetails.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

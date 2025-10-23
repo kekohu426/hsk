@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - ChineseMaster</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="auth-body">
+    <div class="auth-container">
+        <div class="auth-content">
+            <!-- Left Side - Branding -->
+            <div class="auth-branding">
+                <div class="auth-brand-header">
+                    <span class="logo-large">🎓</span>
+                    <h1 class="brand-name-large">ChineseMaster</h1>
+                </div>
+                <h2 class="auth-tagline">Start Your Chinese Learning Journey Today</h2>
+                <p class="auth-description">Join thousands of successful HSK learners worldwide</p>
+                
+                <div class="auth-stats">
+                    <div class="stat-item-auth">
+                        <div class="stat-number-auth">12,847+</div>
+                        <div class="stat-label-auth">Active Students</div>
+                    </div>
+                    <div class="stat-item-auth">
+                        <div class="stat-number-auth">10,000+</div>
+                        <div class="stat-label-auth">HSK Words</div>
+                    </div>
+                    <div class="stat-item-auth">
+                        <div class="stat-number-auth">4.9★</div>
+                        <div class="stat-label-auth">User Rating</div>
+                    </div>
+                </div>
+
+                <div class="auth-benefits">
+                    <h3>What you'll get:</h3>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🎯</span>
+                        <div>
+                            <strong>Personalized Learning Path</strong>
+                            <p>AI-powered curriculum adapted to your level and goals</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🎮</span>
+                        <div>
+                            <strong>Gamified Experience</strong>
+                            <p>Daily missions, achievements, and XP rewards</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">📊</span>
+                        <div>
+                            <strong>Progress Tracking</strong>
+                            <p>Detailed analytics and exam readiness scores</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side - Register Form -->
+            <div class="auth-form-container">
+                <div class="auth-form-card">
+                    <div class="form-header">
+                        <h2>Create Account</h2>
+                        <p>Start learning Chinese in less than 2 minutes</p>
+                    </div>
+
+                    <!-- Social Signup -->
+                    <div class="social-login">
+                        <button class="btn-social google" onclick="socialSignup('google')">
+                            <span class="social-icon">🔷</span>
+                            <span>Sign up with Google</span>
+                        </button>
+                        <button class="btn-social apple" onclick="socialSignup('apple')">
+                            <span class="social-icon">🍎</span>
+                            <span>Sign up with Apple</span>
+                        </button>
+                    </div>
+
+                    <div class="divider">
+                        <span>or</span>
+                    </div>
+
+                    <!-- Email Signup Form -->
+                    <form onsubmit="handleRegister(event)" class="auth-form">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                class="form-input" 
+                                placeholder="you@example.com"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                class="form-input" 
+                                placeholder="At least 6 characters"
+                                minlength="6"
+                                required
+                            >
+                            <div class="password-strength" id="passwordStrength"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" required>
+                                <span>I agree to the <a href="#" class="link-primary">Terms of Service</a> and <a href="#" class="link-primary">Privacy Policy</a></span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            Create Free Account
+                        </button>
+                    </form>
+
+                    <!-- Free Trial Notice -->
+                    <div class="trial-notice">
+                        <div class="trial-features">
+                            <div class="trial-feature">✅ 7-day free trial</div>
+                            <div class="trial-feature">✅ No credit card required</div>
+                            <div class="trial-feature">✅ Cancel anytime</div>
+                        </div>
+                    </div>
+
+                    <div class="auth-footer">
+                        Already have an account? 
+                        <a href="login.html" class="link-primary">Sign in</a>
+                    </div>
+                </div>
+
+                <div class="auth-back">
+                    <a href="index.html" class="link-secondary">← Back to homepage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="mock-data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Password strength indicator
+        document.getElementById('password').addEventListener('input', function(e) {
+            const password = e.target.value;
+            const strengthDiv = document.getElementById('passwordStrength');
+            
+            if (password.length === 0) {
+                strengthDiv.innerHTML = '';
+                return;
+            }
+            
+            let strength = 'Weak';
+            let color = '#ef4444';
+            
+            if (password.length >= 8 && /[A-Z]/.test(password) && /[0-9]/.test(password)) {
+                strength = 'Strong';
+                color = '#10b981';
+            } else if (password.length >= 6) {
+                strength = 'Medium';
+                color = '#f59e0b';
+            }
+            
+            strengthDiv.innerHTML = `<span style="color: ${color}">Password strength: ${strength}</span>`;
+        });
+
+        function handleRegister(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            
+            showNotification('🎉 Account created successfully!', 'success');
+            
+            setTimeout(() => {
+                window.location.href = 'onboarding.html';
+            }, 1000);
+        }
+
+        function socialSignup(provider) {
+            showNotification(`🔐 Signing up with ${provider}...`, 'info');
+            setTimeout(() => {
+                window.location.href = 'onboarding.html';
+            }, 1500);
+        }
+    </script>
+    <style>
+        .auth-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+            padding: var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-item-auth {
+            text-align: center;
+        }
+
+        .stat-number-auth {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .stat-label-auth {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        .auth-benefits {
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+        }
+
+        .auth-benefits h3 {
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.25rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .benefit-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .benefit-item strong {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .benefit-item p {
+            opacity: 0.9;
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        .password-strength {
+            font-size: 0.875rem;
+            margin-top: var(--spacing-xs);
+        }
+
+        .trial-notice {
+            background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .trial-features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        .trial-feature {
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        @media (max-width: 768px) {
+            .auth-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>
+

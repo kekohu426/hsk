@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Session - ChineseMaster</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="learning-body">
+    <!-- Learning Header -->
+    <div class="learning-header">
+        <div class="learning-header-content">
+            <button class="btn btn-secondary" onclick="exitLearning()">← Exit</button>
+            <div class="session-info">
+                <span class="session-title">Daily Review • HSK 4</span>
+                <span class="session-time">⏱️ 05:32</span>
+            </div>
+            <div class="session-progress">
+                <span class="progress-text">8/20</span>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: 40%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Learning Content -->
+    <div class="learning-container">
+        <div class="learning-card" id="learningCard">
+            <!-- Question Type Indicator -->
+            <div class="question-type">
+                <span class="type-badge">Multiple Choice</span>
+                <span class="difficulty-badge">Medium</span>
+            </div>
+
+            <!-- Question -->
+            <div class="question-section">
+                <h2 class="question-prompt">What does this mean?</h2>
+                <div class="word-display">
+                    <div class="word-chinese">拥有</div>
+                    <button class="btn-icon-lg" onclick="playAudio()">🔊</button>
+                </div>
+                <div class="word-pinyin">yōngyǒu</div>
+            </div>
+
+            <!-- Options -->
+            <div class="options-grid" id="optionsGrid">
+                <button class="option-btn" onclick="selectAnswer(this, false)">
+                    <span class="option-letter">A</span>
+                    <span class="option-text">to want</span>
+                </button>
+                <button class="option-btn" onclick="selectAnswer(this, true)">
+                    <span class="option-letter">B</span>
+                    <span class="option-text">to have, possess</span>
+                </button>
+                <button class="option-btn" onclick="selectAnswer(this, false)">
+                    <span class="option-letter">C</span>
+                    <span class="option-text">to give</span>
+                </button>
+                <button class="option-btn" onclick="selectAnswer(this, false)">
+                    <span class="option-letter">D</span>
+                    <span class="option-text">to receive</span>
+                </button>
+            </div>
+
+            <!-- Feedback (hidden initially) -->
+            <div class="feedback-section" id="feedback" style="display: none;">
+                <div class="feedback-message">
+                    <span class="feedback-icon">✅</span>
+                    <span class="feedback-text">Correct! Great job!</span>
+                </div>
+                <div class="feedback-details">
+                    <div class="detail-item">
+                        <strong>拥有 (yōngyǒu)</strong> means "to have" or "to possess"
+                    </div>
+                    <div class="detail-item">
+                        <strong>Example:</strong> 我拥有一辆汽车。(I have a car.)
+                    </div>
+                </div>
+                <div class="feedback-stats">
+                    <div class="stat-pill">
+                        <span class="stat-label">XP Earned</span>
+                        <span class="stat-value">+10 XP</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="stat-label">Streak</span>
+                        <span class="stat-value">🔥 5</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Button -->
+            <button class="btn btn-primary btn-lg btn-block" id="actionBtn" onclick="checkAnswer()" disabled>
+                Check Answer
+            </button>
+        </div>
+
+        <!-- Side Stats -->
+        <div class="learning-stats">
+            <div class="stat-card">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-number">85%</div>
+                <div class="stat-label">Accuracy</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-number">5</div>
+                <div class="stat-label">Streak</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-number">80</div>
+                <div class="stat-label">XP Today</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Keyboard Shortcuts Hint -->
+    <div class="keyboard-hint">
+        Press <kbd>1-4</kbd> to select • <kbd>Enter</kbd> to confirm • <kbd>Esc</kbd> to exit
+    </div>
+
+    <script src="mock-data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        let currentQuestion = 1;
+        let correctAnswers = 0;
+        let selectedOption = null;
+        let isAnswered = false;
+
+        // Question types
+        const questionTypes = [
+            {
+                type: 'Multiple Choice',
+                prompt: 'What does this mean?',
+                word: '拥有',
+                pinyin: 'yōngyǒu',
+                options: [
+                    { text: 'to want', correct: false },
+                    { text: 'to have, possess', correct: true },
+                    { text: 'to give', correct: false },
+                    { text: 'to receive', correct: false }
+                ]
+            },
+            {
+                type: 'Translation',
+                prompt: 'How do you say "history" in Chinese?',
+                options: [
+                    { text: '历史', pinyin: 'lìshǐ', correct: true },
+                    { text: '故事', pinyin: 'gùshi', correct: false },
+                    { text: '时间', pinyin: 'shíjiān', correct: false },
+                    { text: '文化', pinyin: 'wénhuà', correct: false }
+                ]
+            },
+            {
+                type: 'Fill in the Blank',
+                prompt: 'Complete the sentence',
+                sentence: '北京___中国的首都。',
+                word: '是',
+                options: [
+                    { text: '在', correct: false },
+                    { text: '是', correct: true },
+                    { text: '有', correct: false },
+                    { text: '到', correct: false }
+                ]
+            }
+        ];
+
+        function selectAnswer(btn, isCorrect) {
+            if (isAnswered) return;
+            
+            // Remove previous selection
+            document.querySelectorAll('.option-btn').forEach(b => {
+                b.classList.remove('selected');
+            });
+            
+            // Select this option
+            btn.classList.add('selected');
+            selectedOption = { btn, isCorrect };
+            
+            // Enable check button
+            document.getElementById('actionBtn').disabled = false;
+        }
+
+        function checkAnswer() {
+            if (!selectedOption || isAnswered) return;
+            
+            isAnswered = true;
+            const { btn, isCorrect } = selectedOption;
+            
+            // Show correct/incorrect styling
+            if (isCorrect) {
+                btn.classList.add('correct');
+                correctAnswers++;
+                showFeedback(true);
+            } else {
+                btn.classList.add('incorrect');
+                // Highlight correct answer
+                document.querySelectorAll('.option-btn').forEach(b => {
+                    if (b !== btn && b.querySelector('.option-text').textContent === 'to have, possess') {
+                        b.classList.add('correct');
+                    }
+                });
+                showFeedback(false);
+            }
+            
+            // Change button to "Next"
+            const actionBtn = document.getElementById('actionBtn');
+            actionBtn.textContent = 'Next Question';
+            actionBtn.onclick = nextQuestion;
+        }
+
+        function showFeedback(isCorrect) {
+            const feedback = document.getElementById('feedback');
+            feedback.style.display = 'block';
+            
+            const icon = feedback.querySelector('.feedback-icon');
+            const text = feedback.querySelector('.feedback-text');
+            
+            if (isCorrect) {
+                icon.textContent = '✅';
+                text.textContent = 'Correct! Great job!';
+                feedback.style.background = 'linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%)';
+            } else {
+                icon.textContent = '❌';
+                text.textContent = 'Not quite. Keep practicing!';
+                feedback.style.background = 'linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%)';
+            }
+
+            // Animate feedback
+            feedback.style.animation = 'slideUp 0.3s ease-out';
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            
+            if (currentQuestion > 20) {
+                showCompletionScreen();
+                return;
+            }
+            
+            // Reset state
+            isAnswered = false;
+            selectedOption = null;
+            
+            // Reset UI
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                btn.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            document.getElementById('feedback').style.display = 'none';
+            
+            const actionBtn = document.getElementById('actionBtn');
+            actionBtn.textContent = 'Check Answer';
+            actionBtn.onclick = checkAnswer;
+            actionBtn.disabled = true;
+            
+            // Update progress
+            updateProgress();
+            
+            // Load next question (mock)
+            showNotification(`Question ${currentQuestion}/20`, 'info');
+        }
+
+        function updateProgress() {
+            const progressFill = document.querySelector('.progress-bar-fill');
+            const progressText = document.querySelector('.progress-text');
+            const percentage = (currentQuestion / 20) * 100;
+            
+            progressFill.style.width = `${percentage}%`;
+            progressText.textContent = `${currentQuestion}/20`;
+        }
+
+        function showCompletionScreen() {
+            const card = document.getElementById('learningCard');
+            const accuracy = Math.round((correctAnswers / 20) * 100);
+            const xpEarned = correctAnswers * 10;
+            
+            card.innerHTML = `
+                <div class="completion-screen">
+                    <div class="completion-icon">🎉</div>
+                    <h2>Session Complete!</h2>
+                    <p>Great work! You've completed today's review.</p>
+                    
+                    <div class="completion-stats">
+                        <div class="completion-stat">
+                            <div class="completion-stat-value">${correctAnswers}/20</div>
+                            <div class="completion-stat-label">Correct Answers</div>
+                        </div>
+                        <div class="completion-stat">
+                            <div class="completion-stat-value">${accuracy}%</div>
+                            <div class="completion-stat-label">Accuracy</div>
+                        </div>
+                        <div class="completion-stat">
+                            <div class="completion-stat-value">+${xpEarned} XP</div>
+                            <div class="completion-stat-label">Total XP</div>
+                        </div>
+                    </div>
+                    
+                    <div class="completion-achievements">
+                        <div class="achievement-earned">
+                            <span class="achievement-icon">🏆</span>
+                            <span class="achievement-text">Daily Mission Complete!</span>
+                        </div>
+                        <div class="achievement-earned">
+                            <span class="achievement-icon">🔥</span>
+                            <span class="achievement-text">30 Day Streak!</span>
+                        </div>
+                    </div>
+                    
+                    <div class="completion-actions">
+                        <button class="btn btn-secondary btn-lg" onclick="reviewMistakes()">
+                            Review Mistakes
+                        </button>
+                        <button class="btn btn-primary btn-lg" onclick="backToDashboard()">
+                            Back to Dashboard
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function playAudio() {
+            showNotification('🔊 Playing audio...', 'info');
+        }
+
+        function exitLearning() {
+            if (confirm('Are you sure you want to exit? Your progress will be saved.')) {
+                window.location.href = 'dashboard.html';
+            }
+        }
+
+        function reviewMistakes() {
+            showNotification('📚 Loading mistakes for review...', 'info');
+        }
+
+        function backToDashboard() {
+            window.location.href = 'dashboard.html';
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (isAnswered) return;
+            
+            const options = document.querySelectorAll('.option-btn');
+            
+            if (e.key >= '1' && e.key <= '4') {
+                const index = parseInt(e.key) - 1;
+                if (options[index]) {
+                    const isCorrect = options[index].querySelector('.option-text').textContent === 'to have, possess';
+                    selectAnswer(options[index], isCorrect);
+                }
+            }
+            
+            if (e.key === 'Enter' && !document.getElementById('actionBtn').disabled) {
+                checkAnswer();
+            }
+            
+            if (e.key === 'Escape') {
+                exitLearning();
+            }
+        });
+
+        // Timer
+        let seconds = 0;
+        setInterval(() => {
+            seconds++;
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            document.querySelector('.session-time').textContent = 
+                `⏱️ ${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        }, 1000);
+    </script>
+    <style>
+        .learning-body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        .learning-header {
+            background: white;
+            border-bottom: 2px solid var(--gray-200);
+            padding: var(--spacing-lg);
+        }
+
+        .learning-header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--spacing-lg);
+        }
+
+        .session-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .session-title {
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        .session-time {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+        }
+
+        .session-progress {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .progress-text {
+            font-weight: 700;
+            min-width: 50px;
+        }
+
+        .progress-bar-container {
+            flex: 1;
+            height: 12px;
+            background: var(--gray-200);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981 0%, #34d399 100%);
+            transition: width 0.5s ease;
+        }
+
+        .learning-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--spacing-2xl);
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: var(--spacing-2xl);
+            align-items: start;
+        }
+
+        .learning-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .question-type {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .type-badge {
+            background: #DBEAFE;
+            color: #1e40af;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .difficulty-badge {
+            background: #FEF3C7;
+            color: #92400e;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .question-section {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .question-prompt {
+            color: var(--gray-600);
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .word-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .word-chinese {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+        }
+
+        .word-pinyin {
+            font-size: 1.5rem;
+            color: var(--gray-600);
+        }
+
+        .btn-icon-lg {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            background: var(--gray-100);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-icon-lg:hover {
+            background: var(--gray-200);
+            transform: scale(1.1);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .option-btn {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-lg);
+            border: 3px solid var(--gray-200);
+            background: white;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+        }
+
+        .option-btn:hover {
+            border-color: var(--primary);
+            background: var(--gray-50);
+        }
+
+        .option-btn.selected {
+            border-color: var(--primary);
+            background: #EFF6FF;
+        }
+
+        .option-btn.correct {
+            border-color: #10b981;
+            background: #D1FAE5;
+        }
+
+        .option-btn.incorrect {
+            border-color: #ef4444;
+            background: #FEE2E2;
+        }
+
+        .option-letter {
+            width: 32px;
+            height: 32px;
+            background: var(--gray-100);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .option-btn.selected .option-letter {
+            background: var(--primary);
+            color: white;
+        }
+
+        .option-btn.correct .option-letter {
+            background: #10b981;
+            color: white;
+        }
+
+        .option-btn.incorrect .option-letter {
+            background: #ef4444;
+            color: white;
+        }
+
+        .option-text {
+            flex: 1;
+            font-size: 1.125rem;
+        }
+
+        .feedback-section {
+            background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .feedback-message {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .feedback-icon {
+            font-size: 2rem;
+        }
+
+        .feedback-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .feedback-details {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .detail-item {
+            padding: var(--spacing-md);
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: var(--radius-sm);
+        }
+
+        .feedback-stats {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .stat-pill {
+            flex: 1;
+            background: white;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .stat-label {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .learning-stats {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-card .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .stat-card .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .stat-card .stat-label {
+            color: var(--gray-600);
+        }
+
+        .keyboard-hint {
+            position: fixed;
+            bottom: var(--spacing-lg);
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+        }
+
+        kbd {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        /* Completion Screen */
+        .completion-screen {
+            text-align: center;
+            padding: var(--spacing-xl);
+        }
+
+        .completion-icon {
+            font-size: 5rem;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .completion-screen h2 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .completion-screen p {
+            color: var(--gray-600);
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .completion-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .completion-stat {
+            background: var(--gray-50);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-md);
+        }
+
+        .completion-stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .completion-stat-label {
+            color: var(--gray-600);
+        }
+
+        .completion-achievements {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE047 100%);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .achievement-earned {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+        }
+
+        .achievement-icon {
+            font-size: 1.5rem;
+        }
+
+        .achievement-text {
+            font-weight: 700;
+        }
+
+        .completion-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .learning-container {
+                grid-template-columns: 1fr;
+            }
+
+            .learning-stats {
+                flex-direction: row;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>
+

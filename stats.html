@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics - ChineseMaster</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="container header-content">
+            <div class="header-brand">
+                <span class="logo">🎓</span>
+                <span class="brand-name">ChineseMaster</span>
+            </div>
+            <nav class="header-nav">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="articles.html">Daily Articles</a>
+                <a href="analyzer.html">Text Analyzer</a>
+                <a href="words.html">My Words</a>
+                <a href="hsk-library.html">HSK Library</a>
+                <a href="stats.html" class="active">Statistics</a>
+            </nav>
+            <div class="header-user">
+                <button class="btn btn-icon">🔔</button>
+                <div class="user-menu">
+                    <img src="https://i.pravatar.cc/100?img=20" alt="User" class="user-avatar">
+                    <span>Sarah</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="container">
+            <!-- Header -->
+            <div class="welcome-section">
+                <div class="welcome-text">
+                    <h1>📊 Learning Statistics</h1>
+                    <p>Track your progress and celebrate your achievements</p>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="stats-quick-grid">
+                <div class="quick-stat-card blue">
+                    <div class="qstat-icon">📖</div>
+                    <div class="qstat-content">
+                        <div class="qstat-number">750</div>
+                        <div class="qstat-label">Total Words</div>
+                        <div class="qstat-change positive">+12 this week</div>
+                    </div>
+                </div>
+
+                <div class="quick-stat-card green">
+                    <div class="qstat-icon">✅</div>
+                    <div class="qstat-content">
+                        <div class="qstat-number">450</div>
+                        <div class="qstat-label">Mastered</div>
+                        <div class="qstat-change positive">+8% mastery rate</div>
+                    </div>
+                </div>
+
+                <div class="quick-stat-card orange">
+                    <div class="qstat-icon">🔥</div>
+                    <div class="qstat-content">
+                        <div class="qstat-number">30</div>
+                        <div class="qstat-label">Day Streak</div>
+                        <div class="qstat-change positive">+5 days</div>
+                    </div>
+                </div>
+
+                <div class="quick-stat-card purple">
+                    <div class="qstat-icon">🎯</div>
+                    <div class="qstat-content">
+                        <div class="qstat-number">85%</div>
+                        <div class="qstat-label">Avg Accuracy</div>
+                        <div class="qstat-change positive">+3% improvement</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Study Heatmap -->
+            <div class="stats-card">
+                <h2>📅 90-Day Study Activity</h2>
+                <p class="card-subtitle">Your learning consistency over the past 3 months</p>
+                
+                <div class="heatmap-container">
+                    <div class="heatmap-labels">
+                        <div class="heatmap-label">Sun</div>
+                        <div class="heatmap-label">Mon</div>
+                        <div class="heatmap-label">Tue</div>
+                        <div class="heatmap-label">Wed</div>
+                        <div class="heatmap-label">Thu</div>
+                        <div class="heatmap-label">Fri</div>
+                        <div class="heatmap-label">Sat</div>
+                    </div>
+                    <div class="heatmap-grid" id="heatmapGrid"></div>
+                </div>
+
+                <div class="heatmap-legend">
+                    <span>Less</span>
+                    <div class="legend-item level-0"></div>
+                    <div class="legend-item level-1"></div>
+                    <div class="legend-item level-2"></div>
+                    <div class="legend-item level-3"></div>
+                    <div class="legend-item level-4"></div>
+                    <span>More</span>
+                </div>
+            </div>
+
+            <!-- Charts Grid -->
+            <div class="charts-grid">
+                <!-- HSK Distribution -->
+                <div class="stats-card">
+                    <h2>📚 HSK Level Distribution</h2>
+                    <p class="card-subtitle">Words by HSK level</p>
+                    
+                    <div class="pie-chart-container">
+                        <svg viewBox="0 0 200 200" class="pie-chart">
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#93C5FD" stroke-width="60" 
+                                    stroke-dasharray="150 502" transform="rotate(-90 100 100)"/>
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#86EFAC" stroke-width="60" 
+                                    stroke-dasharray="100 502" stroke-dashoffset="-150" transform="rotate(-90 100 100)"/>
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#FDE047" stroke-width="60" 
+                                    stroke-dasharray="80 502" stroke-dashoffset="-250" transform="rotate(-90 100 100)"/>
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#FDBA74" stroke-width="60" 
+                                    stroke-dasharray="50 502" stroke-dashoffset="-330" transform="rotate(-90 100 100)"/>
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#F87171" stroke-width="60" 
+                                    stroke-dasharray="40 502" stroke-dashoffset="-380" transform="rotate(-90 100 100)"/>
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#C084FC" stroke-width="60" 
+                                    stroke-dasharray="82 502" stroke-dashoffset="-420" transform="rotate(-90 100 100)"/>
+                        </svg>
+                    </div>
+
+                    <div class="pie-legend">
+                        <div class="legend-row">
+                            <span class="legend-dot" style="background: #93C5FD;"></span>
+                            <span class="legend-label">HSK 1</span>
+                            <span class="legend-value">150 (20%)</span>
+                        </div>
+                        <div class="legend-row">
+                            <span class="legend-dot" style="background: #86EFAC;"></span>
+                            <span class="legend-label">HSK 2</span>
+                            <span class="legend-value">100 (13%)</span>
+                        </div>
+                        <div class="legend-row">
+                            <span class="legend-dot" style="background: #FDE047;"></span>
+                            <span class="legend-label">HSK 3</span>
+                            <span class="legend-value">200 (27%)</span>
+                        </div>
+                        <div class="legend-row">
+                            <span class="legend-dot" style="background: #FDBA74;"></span>
+                            <span class="legend-label">HSK 4</span>
+                            <span class="legend-value">150 (20%)</span>
+                        </div>
+                        <div class="legend-row">
+                            <span class="legend-dot" style="background: #F87171;"></span>
+                            <span class="legend-label">HSK 5</span>
+                            <span class="legend-value">100 (13%)</span>
+                        </div>
+                        <div class="legend-row">
+                            <span class="legend-dot" style="background: #C084FC;"></span>
+                            <span class="legend-label">HSK 6</span>
+                            <span class="legend-value">50 (7%)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Word Mastery Progress -->
+                <div class="stats-card">
+                    <h2>🎯 Word Mastery Progress</h2>
+                    <p class="card-subtitle">Your learning status breakdown</p>
+
+                    <div class="mastery-breakdown">
+                        <div class="mastery-item">
+                            <div class="mastery-header">
+                                <span class="mastery-label">Mastered</span>
+                                <span class="mastery-value">450</span>
+                            </div>
+                            <div class="mastery-bar-bg">
+                                <div class="mastery-bar-fill green" style="width: 60%"></div>
+                            </div>
+                            <div class="mastery-percent">60%</div>
+                        </div>
+
+                        <div class="mastery-item">
+                            <div class="mastery-header">
+                                <span class="mastery-label">Learning</span>
+                                <span class="mastery-value">200</span>
+                            </div>
+                            <div class="mastery-bar-bg">
+                                <div class="mastery-bar-fill yellow" style="width: 27%"></div>
+                            </div>
+                            <div class="mastery-percent">27%</div>
+                        </div>
+
+                        <div class="mastery-item">
+                            <div class="mastery-header">
+                                <span class="mastery-label">New</span>
+                                <span class="mastery-value">100</span>
+                            </div>
+                            <div class="mastery-bar-bg">
+                                <div class="mastery-bar-fill blue" style="width: 13%"></div>
+                            </div>
+                            <div class="mastery-percent">13%</div>
+                        </div>
+                    </div>
+
+                    <div class="overall-progress">
+                        <div class="progress-header">
+                            <span>Overall Progress</span>
+                            <span class="badge badge-lg">60% Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weekly Activity Chart -->
+            <div class="stats-card">
+                <h2>📈 Last 7 Days Activity</h2>
+                <p class="card-subtitle">Daily review counts and new words</p>
+
+                <div class="bar-chart">
+                    <div class="bar-group" data-day="Mon">
+                        <div class="bar-stack">
+                            <div class="bar-segment reviews" style="height: 60%;" title="Reviews: 12"></div>
+                            <div class="bar-segment new" style="height: 30%;" title="New words: 6"></div>
+                        </div>
+                        <div class="bar-label">Mon</div>
+                    </div>
+                    <div class="bar-group" data-day="Tue">
+                        <div class="bar-stack">
+                            <div class="bar-segment reviews" style="height: 80%;" title="Reviews: 16"></div>
+                            <div class="bar-segment new" style="height: 40%;" title="New words: 8"></div>
+                        </div>
+                        <div class="bar-label">Tue</div>
+                    </div>
+                    <div class="bar-group" data-day="Wed">
+                        <div class="bar-stack">
+                            <div class="bar-segment reviews" style="height: 70%;" title="Reviews: 14"></div>
+                            <div class="bar-segment new" style="height: 25%;" title="New words: 5"></div>
+                        </div>
+                        <div class="bar-label">Wed</div>
+                    </div>
+                    <div class="bar-group" data-day="Thu">
+                        <div class="bar-stack">
+                            <div class="bar-segment reviews" style="height: 90%;" title="Reviews: 18"></div>
+                            <div class="bar-segment new" style="height: 35%;" title="New words: 7"></div>
+                        </div>
+                        <div class="bar-label">Thu</div>
+                    </div>
+                    <div class="bar-group" data-day="Fri">
+                        <div class="bar-stack">
+                            <div class="bar-segment reviews" style="height: 100%;" title="Reviews: 20"></div>
+                            <div class="bar-segment new" style="height: 50%;" title="New words: 10"></div>
+                        </div>
+                        <div class="bar-label">Fri</div>
+                    </div>
+                    <div class="bar-group" data-day="Sat">
+                        <div class="bar-stack">
+                            <div class="bar-segment reviews" style="height: 85%;" title="Reviews: 17"></div>
+                            <div class="bar-segment new" style="height: 45%;" title="New words: 9"></div>
+                        </div>
+                        <div class="bar-label">Sat</div>
+                    </div>
+                    <div class="bar-group" data-day="Sun">
+                        <div class="bar-stack">
+                            <div class="bar-segment reviews" style="height: 75%;" title="Reviews: 15"></div>
+                            <div class="bar-segment new" style="height: 30%;" title="New words: 6"></div>
+                        </div>
+                        <div class="bar-label">Sun</div>
+                    </div>
+                </div>
+
+                <div class="chart-legend-horizontal">
+                    <div class="legend-item-h">
+                        <span class="legend-color reviews"></span>
+                        <span>Reviews</span>
+                    </div>
+                    <div class="legend-item-h">
+                        <span class="legend-color new"></span>
+                        <span>New Words</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Study Time Trends -->
+            <div class="stats-card">
+                <h2>⏱️ Study Time Analysis</h2>
+                <p class="card-subtitle">Your learning patterns over time</p>
+
+                <div class="time-stats-grid">
+                    <div class="time-stat">
+                        <div class="time-icon">📅</div>
+                        <div class="time-value">540 mins</div>
+                        <div class="time-label">Total This Month</div>
+                    </div>
+                    <div class="time-stat">
+                        <div class="time-icon">📊</div>
+                        <div class="time-value">18 mins</div>
+                        <div class="time-label">Daily Average</div>
+                    </div>
+                    <div class="time-stat">
+                        <div class="time-icon">🌟</div>
+                        <div class="time-value">45 mins</div>
+                        <div class="time-label">Longest Session</div>
+                    </div>
+                    <div class="time-stat">
+                        <div class="time-icon">🎯</div>
+                        <div class="time-value">87%</div>
+                        <div class="time-label">Goal Achievement</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Milestones -->
+            <div class="stats-card">
+                <h2>🏆 Recent Milestones</h2>
+                <p class="card-subtitle">Celebrate your achievements</p>
+
+                <div class="milestones-list">
+                    <div class="milestone-item">
+                        <div class="milestone-icon">🎉</div>
+                        <div class="milestone-content">
+                            <div class="milestone-title">30-Day Streak!</div>
+                            <div class="milestone-desc">You've studied for 30 consecutive days</div>
+                            <div class="milestone-date">Today</div>
+                        </div>
+                    </div>
+
+                    <div class="milestone-item">
+                        <div class="milestone-icon">📚</div>
+                        <div class="milestone-content">
+                            <div class="milestone-title">700 Words Learned</div>
+                            <div class="milestone-desc">Reached 700 total words milestone</div>
+                            <div class="milestone-date">3 days ago</div>
+                        </div>
+                    </div>
+
+                    <div class="milestone-item">
+                        <div class="milestone-icon">✅</div>
+                        <div class="milestone-content">
+                            <div class="milestone-title">HSK 2 Complete</div>
+                            <div class="milestone-desc">Mastered all HSK 2 vocabulary</div>
+                            <div class="milestone-date">1 week ago</div>
+                        </div>
+                    </div>
+
+                    <div class="milestone-item">
+                        <div class="milestone-icon">📖</div>
+                        <div class="milestone-content">
+                            <div class="milestone-title">25 Articles Read</div>
+                            <div class="milestone-desc">Completed 25 reading exercises</div>
+                            <div class="milestone-date">2 weeks ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="mock-data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Generate heatmap
+        function generateHeatmap() {
+            const grid = document.getElementById('heatmapGrid');
+            const today = new Date();
+            const startDate = new Date(today);
+            startDate.setDate(today.getDate() - 89);
+
+            for (let i = 0; i < 90; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'heatmap-cell';
+                
+                // Random activity level for demo
+                const level = Math.floor(Math.random() * 5);
+                cell.classList.add(`level-${level}`);
+                
+                const date = new Date(startDate);
+                date.setDate(startDate.getDate() + i);
+                
+                const count = level * 5;
+                cell.title = `${date.toDateString()}: ${count} reviews`;
+                
+                grid.appendChild(cell);
+            }
+        }
+
+        generateHeatmap();
+    </script>
+    <style>
+        .stats-quick-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .quick-stat-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .quick-stat-card.blue { border-left: 4px solid #3b82f6; }
+        .quick-stat-card.green { border-left: 4px solid #10b981; }
+        .quick-stat-card.orange { border-left: 4px solid #f59e0b; }
+        .quick-stat-card.purple { border-left: 4px solid #8b5cf6; }
+
+        .qstat-icon {
+            font-size: 3rem;
+        }
+
+        .qstat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .qstat-label {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .qstat-change {
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .qstat-change.positive {
+            color: var(--success);
+        }
+
+        .stats-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .stats-card h2 {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .card-subtitle {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* Heatmap */
+        .heatmap-container {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .heatmap-labels {
+            display: grid;
+            grid-template-rows: repeat(7, 1fr);
+            gap: 2px;
+        }
+
+        .heatmap-label {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+            height: 14px;
+        }
+
+        .heatmap-grid {
+            display: grid;
+            grid-template-columns: repeat(13, 1fr);
+            grid-auto-flow: column;
+            gap: 2px;
+        }
+
+        .heatmap-cell {
+            width: 14px;
+            height: 14px;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .heatmap-cell:hover {
+            transform: scale(1.5);
+            z-index: 10;
+        }
+
+        .heatmap-cell.level-0 { background: #ebedf0; }
+        .heatmap-cell.level-1 { background: #9be9a8; }
+        .heatmap-cell.level-2 { background: #40c463; }
+        .heatmap-cell.level-3 { background: #30a14e; }
+        .heatmap-cell.level-4 { background: #216e39; }
+
+        .heatmap-legend {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        .legend-item {
+            width: 14px;
+            height: 14px;
+            border-radius: 2px;
+        }
+
+        /* Charts */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .pie-chart-container {
+            display: flex;
+            justify-content: center;
+            margin: var(--spacing-xl) 0;
+        }
+
+        .pie-chart {
+            max-width: 200px;
+        }
+
+        .pie-legend {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .legend-row {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-label {
+            flex: 1;
+        }
+
+        .legend-value {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+        }
+
+        /* Mastery */
+        .mastery-breakdown {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .mastery-item {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .mastery-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+        }
+
+        .mastery-bar-bg {
+            height: 12px;
+            background: var(--gray-200);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .mastery-bar-fill {
+            height: 100%;
+            border-radius: 999px;
+            transition: width 0.5s;
+        }
+
+        .mastery-bar-fill.green { background: var(--success); }
+        .mastery-bar-fill.yellow { background: var(--warning); }
+        .mastery-bar-fill.blue { background: var(--info); }
+
+        .mastery-percent {
+            text-align: right;
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        .overall-progress {
+            border-top: 2px solid var(--gray-200);
+            padding-top: var(--spacing-lg);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .badge-lg {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+        }
+
+        /* Bar Chart */
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 300px;
+            padding: var(--spacing-lg) 0;
+            border-bottom: 2px solid var(--gray-200);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-sm);
+            flex: 1;
+        }
+
+        .bar-stack {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            height: 250px;
+            width: 40px;
+        }
+
+        .bar-segment {
+            width: 100%;
+            border-radius: 4px 4px 0 0;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .bar-segment:hover {
+            opacity: 0.8;
+            transform: scaleX(1.1);
+        }
+
+        .bar-segment.reviews {
+            background: #3b82f6;
+        }
+
+        .bar-segment.new {
+            background: #10b981;
+        }
+
+        .bar-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            font-weight: 600;
+        }
+
+        .chart-legend-horizontal {
+            display: flex;
+            gap: var(--spacing-lg);
+            justify-content: center;
+        }
+
+        .legend-item-h {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 12px;
+            border-radius: 2px;
+        }
+
+        .legend-color.reviews {
+            background: #3b82f6;
+        }
+
+        .legend-color.new {
+            background: #10b981;
+        }
+
+        /* Time Stats */
+        .time-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .time-stat {
+            text-align: center;
+            padding: var(--spacing-lg);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+        }
+
+        .time-icon {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .time-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .time-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        /* Milestones */
+        .milestones-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .milestone-item {
+            display: flex;
+            gap: var(--spacing-lg);
+            padding: var(--spacing-lg);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+
+        .milestone-icon {
+            font-size: 2.5rem;
+        }
+
+        .milestone-title {
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .milestone-desc {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .milestone-date {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .heatmap-container {
+                grid-template-columns: 1fr;
+            }
+
+            .heatmap-labels {
+                display: none;
+            }
+        }
+    </style>
+</body>
+</html>
+

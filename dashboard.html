@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChineseMaster Dashboard | Personalized HSK Learning Progress</title>
+    <meta name="description" content="Track your HSK readiness with daily missions, countdown widgets, achievement badges, and AI insights on the ChineseMaster dashboard.">
+    <link rel="canonical" href="https://www.chinesemaster.com/dashboard">
+    <meta property="og:title" content="ChineseMaster Dashboard">
+    <meta property="og:description" content="Your personalized HSK exam hub with progress tracking, mission planning, and goal countdowns.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.chinesemaster.com/dashboard">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "ChineseMaster Dashboard",
+        "operatingSystem": "Web",
+        "applicationCategory": "EducationalApplication",
+        "description": "Progress dashboard showing HSK countdown, missions, achievements, and vocabulary tracking.",
+        "offers": {
+            "@type": "Offer",
+            "price": "9.99",
+            "priceCurrency": "USD"
+        },
+        "url": "https://www.chinesemaster.com/dashboard"
+    }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="container header-content">
+            <div class="header-brand">
+                <a href="index.html" class="brand-link">
+                    <span class="logo">🎓</span>
+                    <span class="brand-name">ChineseMaster</span>
+                </a>
+            </div>
+            <nav class="header-nav">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="articles.html">Daily Articles</a>
+                <a href="analyzer.html">Text Analyzer</a>
+                <a href="words.html">My Words</a>
+                <a href="hsk-library.html">HSK Library</a>
+                <a href="stats.html">Statistics</a>
+            </nav>
+            <div class="header-user">
+                <button class="btn btn-icon">🔔</button>
+                <div class="user-menu" onclick="toggleUserDropdown()">
+                    <img src="https://i.pravatar.cc/100?img=20" alt="ChineseMaster learner avatar" class="user-avatar">
+                    <span>Sarah</span>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="profile.html">👤 My Profile</a>
+                        <a href="stats.html">📊 Statistics</a>
+                        <a href="profile.html#settings">⚙️ Settings</a>
+                        <hr>
+                        <a href="index.html">🚪 Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav">
+        <a href="dashboard.html" class="active">
+            <span>🏠</span>
+            <span>Home</span>
+        </a>
+        <a href="#">
+            <span>📚</span>
+            <span>Library</span>
+        </a>
+        <a href="#">
+            <span>📊</span>
+            <span>Stats</span>
+        </a>
+        <a href="#">
+            <span>👤</span>
+            <span>Profile</span>
+        </a>
+    </div>
+
+    <main class="dashboard-main">
+        <div class="container">
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <div class="welcome-text">
+                    <h1>Good morning, Sarah! 👋</h1>
+                    <p>Ready to continue your Chinese learning journey?</p>
+                </div>
+                <div class="welcome-streak">
+                    <div class="streak-badge">
+                        <span class="streak-icon">🔥</span>
+                        <div>
+                            <div class="streak-number">30</div>
+                            <div class="streak-label">Day Streak</div>
+                        </div>
+                    </div>
+                    <div class="level-badge">
+                        <span class="level-icon">🏆</span>
+                        <div>
+                            <div class="level-number">Level 12</div>
+                            <div class="level-label">Learner</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exam Countdown Card -->
+            <div class="exam-countdown-card">
+                <div class="countdown-header">
+                    <h2>📅 HSK 4 EXAM COUNTDOWN</h2>
+                </div>
+                <div class="countdown-content">
+                    <div class="countdown-ring">
+                        <svg class="progress-ring" width="200" height="200">
+                            <circle class="progress-ring-circle-bg" cx="100" cy="100" r="85"></circle>
+                            <circle class="progress-ring-circle" cx="100" cy="100" r="85" 
+                                    style="stroke-dashoffset: 135;"></circle>
+                        </svg>
+                        <div class="countdown-center">
+                            <div class="days-left">87</div>
+                            <div class="days-label">days left</div>
+                            <div class="readiness">64% Ready</div>
+                        </div>
+                    </div>
+                    <div class="countdown-info">
+                        <h3>You're making great progress! 🎉</h3>
+                        <div class="insight-card">
+                            <span class="insight-icon">💡</span>
+                            <div>
+                                <strong>AI Insight:</strong>
+                                <p>Focus on grammar patterns - your weakest area. Spend 10 extra minutes on HSK 4 sentence structures this week.</p>
+                            </div>
+                        </div>
+                        <div class="countdown-stats">
+                            <div class="countdown-stat">
+                                <div class="stat-label">Mastered</div>
+                                <div class="stat-value">768/1200</div>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 64%"></div>
+                                </div>
+                            </div>
+                            <div class="countdown-stat">
+                                <div class="stat-label">Daily Average</div>
+                                <div class="stat-value">18 mins</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily Mission -->
+            <div class="daily-mission-card">
+                <div class="mission-header">
+                    <h2>✅ TODAY'S MISSION</h2>
+                    <div class="mission-progress">
+                        <span>2/3 completed</span>
+                        <div class="mission-progress-bar">
+                            <div class="mission-progress-fill" style="width: 66%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mission-tasks">
+                    <div class="mission-task completed">
+                        <div class="task-checkbox">✓</div>
+                        <div class="task-content">
+                            <div class="task-title">Review 10 words</div>
+                            <div class="task-progress-text">10/10 completed</div>
+                        </div>
+                        <div class="task-xp completed">+10 XP</div>
+                    </div>
+                    
+                    <div class="mission-task completed">
+                        <div class="task-checkbox">✓</div>
+                        <div class="task-content">
+                            <div class="task-title">Read 1 article</div>
+                            <div class="task-progress-text">15 minutes reading time</div>
+                        </div>
+                        <div class="task-xp completed">+20 XP</div>
+                    </div>
+                    
+                    <div class="mission-task">
+                        <div class="task-checkbox"></div>
+                        <div class="task-content">
+                            <div class="task-title">Add 5 new words</div>
+                            <div class="task-progress-text">0/5 words added</div>
+                            <div class="quick-add">
+                                <input type="text" placeholder="Quick add: 输入中文词汇..." class="quick-add-input">
+                                <button class="btn btn-sm btn-primary">Add</button>
+                            </div>
+                        </div>
+                        <div class="task-xp">+15 XP</div>
+                    </div>
+                </div>
+                <div class="mission-reward">
+                    <span class="reward-icon">🎁</span>
+                    <span>Complete all tasks to unlock "Study Master" badge!</span>
+                </div>
+            </div>
+
+            <!-- Learning Path -->
+            <div class="learning-path-card">
+                <h2>🎯 LEARNING PATH</h2>
+                <div class="skill-tree">
+                    <div class="skill-node completed">
+                        <div class="node-icon">✓</div>
+                        <div class="node-label">HSK 1</div>
+                        <div class="node-progress">150/150</div>
+                    </div>
+                    <div class="skill-connector completed"></div>
+                    <div class="skill-node completed">
+                        <div class="node-icon">✓</div>
+                        <div class="node-label">HSK 2</div>
+                        <div class="node-progress">300/300</div>
+                    </div>
+                    <div class="skill-connector active"></div>
+                    <div class="skill-node active">
+                        <div class="node-icon">
+                            <svg class="mini-progress-ring" width="60" height="60">
+                                <circle cx="30" cy="30" r="25" fill="none" stroke="#e5e7eb" stroke-width="4"></circle>
+                                <circle cx="30" cy="30" r="25" fill="none" stroke="#3b82f6" stroke-width="4" 
+                                        stroke-dasharray="157" stroke-dashoffset="55" 
+                                        transform="rotate(-90 30 30)"></circle>
+                            </svg>
+                            <span class="node-percent">65%</span>
+                        </div>
+                        <div class="node-label current">HSK 3</div>
+                        <div class="node-progress">390/600</div>
+                    </div>
+                    <div class="skill-connector locked"></div>
+                    <div class="skill-node locked">
+                        <div class="node-icon">🔒</div>
+                        <div class="node-label">HSK 4</div>
+                        <div class="node-progress">0/1200</div>
+                    </div>
+                </div>
+                <p class="path-hint">👆 You are here! Keep going to unlock HSK 4</p>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions-grid">
+                <div class="action-card">
+                    <div class="action-icon">🎓</div>
+                    <h3>Review Words</h3>
+                    <p>23 words ready for review</p>
+                    <button class="btn btn-primary btn-block" onclick="window.location.href='learning.html'">Start Learning</button>
+                </div>
+
+                <div class="action-card">
+                    <div class="action-icon">📰</div>
+                    <h3>Daily Article</h3>
+                    <p>Today: "北京的美食"</p>
+                    <button class="btn btn-outline btn-block" onclick="window.location.href='article-detail.html'">Read Now</button>
+                </div>
+
+                <div class="action-card">
+                    <div class="action-icon">📚</div>
+                    <h3>HSK Library</h3>
+                    <p>Browse 10,000+ words</p>
+                    <a href="hsk-library.html" class="btn btn-outline btn-block">Explore</a>
+                </div>
+            </div>
+
+            <!-- Achievements -->
+            <div class="achievements-card">
+                <div class="achievements-header">
+                    <h2>🏅 ACHIEVEMENTS</h2>
+                    <a href="profile.html#achievements" class="view-all">View All →</a>
+                </div>
+                <div class="achievements-grid">
+                    <div class="achievement-badge unlocked">
+                        <div class="badge-icon">🏁</div>
+                        <div class="badge-shine"></div>
+                        <div class="badge-title">First 100 Words</div>
+                        <div class="badge-rarity common">Common</div>
+                    </div>
+                    
+                    <div class="achievement-badge unlocked rare">
+                        <div class="badge-icon">🔥</div>
+                        <div class="badge-shine"></div>
+                        <div class="badge-title">30-Day Streak</div>
+                        <div class="badge-rarity rare">Rare</div>
+                    </div>
+                    
+                    <div class="achievement-badge locked">
+                        <div class="badge-icon">📚</div>
+                        <div class="badge-title">Reading Marathon</div>
+                        <div class="badge-progress">25/50 articles</div>
+                        <div class="badge-rarity epic">Epic</div>
+                    </div>
+                    
+                    <div class="achievement-badge locked">
+                        <div class="badge-icon">👑</div>
+                        <div class="badge-title">HSK Master</div>
+                        <div class="badge-progress">Pass HSK 6</div>
+                        <div class="badge-rarity legendary">Legendary</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Words -->
+            <div class="recent-words-card">
+                <h2>📖 Recently Added Words</h2>
+                <div class="word-list">
+                    <div class="word-item">
+                        <div class="word-chinese">学习</div>
+                        <div class="word-pinyin">xuéxí</div>
+                        <div class="word-english">to study, to learn</div>
+                        <div class="word-meta">
+                            <span class="badge badge-sm">HSK 2</span>
+                            <span class="word-status learning">Learning</span>
+                        </div>
+                    </div>
+                    
+                    <div class="word-item">
+                        <div class="word-chinese">认识</div>
+                        <div class="word-pinyin">rènshi</div>
+                        <div class="word-english">to know, to recognize</div>
+                        <div class="word-meta">
+                            <span class="badge badge-sm">HSK 2</span>
+                            <span class="word-status new">New</span>
+                        </div>
+                    </div>
+                    
+                    <div class="word-item">
+                        <div class="word-chinese">重要</div>
+                        <div class="word-pinyin">zhòngyào</div>
+                        <div class="word-english">important</div>
+                        <div class="word-meta">
+                            <span class="badge badge-sm">HSK 3</span>
+                            <span class="word-status mastered">Mastered</span>
+                        </div>
+                    </div>
+                </div>
+                <a href="words.html" class="btn btn-outline btn-block">View All Words →</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="mock-data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        function toggleUserDropdown() {
+            const dropdown = document.getElementById('userDropdown');
+            dropdown.classList.toggle('show');
+            
+            // Close dropdown when clicking outside
+            setTimeout(() => {
+                document.addEventListener('click', function closeDropdown(e) {
+                    if (!e.target.closest('.user-menu')) {
+                        dropdown.classList.remove('show');
+                        document.removeEventListener('click', closeDropdown);
+                    }
+                });
+            }, 0);
+        }
+    </script>
+</body>
+</html>
+

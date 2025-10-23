@@ -1,276 +1,300 @@
-# 🎓 ChineseMaster - AI-Powered Chinese Learning Platform
+# ChineseMaster UI Demo
 
-一个完整的中文学习平台，包含用户端、管理端和后端 API，支持 AI 内容生成、间隔复习、SEO 优化等功能。
+这是 ChineseMaster 重新设计方案的静态 HTML/CSS/JavaScript 演示。
 
-[![Status](https://img.shields.io/badge/status-ready-brightgreen)]()
-[![Node](https://img.shields.io/badge/node-%3E%3D18-blue)]()
-[![License](https://img.shields.io/badge/license-MIT-green)]()
+## 📁 文件结构
 
----
-
-## ✨ 核心功能
-
-### 用户端
-- 🔐 完整的用户认证系统
-- 📚 HSK 1-6 词汇库 (10,000+ 词汇)
-- 📰 每日文章 (带拼音标注和测验)
-- 🔍 智能文本分析器
-- 🧠 SuperMemo 2 间隔复习系统
-- 📊 学习统计和进度追踪
-- 🎯 个性化词库管理
-- 🌐 完整 SEO 优化
-
-### 管理端
-- 📝 AI 文章生成器
-- 📖 AI 词汇生成器
-- 📁 内容管理系统
-- 👥 用户管理
-- ⚙️ AI 配置管理
-- 📈 数据统计仪表盘
-
----
+```
+uidemo/
+├── index.html              # 首页/Landing Page
+├── dashboard.html          # 主仪表盘
+├── onboarding.html         # 新手引导流程
+├── hsk-library.html        # HSK词库页面
+├── word-detail.html        # 词条详情页
+├── styles.css              # 全局样式（新设计系统）
+├── mock-data.js            # 静态模拟数据
+├── app.js                  # 交互逻辑
+└── README.md               # 本文件
+```
 
 ## 🚀 快速开始
 
-### 前置要求
+### 方法1：直接打开（推荐）
 
-- Node.js >= 18
-- pnpm / npm
-- SQLite (开发环境)
+1. 在文件管理器中找到 `uidemo` 文件夹
+2. 双击 `index.html` 即可在浏览器中打开
+3. 点击页面上的链接浏览不同页面
 
-### 1. 克隆项目
-
-```bash
-git clone <repository-url>
-cd chinese-learning-platform
-```
-
-### 2. 安装依赖
+### 方法2：本地服务器（更好的体验）
 
 ```bash
-# 后端
-cd backend
-npm install
+cd uidemo
 
-# 用户端
-cd ../frontend-user
-npm install
+# 使用 Python 启动简单服务器
+python3 -m http.server 8080
 
-# 管理端
-cd ../admin
-npm install
+# 或使用 Node.js
+npx serve
+
+# 然后在浏览器访问
+http://localhost:8080
 ```
 
-### 3. 配置环境变量
+## 📄 页面说明
 
-```bash
-# 后端 (backend/.env)
-DATABASE_URL="file:./dev.db"
-JWT_SECRET="your-secret-key"
-GLM_API_KEY="your-glm-api-key"  # 可选：用于 AI 生成
+### 1. 首页 (index.html)
+**展示内容：**
+- ✅ 新的 Hero 区设计（目标导向文案）
+- ✅ 社会证明（用户头像墙、评价）
+- ✅ 互动 Demo 小部件（文本分析器）
+- ✅ Why ChineseMaster vs Duolingo 对比
+- ✅ 功能展示卡片
+- ✅ 用户评价 Testimonials
+- ✅ CTA 行动召唤
 
-# 用户端 (frontend-user/.env.local)
-NEXT_PUBLIC_API_URL=http://localhost:3000
+**新设计亮点：**
+- 从"Learn Chinese"改为"Pass HSK 6 in 180 Days"（具体目标）
+- 添加 12,847+ 学生的社会证明
+- 实时文本分析互动体验
+- 明确的价值主张对比
 
-# 管理端 (admin/.env)
-VITE_API_URL=http://localhost:3000
+### 2. Dashboard (dashboard.html)
+**展示内容：**
+- ✅ 考试倒计时卡片（带进度环）
+- ✅ 每日任务系统（3个任务 + 进度条）
+- ✅ 学习路径可视化（技能树）
+- ✅ 快速操作卡片
+- ✅ 成就徽章系统（带动画）
+- ✅ 最近添加的词汇
+
+**新设计亮点：**
+- 顶部显示"87天倒计时"和"64%准备度"
+- 每日任务带XP奖励系统
+- 可视化的HSK学习路径（1→2→3→4）
+- 游戏化成就系统（Common/Rare/Epic/Legendary）
+
+### 3. Onboarding (onboarding.html)
+**展示内容：**
+- ✅ 4步引导流程（进度条）
+- ✅ Step 1: 目标设定（HSK考试/职业/旅游/兴趣）
+- ✅ Step 2: 等级评估（快速测验）
+- ✅ Step 3: 个性化设置（学习时间/风格/通知）
+- ✅ Step 4: 首次成就（学习5个词 + 解锁徽章）
+
+**新设计亮点：**
+- 零摩擦入门，每步不超过1分钟
+- HSK考试专属选项（等级+日期）
+- 即时反馈和鼓励
+- 首次成就带动画效果
+
+### 4. HSK Library (hsk-library.html)
+**展示内容：**
+- ✅ 个性化推荐区（继续学习HSK 3）
+- ✅ 跨等级进度可视化
+- ✅ 6个HSK等级卡片
+- ✅ 解锁机制（完成HSK 3才能学HSK 4）
+- ✅ 进度百分比和词汇数统计
+
+**新设计亮点：**
+- "Recommended for you"置顶
+- 所有等级进度一目了然
+- 渐变色区分不同等级
+- 锁定状态清晰提示
+
+### 5. Word Detail (word-detail.html)
+**展示内容：**
+- ✅ Sticky 快速参考栏（始终可见）
+- ✅ 三个Tab：Quick Learn / Deep Dive / Practice
+- ✅ Quick Learn: 要点+例句+常见错误+快测
+- ✅ Deep Dive: 850+字深度内容+目录导航
+- ✅ Practice: 写作练习+发音检测
+
+**新设计亮点：**
+- 渐进式信息披露（不overwhelming）
+- Quick Learn 3分钟速览
+- Deep Dive 按需加载
+- 互动练习工具
+
+## 🎨 设计系统
+
+### 色彩系统
+```css
+/* 品牌色 - 现代中国风 */
+--brand-red: #DC143C    /* 朱红 */
+--brand-ink: #1C1C1C    /* 墨黑 */
+--brand-jade: #00A86B   /* 翠玉 */
+
+/* HSK等级色 */
+--hsk-1: #93C5FD  /* 天蓝 */
+--hsk-2: #86EFAC  /* 浅绿 */
+--hsk-3: #FDE047  /* 明黄 */
+--hsk-4: #FDBA74  /* 橙色 */
+--hsk-5: #F87171  /* 浅红 */
+--hsk-6: #C084FC  /* 紫色 */
 ```
 
-### 4. 初始化数据库
+### 字体系统
+- 英文：Inter
+- 中文：Noto Sans SC
+- 代码：Fira Code
 
-```bash
-cd backend
-npx prisma migrate dev
-npm run seed
+### 组件库
+- ✅ Button (6种变体)
+- ✅ Card (多种样式)
+- ✅ Badge (4种稀有度)
+- ✅ Progress Ring (圆环进度条)
+- ✅ Progress Bar (条形进度条)
+- ✅ Achievement Badge (成就徽章)
+- ✅ Word Card (词汇卡片)
+
+## 🎯 交互功能
+
+### 已实现的交互
+1. **Landing Page**
+   - ✅ 文本分析器实时Demo
+   - ✅ 页面滚动动画
+   - ✅ 卡片悬停效果
+
+2. **Dashboard**
+   - ✅ 进度环动画
+   - ✅ 快速添加词汇
+   - ✅ 任务进度更新
+   - ✅ 成就徽章光效
+
+3. **Onboarding**
+   - ✅ 多步骤流程切换
+   - ✅ 问卷答题
+   - ✅ 闪卡翻转
+   - ✅ 进度条动画
+
+4. **Word Detail**
+   - ✅ Tab切换
+   - ✅ 快测答题
+   - ✅ 写作反馈模拟
+   - ✅ 发音检测模拟
+
+### Mock数据
+所有数据都在 `mock-data.js` 中定义，包括：
+- 用户信息
+- 学习统计
+- 考试目标
+- 每日任务
+- 成就列表
+- 词汇数据
+- 评价内容
+
+## 📱 响应式设计
+
+已适配的断点：
+- ✅ Desktop: >1024px
+- ✅ Tablet: 768px - 1024px
+- ✅ Mobile: <768px
+
+移动端特性：
+- 底部Tab导航
+- 简化的卡片布局
+- 触摸友好的按钮尺寸
+
+## 🔧 自定义修改
+
+### 修改颜色
+在 `styles.css` 的 `:root` 部分修改CSS变量：
+```css
+:root {
+    --primary: #你的颜色;
+    --brand-red: #你的颜色;
+}
 ```
 
-### 5. 启动服务
+### 修改数据
+在 `mock-data.js` 中修改对应的数据对象。
 
-```bash
-# 终端 1 - 后端
-cd backend
-npm run dev
+### 添加页面
+1. 创建新的 `.html` 文件
+2. 复制通用头部和导航
+3. 添加页面特定内容
+4. 在 `app.js` 中添加初始化逻辑
 
-# 终端 2 - 用户端
-cd frontend-user
-npm run dev
+## 📊 与旧设计对比
 
-# 终端 3 - 管理端
-cd admin
-npm run dev
+| 方面 | 旧设计 | 新设计 |
+|------|--------|--------|
+| 首页标题 | "Master Chinese with AI" | "Pass HSK 6 in 180 Days" |
+| 社会证明 | ❌ 无 | ✅ 12,847+用户 + 评价 |
+| Dashboard | 简单数据卡片 | 游戏化任务 + 倒计时 + 成就 |
+| 引导流程 | ❌ 无 | ✅ 4步个性化设置 |
+| 词条页面 | 一次性展示850字 | Quick/Deep Dive拆分 |
+| 成就系统 | ❌ 无 | ✅ 4种稀有度徽章 |
+| HSK进度 | 列表展示 | 技能树可视化 |
+
+## 🎓 给团队的建议
+
+### 前端开发参考
+1. **组件化**：将这些设计拆分为React/Vue组件
+2. **动画库**：考虑使用Framer Motion增强动画
+3. **图表库**：Stats页面建议用Recharts
+4. **状态管理**：Zustand或Redux管理全局状态
+
+### API对接
+主要需要的新API：
+```javascript
+// 每日任务
+GET /api/missions/today
+POST /api/missions/:id/complete
+
+// 用户目标
+GET /api/user/goal
+PUT /api/user/goal
+
+// 成就系统
+GET /api/achievements
+POST /api/achievements/:id/claim
+
+// 推荐系统
+GET /api/recommendations/words
+GET /api/recommendations/articles
 ```
 
-### 6. 访问应用
+### 设计师参考
+1. 所有间距使用8px网格系统
+2. 色彩对比度符合WCAG 2.1 AA标准
+3. 字体大小范围：12px - 48px
+4. 圆角：4px/8px/12px/16px
+5. 阴影：3个等级(sm/md/lg)
 
-- 🌐 **用户端**: http://localhost:3001
-- 🔧 **管理端**: http://localhost:3002
-- 🚀 **API**: http://localhost:3000
+## 🐛 已知限制
 
-### 默认账号
+这是一个**静态演示**，以下功能仅为视觉展示：
+- ⚠️ 音频播放（只有按钮动画）
+- ⚠️ 实际数据更新（前端模拟）
+- ⚠️ 用户认证（直接跳转）
+- ⚠️ 语音识别（模拟反馈）
 
-- **管理员**: admin@demo.com / admin123
-- **普通用户**: user@demo.com / user123
+## 📞 反馈与讨论
 
----
+使用这个demo时，请关注：
+1. **用户体验**：流程是否流畅？
+2. **视觉设计**：配色和排版是否舒适？
+3. **功能完整性**：是否缺少关键功能？
+4. **性能**：页面加载和动画是否流畅？
 
-## 📚 技术栈
-
-### 前端
-- **框架**: Next.js 15, React 19, Vite
-- **样式**: Tailwind CSS 4, shadcn/ui
-- **状态**: Zustand, React Query
-- **图表**: Recharts
-- **动画**: Framer Motion
-
-### 后端
-- **框架**: Node.js, Express.js
-- **数据库**: SQLite (dev), PostgreSQL (prod)
-- **ORM**: Prisma
-- **认证**: JWT, bcryptjs
-- **AI**: GLM-4 (智谱AI)
+有任何建议或问题，请记录下来供团队讨论！
 
 ---
 
-## 📖 文档
+## 🔍 SEO Ops Note (2025-10-22)
+- 提交域名至 Google Search Console & Bing Webmaster，验证 sitemap `/sitemap.xml` 与 robots.txt
+- 依次发布 HSK 级别落地页、工具介绍页，并在 `<head>` 中保持 canonical、结构化数据一致
+- 站外信号：
+  - 与 HSK 论坛、语言学习博客建立互换链接或投稿
+  - 输出可下载 PDF（学习计划、词汇表）吸引引用链接
+  - 每季度整理成功案例，联系教育类媒体投稿
+  - 新增 HSK 3 Roadmap 页面，用于投放与站外引流
+- 监测指标（Looker Studio/GA4）：自然流量、文章停留时长、工具转化率、邮箱收集量
+- 每次新增导航项、CTA 需同步更新 README，以便团队掌握内容矩阵
 
-- [完整 PRD](./PRD-COMPLETE.md) - 产品需求文档
-- [任务清单](./TASKS.md) - 370+ 详细任务
-- [进度追踪](./PROGRESS.md) - 开发进度
-- [完成报告](./COMPLETION-REPORT.md) - 项目总结
-- [快速开始](./QUICKSTART.md) - 详细指南
-
----
-
-## 🏗️ 项目结构
-
-```
-chinese-learning-platform/
-├── frontend-user/     # Next.js 用户端
-├── admin/             # Vite 管理端
-├── backend/           # Express 后端
-├── _archived/         # 历史代码
-└── docs/              # 文档
-```
-
----
-
-## 🎯 核心特性
-
-### SuperMemo 2 算法
-科学的间隔复习系统，根据记忆曲线自动调整复习时间。
-
-### AI 内容生成
-集成 GLM-4，支持自动生成文章和词汇，包含拼音、翻译、例句等。
-
-### SEO 优化
-- Schema.org 结构化数据
-- 自动生成 sitemap
-- Meta 标签优化
-- Open Graph 支持
-
-### 90天学习热力图
-GitHub 风格的活动热力图，可视化学习连续性。
-
----
-
-## 🔧 开发指南
-
-### 添加新功能
-
-1. 在 `TASKS.md` 中定义任务
-2. 创建对应的组件/页面
-3. 添加 API 接口
-4. 更新类型定义
-5. 测试功能
-6. 更新文档
-
-### 数据库操作
-
-```bash
-# 创建迁移
-npx prisma migrate dev --name your-migration
-
-# 查看数据
-npx prisma studio
-
-# 重置数据库
-npx prisma migrate reset
-```
-
-### 构建生产版本
-
-```bash
-# 用户端
-cd frontend-user
-npm run build
-
-# 管理端
-cd admin
-npm run build
-
-# 后端
-cd backend
-npm run build
-```
-
----
-
-## 🧪 测试
-
-```bash
-# 运行测试
-npm test
-
-# 覆盖率报告
-npm run test:coverage
-```
-
----
-
-## 📦 部署
-
-### Docker
-
-```bash
-docker-compose up -d
-```
-
-### 手动部署
-
-详见 [部署指南](./docs/DEPLOYMENT.md)
-
----
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request！
-
-1. Fork 项目
-2. 创建特性分支
-3. 提交更改
-4. 推送到分支
-5. 创建 Pull Request
-
----
-
-## 📄 License
-
-MIT License
-
----
-
-## 🙏 致谢
-
-感谢所有贡献者和支持者！
-
----
-
-## 📞 联系
-
-- Issues: [GitHub Issues](https://github.com/your-repo/issues)
-- Email: support@chinesemaster.com
-
----
-
-**Happy Learning! 加油！💪**
+**版本：** 1.0.0  
+**创建日期：** 2025-01-15  
+**设计者：** Claude (AI Assistant)  
+**状态：** ✅ 完成 - 可用于演示和讨论
 

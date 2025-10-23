@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK Vocabulary Level | ChineseMaster</title>
+    <meta name="description" content="Dive into HSK level vocabulary lists with status tracking, study materials, and exam-aligned practice on ChineseMaster.">
+    <link rel="canonical" href="https://www.chinesemaster.com/hsk-level/">
+    <meta property="og:title" content="HSK Vocabulary Level | ChineseMaster">
+    <meta property="og:description" content="View detailed vocabulary lists, track your mastery, and access practice resources for each HSK level.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.chinesemaster.com/hsk-level/">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "ChineseMaster HSK Level Vocabulary",
+        "description": "HSK level-specific vocabulary with progress tracking, learning actions, and study materials.",
+        "about": {"@type": "DefinedTerm", "name": "HSK Vocabulary"}
+    }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="container header-content">
+            <div class="header-brand">
+                <span class="logo">🎓</span>
+                <span class="brand-name">ChineseMaster</span>
+            </div>
+            <nav class="header-nav">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="articles.html">Daily Articles</a>
+                <a href="analyzer.html">Text Analyzer</a>
+                <a href="words.html">My Words</a>
+                <a href="hsk-library.html" class="active">HSK Library</a>
+            </nav>
+            <div class="header-user">
+                <button class="btn btn-icon">🔔</button>
+                <div class="user-menu">
+                    <img src="https://i.pravatar.cc/100?img=20" alt="User" class="user-avatar">
+                    <span>Sarah</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="container hsk-level-container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="hsk-library.html">← Back to HSK Library</a>
+            </div>
+
+            <!-- HSK Level Header -->
+            <div class="hsk-level-header">
+                <div class="level-badge-large hsk4">HSK 4</div>
+                <div class="level-info">
+                    <h1>HSK Level 4 Vocabulary</h1>
+                    <p class="level-description">
+                        Intermediate level vocabulary for students who can discuss a wide range of topics in Chinese
+                        and communicate fluently with native speakers.
+                    </p>
+                    <div class="level-requirements">
+                        <div class="requirement-item">
+                            <span class="req-icon">📚</span>
+                            <div>
+                                <strong>1,200 Words</strong>
+                                <p>Total vocabulary required</p>
+                            </div>
+                        </div>
+                        <div class="requirement-item">
+                            <span class="req-icon">🎯</span>
+                            <div>
+                                <strong>180 Hours</strong>
+                                <p>Recommended study time</p>
+                            </div>
+                        </div>
+                        <div class="requirement-item">
+                            <span class="req-icon">📝</span>
+                            <div>
+                                <strong>CEFR B2</strong>
+                                <p>Equivalent level</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Overview -->
+            <div class="progress-overview">
+                <div class="progress-card">
+                    <h3>Your Progress</h3>
+                    <div class="circular-progress">
+                        <svg viewBox="0 0 200 200" width="120" height="120">
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#e5e7eb" stroke-width="15"/>
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#FDBA74" stroke-width="15" 
+                                    stroke-dasharray="502" stroke-dashoffset="150" 
+                                    stroke-linecap="round" transform="rotate(-90 100 100)"/>
+                            <text x="100" y="100" text-anchor="middle" dy="0.3em" 
+                                  font-size="40" font-weight="700" fill="#111827">70%</text>
+                        </svg>
+                    </div>
+                    <div class="progress-details">
+                        <div class="progress-stat">
+                            <span class="stat-number">840</span>
+                            <span class="stat-label">Words Learned</span>
+                        </div>
+                        <div class="progress-stat">
+                            <span class="stat-number">360</span>
+                            <span class="stat-label">Remaining</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-actions">
+                    <button class="btn btn-primary btn-lg" onclick="startLearning()">
+                        🎯 Continue Learning
+                    </button>
+                    <button class="btn btn-secondary btn-lg" onclick="startReview()">
+                        🔄 Review Learned Words
+                    </button>
+                    <button class="btn btn-secondary btn-lg" onclick="takeTest()">
+                        📝 Take Practice Test
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filters and Search -->
+            <div class="filters-section">
+                <div class="search-box-large">
+                    <input type="text" placeholder="Search HSK 4 vocabulary..." class="search-input-large">
+                    <button class="search-btn-large">🔍</button>
+                </div>
+
+                <div class="filters-row">
+                    <div class="filter-group">
+                        <label>Status:</label>
+                        <select class="filter-select">
+                            <option>All Words</option>
+                            <option>Learned</option>
+                            <option>Learning</option>
+                            <option>Not Started</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Sort by:</label>
+                        <select class="filter-select">
+                            <option>Frequency</option>
+                            <option>Alphabetical</option>
+                            <option>Recently Added</option>
+                            <option>Difficulty</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Category:</label>
+                        <select class="filter-select">
+                            <option>All Categories</option>
+                            <option>Verbs</option>
+                            <option>Nouns</option>
+                            <option>Adjectives</option>
+                            <option>Adverbs</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Word List -->
+            <div class="word-list-section">
+                <div class="section-header">
+                    <h2>Vocabulary List (1,200 words)</h2>
+                    <div class="view-options">
+                        <button class="view-btn active" onclick="switchView('grid')">⊞ Grid</button>
+                        <button class="view-btn" onclick="switchView('list')">☰ List</button>
+                    </div>
+                </div>
+
+                <div class="words-grid" id="wordsGrid">
+                    <div class="word-card learned">
+                        <div class="word-status-badge">✅ Mastered</div>
+                        <div class="word-chinese">拥有</div>
+                        <div class="word-pinyin">yōngyǒu</div>
+                        <div class="word-english">to have, possess</div>
+                        <div class="word-meta">
+                            <span class="word-type">Verb</span>
+                            <span class="word-freq">★★★★☆</span>
+                        </div>
+                        <div class="word-actions">
+                            <button class="btn-icon-word" onclick="playWord('拥有')">🔊</button>
+                            <button class="btn-icon-word" onclick="viewWordDetail('拥有')">📖</button>
+                            <button class="btn-icon-word" onclick="reviewWord('拥有')">🔄</button>
+                        </div>
+                    </div>
+
+                    <div class="word-card learning">
+                        <div class="word-status-badge">📚 Learning</div>
+                        <div class="word-chinese">悠久</div>
+                        <div class="word-pinyin">yōujiǔ</div>
+                        <div class="word-english">long, long-standing</div>
+                        <div class="word-meta">
+                            <span class="word-type">Adjective</span>
+                            <span class="word-freq">★★★☆☆</span>
+                        </div>
+                        <div class="word-actions">
+                            <button class="btn-icon-word" onclick="playWord('悠久')">🔊</button>
+                            <button class="btn-icon-word" onclick="viewWordDetail('悠久')">📖</button>
+                            <button class="btn-icon-word" onclick="addToBank('悠久')">➕</button>
+                        </div>
+                    </div>
+
+                    <div class="word-card new">
+                        <div class="word-status-badge">🆕 New</div>
+                        <div class="word-chinese">复杂</div>
+                        <div class="word-pinyin">fùzá</div>
+                        <div class="word-english">complex, complicated</div>
+                        <div class="word-meta">
+                            <span class="word-type">Adjective</span>
+                            <span class="word-freq">★★★★☆</span>
+                        </div>
+                        <div class="word-actions">
+                            <button class="btn-icon-word" onclick="playWord('复杂')">🔊</button>
+                            <button class="btn-icon-word" onclick="viewWordDetail('复杂')">📖</button>
+                            <button class="btn-icon-word" onclick="startLearningWord('复杂')">▶️</button>
+                        </div>
+                    </div>
+
+                    <div class="word-card learned">
+                        <div class="word-status-badge">✅ Mastered</div>
+                        <div class="word-chinese">烤鸭</div>
+                        <div class="word-pinyin">kǎoyā</div>
+                        <div class="word-english">roast duck</div>
+                        <div class="word-meta">
+                            <span class="word-type">Noun</span>
+                            <span class="word-freq">★★☆☆☆</span>
+                        </div>
+                        <div class="word-actions">
+                            <button class="btn-icon-word" onclick="playWord('烤鸭')">🔊</button>
+                            <button class="btn-icon-word" onclick="viewWordDetail('烤鸭')">📖</button>
+                            <button class="btn-icon-word" onclick="reviewWord('烤鸭')">🔄</button>
+                        </div>
+                    </div>
+
+                    <div class="word-card new">
+                        <div class="word-status-badge">🆕 New</div>
+                        <div class="word-chinese">代表</div>
+                        <div class="word-pinyin">dàibiǎo</div>
+                        <div class="word-english">to represent</div>
+                        <div class="word-meta">
+                            <span class="word-type">Verb</span>
+                            <span class="word-freq">★★★★★</span>
+                        </div>
+                        <div class="word-actions">
+                            <button class="btn-icon-word" onclick="playWord('代表')">🔊</button>
+                            <button class="btn-icon-word" onclick="viewWordDetail('代表')">📖</button>
+                            <button class="btn-icon-word" onclick="startLearningWord('代表')">▶️</button>
+                        </div>
+                    </div>
+
+                    <div class="word-card learning">
+                        <div class="word-status-badge">📚 Learning</div>
+                        <div class="word-chinese">传统</div>
+                        <div class="word-pinyin">chuántǒng</div>
+                        <div class="word-english">traditional</div>
+                        <div class="word-meta">
+                            <span class="word-type">Adjective</span>
+                            <span class="word-freq">★★★★☆</span>
+                        </div>
+                        <div class="word-actions">
+                            <button class="btn-icon-word" onclick="playWord('传统')">🔊</button>
+                            <button class="btn-icon-word" onclick="viewWordDetail('传统')">📖</button>
+                            <button class="btn-icon-word" onclick="addToBank('传统')">➕</button>
+                        </div>
+                    </div>
+
+                    <!-- More words... -->
+                    <div class="word-card new">
+                        <div class="word-status-badge">🆕 New</div>
+                        <div class="word-chinese">除了</div>
+                        <div class="word-pinyin">chúle</div>
+                        <div class="word-english">besides, except</div>
+                        <div class="word-meta">
+                            <span class="word-type">Preposition</span>
+                            <span class="word-freq">★★★★☆</span>
+                        </div>
+                        <div class="word-actions">
+                            <button class="btn-icon-word" onclick="playWord('除了')">🔊</button>
+                            <button class="btn-icon-word" onclick="viewWordDetail('除了')">📖</button>
+                            <button class="btn-icon-word" onclick="startLearningWord('除了')">▶️</button>
+                        </div>
+                    </div>
+
+                    <div class="word-card learned">
+                        <div class="word-status-badge">✅ Mastered</div>
+                        <div class="word-chinese">特色</div>
+                        <div class="word-pinyin">tèsè</div>
+                        <div class="word-english">characteristic</div>
+                        <div class="word-meta">
+                            <span class="word-type">Noun</span>
+                            <span class="word-freq">★★★☆☆</span>
+                        </div>
+                        <div class="word-actions">
+                            <button class="btn-icon-word" onclick="playWord('特色')">🔊</button>
+                            <button class="btn-icon-word" onclick="viewWordDetail('特色')">📖</button>
+                            <button class="btn-icon-word" onclick="reviewWord('特色')">🔄</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="pagination-btn" disabled>← Previous</button>
+                    <div class="pagination-numbers">
+                        <button class="pagination-number active">1</button>
+                        <button class="pagination-number">2</button>
+                        <button class="pagination-number">3</button>
+                        <span>...</span>
+                        <button class="pagination-number">60</button>
+                    </div>
+                    <button class="pagination-btn">Next →</button>
+                </div>
+            </div>
+
+            <!-- Study Materials -->
+            <div class="materials-section">
+                <h2>📚 Study Materials for HSK 4</h2>
+                <div class="materials-grid">
+                    <div class="material-card">
+                        <div class="material-icon">📖</div>
+                        <h3>Reading Materials</h3>
+                        <p>25 curated articles at HSK 4 level</p>
+                        <button class="btn btn-secondary">Browse Articles</button>
+                    </div>
+
+                    <div class="material-card">
+                        <div class="material-icon">🎧</div>
+                        <h3>Listening Practice</h3>
+                        <p>Audio dialogues and comprehension exercises</p>
+                        <button class="btn btn-secondary">Start Listening</button>
+                    </div>
+
+                    <div class="material-card">
+                        <div class="material-icon">✍️</div>
+                        <h3>Writing Exercises</h3>
+                        <p>Practice character writing and composition</p>
+                        <button class="btn btn-secondary">Practice Writing</button>
+                    </div>
+
+                    <div class="material-card">
+                        <div class="material-icon">📝</div>
+                        <h3>Practice Tests</h3>
+                        <p>Full-length HSK 4 mock exams</p>
+                        <button class="btn btn-secondary">Take Test</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="mock-data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        function startLearning() {
+            window.location.href = 'learning.html?level=hsk4&mode=new';
+        }
+
+        function startReview() {
+            window.location.href = 'learning.html?level=hsk4&mode=review';
+        }
+
+        function takeTest() {
+            window.location.href = 'learning.html?level=hsk4&mode=test';
+        }
+
+        function playWord(word) {
+            showNotification(`🔊 Playing "${word}"...`, 'info');
+        }
+
+        function viewWordDetail(word) {
+            window.location.href = `word-detail.html?from=hsk-library&word=${encodeURIComponent(word)}`;
+        }
+
+        function addToBank(word) {
+            showNotification(`✅ "${word}" added to your word bank!`, 'success');
+        }
+
+        function startLearningWord(word) {
+            window.location.href = `learning.html?word=${encodeURIComponent(word)}`;
+        }
+
+        function reviewWord(word) {
+            window.location.href = `learning.html?word=${encodeURIComponent(word)}&mode=review`;
+        }
+
+        function switchView(view) {
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            const grid = document.getElementById('wordsGrid');
+            if (view === 'list') {
+                grid.classList.add('list-view');
+            } else {
+                grid.classList.remove('list-view');
+            }
+        }
+    </script>
+    <style>
+        .hsk-level-container {
+            max-width: 1400px;
+            padding: var(--spacing-xl) var(--spacing-lg);
+        }
+
+        .hsk-level-header {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-2xl);
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            gap: var(--spacing-2xl);
+            align-items: center;
+        }
+
+        .level-badge-large {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .level-badge-large.hsk4 {
+            background: linear-gradient(135deg, #FDBA74 0%, #F97316 100%);
+        }
+
+        .level-info {
+            flex: 1;
+        }
+
+        .level-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .level-description {
+            color: var(--gray-600);
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-xl);
+            line-height: 1.6;
+        }
+
+        .level-requirements {
+            display: flex;
+            gap: var(--spacing-xl);
+        }
+
+        .requirement-item {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        .req-icon {
+            font-size: 2rem;
+        }
+
+        .requirement-item strong {
+            display: block;
+            font-size: 1.125rem;
+        }
+
+        .requirement-item p {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        .progress-overview {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-2xl);
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--spacing-2xl);
+        }
+
+        .progress-card {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+        }
+
+        .progress-card h3 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .progress-details {
+            display: flex;
+            gap: var(--spacing-xl);
+        }
+
+        .progress-stat {
+            text-align: center;
+        }
+
+        .progress-stat .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .progress-stat .stat-label {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+        }
+
+        .progress-actions {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .filters-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .search-box-large {
+            display: flex;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .search-input-large {
+            flex: 1;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: 2px solid var(--gray-200);
+            border-right: none;
+            border-radius: var(--radius-md) 0 0 var(--radius-md);
+            font-size: 1rem;
+        }
+
+        .search-btn-large {
+            padding: var(--spacing-md) var(--spacing-xl);
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            cursor: pointer;
+            font-size: 1.25rem;
+        }
+
+        .filters-row {
+            display: flex;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        .filter-select {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+        }
+
+        .word-list-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-2xl);
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .view-options {
+            display: flex;
+            gap: var(--spacing-xs);
+        }
+
+        .view-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 2px solid var(--gray-200);
+            background: white;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .view-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .words-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .word-card {
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            border: 2px solid var(--gray-200);
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .word-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .word-card.learned {
+            border-color: #10b981;
+            background: linear-gradient(135deg, #D1FAE5 0%, #ECFDF5 100%);
+        }
+
+        .word-card.learning {
+            border-color: #F59E0B;
+            background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%);
+        }
+
+        .word-card.new {
+            border-color: #3B82F6;
+            background: linear-gradient(135deg, #DBEAFE 0%, #EFF6FF 100%);
+        }
+
+        .word-status-badge {
+            position: absolute;
+            top: var(--spacing-sm);
+            right: var(--spacing-sm);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-sm);
+            background: white;
+        }
+
+        .word-chinese {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .word-pinyin {
+            text-align: center;
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .word-english {
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .word-meta {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--spacing-sm) 0;
+            border-top: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200);
+            margin-bottom: var(--spacing-md);
+            font-size: 0.875rem;
+        }
+
+        .word-type {
+            color: var(--gray-600);
+        }
+
+        .word-freq {
+            color: #F59E0B;
+        }
+
+        .word-actions {
+            display: flex;
+            gap: var(--spacing-xs);
+            justify-content: center;
+        }
+
+        .btn-icon-word {
+            flex: 1;
+            padding: var(--spacing-sm);
+            border: none;
+            background: white;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1.125rem;
+        }
+
+        .btn-icon-word:hover {
+            background: var(--gray-100);
+            transform: scale(1.1);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pagination-btn {
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: 2px solid var(--gray-200);
+            background: white;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination-numbers {
+            display: flex;
+            gap: var(--spacing-xs);
+            align-items: center;
+        }
+
+        .pagination-number {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--gray-200);
+            background: white;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .pagination-number.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .materials-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-2xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .materials-section h2 {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .material-card {
+            text-align: center;
+            padding: var(--spacing-xl);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            border: 2px solid var(--gray-200);
+        }
+
+        .material-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .material-card h3 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .material-card p {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        @media (max-width: 768px) {
+            .hsk-level-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .level-requirements {
+                flex-direction: column;
+            }
+
+            .progress-overview {
+                flex-direction: column;
+            }
+
+            .words-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>
+

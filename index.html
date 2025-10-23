@@ -1,13 +1,534 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ChineseMaster - Learn Chinese Vocabulary</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChineseMaster - Pass HSK 6 in 180 Days</title>
+    <meta name="description" content="ChineseMaster is the AI-powered HSK prep course that guides English speakers to pass HSK 6 in 180 days with daily missions, smart reviews, and authentic Chinese content.">
+    <meta name="keywords" content="HSK prep, learn Chinese online, HSK vocabulary, ChineseMaster, Chinese exam preparation">
+    <link rel="canonical" href="https://www.chinesemaster.com/">
+    <meta property="og:title" content="ChineseMaster - Pass HSK 6 in 180 Days">
+    <meta property="og:description" content="Master HSK vocabulary, tackle real articles, and stay on track with AI missions tailored to your exam date.">
+    <meta property="og:url" content="https://www.chinesemaster.com/">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" as="style">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://www.chinesemaster.com/#organization",
+                "name": "ChineseMaster",
+                "url": "https://www.chinesemaster.com/"
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://www.chinesemaster.com/#website",
+                "url": "https://www.chinesemaster.com/",
+                "name": "ChineseMaster",
+                "description": "HSK-focused Chinese learning platform with AI missions and authentic content",
+                "publisher": {"@id": "https://www.chinesemaster.com/#organization"}
+            },
+            {
+                "@type": "Course",
+                "name": "ChineseMaster HSK Preparation Program",
+                "description": "Structured 180-day HSK learning plan combining vocabulary mastery, daily missions, and authentic reading practice.",
+                "provider": {"@id": "https://www.chinesemaster.com/#organization"},
+                "hasCourseInstance": {
+                    "@type": "CourseInstance",
+                    "courseMode": "online",
+                    "startDate": "2025-10-22",
+                    "endDate": "2026-04-20",
+                    "location": "Online"
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-content">
+            <div class="nav-brand">
+                <span class="logo">🎓</span>
+                <span class="brand-name">ChineseMaster</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#pricing">Pricing</a>
+                <a href="hsk-hub.html">HSK 3 Roadmap</a>
+                <a href="login.html" class="btn btn-secondary btn-sm">Sign In</a>
+                <a href="register.html" class="btn btn-primary btn-sm">Start Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - NEW DESIGN -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <span class="badge badge-gold">✨ Trusted by 12,847+ HSK Students</span>
+            </div>
+            
+            <h1 class="hero-title">
+                Pass <span class="text-gradient">HSK 6</span> in 180 Days
+            </h1>
+            
+            <p class="hero-subtitle">
+                AI-powered learning platform designed specifically for HSK exam success.<br>
+                Join thousands who've transformed from "你好" to reading 人民日报.
+            </p>
+
+            <!-- User Success Stories -->
+            <div class="success-stories">
+                <div class="user-avatars">
+                    <img src="https://i.pravatar.cc/100?img=1" alt="ChineseMaster learner" class="avatar">
+                    <img src="https://i.pravatar.cc/100?img=2" alt="ChineseMaster learner" class="avatar">
+                    <img src="https://i.pravatar.cc/100?img=3" alt="ChineseMaster learner" class="avatar">
+                    <img src="https://i.pravatar.cc/100?img=4" alt="ChineseMaster learner" class="avatar">
+                    <img src="https://i.pravatar.cc/100?img=5" alt="ChineseMaster learner" class="avatar">
+                    <span class="avatar-count">+12K</span>
+                </div>
+                <div class="success-text">
+                    <div class="rating">
+                        ⭐⭐⭐⭐⭐ <span>4.9/5</span>
+                    </div>
+                    <p>"I passed HSK 5 in just 4 months!" - Sarah, Stanford</p>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="hero-cta">
+                <a href="onboarding.html" class="btn btn-primary btn-lg">
+                    Start Free Trial
+                    <span class="btn-icon">→</span>
+                </a>
+                <a href="#lead-capture" class="btn btn-secondary btn-lg" id="leadHeroButton">
+                    Free HSK Diagnosis
+                </a>
+                <button class="btn btn-outline btn-lg" onclick="playDemo()">
+                    <span>▶</span> Watch 2min Demo
+                </button>
+            </div>
+
+            <p class="hero-note">
+                ⚡ No credit card required • 7-day free access • Cancel anytime
+            </p>
+
+            <!-- Interactive Try Widget -->
+            <div class="try-widget">
+                <h3>🎯 Try It Now - Analyze Any Chinese Text</h3>
+                <div class="try-input">
+                    <input 
+                        type="text" 
+                        placeholder="输入中文句子... (e.g. 我今天去超市买了很多东西)"
+                        id="tryInput"
+                    >
+                    <button class="btn btn-primary" onclick="analyzeTry()">Analyze</button>
+                </div>
+                <div id="tryResult" class="try-result"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why ChineseMaster Section -->
+    <section class="why-section">
+        <div class="container">
+            <h2 class="section-title">Why ChineseMaster vs Duolingo?</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card highlight">
+                    <div class="comparison-icon">✅</div>
+                    <h3>HSK Exam Focused</h3>
+                    <p>Official HSK 1-6 vocabulary list with exam-specific training</p>
+                </div>
+                <div class="comparison-card highlight">
+                    <div class="comparison-icon">✅</div>
+                    <h3>Deep Content (850+ words/entry)</h3>
+                    <p>Not just flashcards - comprehensive cultural and usage context</p>
+                </div>
+                <div class="comparison-card highlight">
+                    <div class="comparison-icon">✅</div>
+                    <h3>AI-Powered Personalization</h3>
+                    <p>Smart learning paths adapted to your progress and weak points</p>
+                </div>
+                <div class="comparison-card highlight">
+                    <div class="comparison-icon">✅</div>
+                    <h3>Real Chinese Context</h3>
+                    <p>Authentic articles, not robot conversations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <h2 class="section-title">Everything You Need to Master Chinese</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>10,000+ HSK Words</h3>
+                    <p>Complete vocabulary bank covering HSK 1-6 with detailed examples and breakdowns</p>
+                    <a href="hsk-library.html" class="feature-link">Explore Library →</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Daily Missions</h3>
+                    <p>Structured daily tasks keep you on track with gamified XP rewards</p>
+                    <div class="feature-preview">
+                        <div class="mission-preview">
+                            <span>✅ Review 10 words</span>
+                            <span class="xp">+10 XP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📰</div>
+                    <h3>Daily Articles</h3>
+                    <p>Read authentic Chinese content with pinyin, translations, and vocab highlights</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Spaced Repetition</h3>
+                    <p>Smart review system that helps you remember words at the perfect time</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">✍️</div>
+                    <h3>Text Analyzer</h3>
+                    <p>Paste any Chinese text to get instant HSK level analysis and translations</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Progress Tracking</h3>
+                    <p>Detailed statistics and insights on your learning journey</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works-section" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How ChineseMaster Works</h2>
+            <p class="section-subtitle">4 Simple Steps to HSK Success</p>
+            
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">🎯</div>
+                    <h3>Set Your Goal</h3>
+                    <p>Choose your target HSK level and exam date. We'll create a personalized learning path just for you.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">📚</div>
+                    <div class="step-number">2</div>
+                    <h3>Learn Daily</h3>
+                    <p>Complete bite-sized daily missions (15-30 mins). Build vocabulary with deep context and cultural notes.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">🔄</div>
+                    <h3>Smart Review</h3>
+                    <p>Our AI-powered spaced repetition system ensures you review words at the perfect time for maximum retention.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">🏆</div>
+                    <h3>Pass Your Exam</h3>
+                    <p>Take practice tests, track your readiness score, and confidently pass your HSK exam.</p>
+                </div>
+            </div>
+
+            <div class="cta-center">
+                <a href="register.html" class="btn btn-primary btn-lg">Start Your Free Trial</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Testimonials -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Success Stories from Real Students</h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "I passed HSK 5 in just 4 months using ChineseMaster. The daily missions kept me motivated, and the deep content explanations really helped me understand cultural context."
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=10" alt="Sarah">
+                        <div>
+                            <div class="author-name">Sarah Johnson</div>
+                            <div class="author-info">Stanford Student 🇺🇸</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "As a busy professional, I needed flexible learning. The 15-min daily sessions fit perfectly into my schedule. Landed a promotion thanks to my Chinese skills!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=11" alt="Michael">
+                        <div>
+                            <div class="author-name">Michael Chen</div>
+                            <div class="author-info">Marketing Manager 🇬🇧</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "The AI-powered recommendations are spot-on. It knew exactly which words I struggled with and gave me targeted practice. Best investment in my language learning!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=12" alt="Emma">
+                        <div>
+                            <div class="author-name">Emma Rodriguez</div>
+                            <div class="author-info">Freelance Translator 🇪🇸</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <p class="section-subtitle">Start free, upgrade when ready</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Free Trial</h3>
+                        <div class="price">$0<span class="price-period">/7 days</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✅ 100 words access</li>
+                        <li>✅ Daily missions</li>
+                        <li>✅ Text analyzer</li>
+                        <li>✅ Progress tracking</li>
+                        <li>❌ Full HSK library</li>
+                        <li>❌ Advanced features</li>
+                    </ul>
+                    <a href="register.html" class="btn btn-outline btn-block btn-lg">Start Free</a>
+                </div>
+
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Pro</h3>
+                        <div class="price">$9.99<span class="price-period">/month</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✅ 10,000+ HSK words</li>
+                        <li>✅ All daily missions</li>
+                        <li>✅ Unlimited text analysis</li>
+                        <li>✅ Advanced statistics</li>
+                        <li>✅ Daily articles</li>
+                        <li>✅ Priority support</li>
+                    </ul>
+                    <a href="register.html" class="btn btn-primary btn-block btn-lg">Get Started</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Lifetime</h3>
+                        <div class="price">$199<span class="price-period">one-time</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✅ Everything in Pro</li>
+                        <li>✅ Lifetime access</li>
+                        <li>✅ All future updates</li>
+                        <li>✅ Premium support</li>
+                        <li>✅ Early access to features</li>
+                        <li>✅ Money-back guarantee</li>
+                    </ul>
+                    <a href="register.html" class="btn btn-outline btn-block btn-lg">Buy Once</a>
+                </div>
+            </div>
+
+            <p class="pricing-note">
+                💳 All plans include 7-day free trial • Cancel anytime • Money-back guarantee
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <h2>Ready to Start Your Chinese Learning Journey?</h2>
+                <p>Join 12,847+ students who are mastering Chinese with AI-powered tools</p>
+                <div class="cta-buttons">
+                    <a href="onboarding.html" class="btn btn-white btn-lg">
+                        Start Free Trial
+                    </a>
+                    <a href="dashboard.html" class="btn btn-outline-white btn-lg">
+                        View Demo Dashboard
+                    </a>
+                </div>
+                <p class="cta-note">✨ 7-day free trial • No credit card required</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="lead-fab" id="leadCtaButton" aria-controls="leadOverlay" aria-expanded="false">
+        <span>📬</span>
+        <span class="fab-label">Free HSK Diagnosis</span>
+    </div>
+    <div class="lead-overlay" id="leadOverlay" role="dialog" aria-modal="true" aria-labelledby="leadOverlayTitle" hidden>
+        <div class="lead-overlay-card">
+            <button class="lead-overlay-close" id="leadOverlayClose" aria-label="Close lead capture form">×</button>
+            <div class="lead-overlay-header">
+                <h2 id="leadOverlayTitle">Get Your Personalized HSK Roadmap</h2>
+                <p>We’ll email you a 3-step study plan and recommended vocabulary packs for your target exam.</p>
+            </div>
+            <form id="leadCaptureForm" class="lead-overlay-form">
+                <label for="leadEmail">Email address</label>
+                <input type="email" id="leadEmail" name="email" placeholder="you@example.com" required>
+
+                <label for="leadLevel">Current HSK level</label>
+                <select id="leadLevel" name="level" required>
+                    <option value="">Select level</option>
+                    <option value="hsk1">HSK 1</option>
+                    <option value="hsk2">HSK 2</option>
+                    <option value="hsk3">HSK 3</option>
+                    <option value="hsk4">HSK 4</option>
+                    <option value="hsk5">HSK 5</option>
+                    <option value="hsk6">HSK 6</option>
+                </select>
+
+                <label for="leadExamDate">Target exam date</label>
+                <input type="date" id="leadExamDate" name="examDate">
+
+                <button type="submit" class="btn btn-primary btn-block">Send My Plan</button>
+                <p class="lead-privacy-note">We respect your inbox. Unsubscribe anytime.</p>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo">🎓</span>
+                    <span class="brand-name">ChineseMaster</span>
+                    <p>Master Chinese with Cultural Depth</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="dashboard.html">Dashboard Demo</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="#">HSK Guide</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Success Stories</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#">About</a>
+                        <a href="#">Contact</a>
+                        <a href="#">Privacy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ChineseMaster. All rights reserved. Keep learning! 加油! 💪</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="mock-data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        (function() {
+            const fab = document.getElementById('leadCtaButton');
+            const overlay = document.getElementById('leadOverlay');
+            const closeBtn = document.getElementById('leadOverlayClose');
+            const heroAnchor = document.getElementById('leadHeroButton');
+
+            function openOverlay() {
+                overlay.hidden = false;
+                overlay.removeAttribute('aria-hidden');
+                document.body.classList.add('no-scroll');
+                fab?.setAttribute('aria-expanded', 'true');
+                overlay.querySelector('input, select, button')?.focus();
+            }
+
+            function closeOverlay() {
+                overlay.hidden = true;
+                overlay.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('no-scroll');
+                fab?.setAttribute('aria-expanded', 'false');
+            }
+
+            fab?.addEventListener('click', openOverlay);
+            heroAnchor?.addEventListener('click', (event) => {
+                event.preventDefault();
+                openOverlay();
+            });
+
+            closeBtn?.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    closeOverlay();
+                }
+            });
+            closeBtn?.addEventListener('click', closeOverlay);
+            overlay?.addEventListener('click', (event) => {
+                if (event.target === overlay) {
+                    closeOverlay();
+                }
+            });
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && !overlay.hidden) {
+                    closeOverlay();
+                }
+            });
+
+            const form = document.getElementById('leadCaptureForm');
+            form?.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const formData = new FormData(form);
+                const email = formData.get('email');
+                showNotification(`📬 Plan sent to ${email || 'your inbox'}!`, 'success');
+                closeOverlay();
+                form.reset();
+            });
+
+            overlay?.addEventListener('transitionend', () => {
+                if (overlay.hidden) {
+                    form?.reset();
+                }
+            });
+        })();
+    </script>
+</body>
 </html>
+

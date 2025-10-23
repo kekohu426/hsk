@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - ChineseMaster</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="container header-content">
+            <div class="header-brand">
+                <a href="index.html" class="brand-link">
+                    <span class="logo">🎓</span>
+                    <span class="brand-name">ChineseMaster</span>
+                </a>
+            </div>
+            <nav class="header-nav">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="articles.html">Daily Articles</a>
+                <a href="analyzer.html">Text Analyzer</a>
+                <a href="words.html">My Words</a>
+            </nav>
+            <div class="header-user">
+                <button class="btn btn-icon">🔔</button>
+                <div class="user-menu">
+                    <img src="https://i.pravatar.cc/100?img=20" alt="User" class="user-avatar">
+                    <span>Sarah</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="container profile-container">
+            <!-- Profile Header -->
+            <div class="profile-header-card">
+                <div class="profile-banner"></div>
+                <div class="profile-main-info">
+                    <div class="profile-avatar-section">
+                        <img src="https://i.pravatar.cc/200?img=20" alt="Sarah" class="profile-avatar">
+                        <button class="btn-edit-avatar">📷</button>
+                    </div>
+                    <div class="profile-details">
+                        <h1 class="profile-name">Sarah Johnson</h1>
+                        <p class="profile-bio">Passionate Chinese learner preparing for HSK 5 • Stanford Student</p>
+                        <div class="profile-meta">
+                            <span class="meta-item">📍 San Francisco, CA</span>
+                            <span class="meta-item">📅 Joined Oct 2024</span>
+                            <span class="meta-item">🔥 30 day streak</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="editProfile()">Edit Profile</button>
+                </div>
+            </div>
+
+            <!-- Profile Stats -->
+            <div class="profile-stats-grid">
+                <div class="profile-stat-card">
+                    <div class="stat-icon-large">📚</div>
+                    <div class="stat-value-large">750</div>
+                    <div class="stat-label-large">Words Learned</div>
+                    <div class="stat-progress">
+                        <div class="stat-progress-bar" style="width: 75%"></div>
+                    </div>
+                    <div class="stat-subtext">75% to HSK 5 goal</div>
+                </div>
+
+                <div class="profile-stat-card">
+                    <div class="stat-icon-large">⏱️</div>
+                    <div class="stat-value-large">42h</div>
+                    <div class="stat-label-large">Study Time</div>
+                    <div class="stat-progress">
+                        <div class="stat-progress-bar green" style="width: 84%"></div>
+                    </div>
+                    <div class="stat-subtext">+8h this week</div>
+                </div>
+
+                <div class="profile-stat-card">
+                    <div class="stat-icon-large">🏆</div>
+                    <div class="stat-value-large">24</div>
+                    <div class="stat-label-large">Achievements</div>
+                    <div class="stat-progress">
+                        <div class="stat-progress-bar purple" style="width: 60%"></div>
+                    </div>
+                    <div class="stat-subtext">60% unlocked</div>
+                </div>
+
+                <div class="profile-stat-card">
+                    <div class="stat-icon-large">🎯</div>
+                    <div class="stat-value-large">87%</div>
+                    <div class="stat-label-large">Accuracy Rate</div>
+                    <div class="stat-progress">
+                        <div class="stat-progress-bar orange" style="width: 87%"></div>
+                    </div>
+                    <div class="stat-subtext">+3% this month</div>
+                </div>
+            </div>
+
+            <!-- Content Tabs -->
+            <div class="profile-tabs">
+                <button class="profile-tab active" onclick="switchTab('overview')">Overview</button>
+                <button class="profile-tab" onclick="switchTab('achievements')">Achievements</button>
+                <button class="profile-tab" onclick="switchTab('activity')">Activity</button>
+                <button class="profile-tab" onclick="switchTab('settings')">Settings</button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content" id="overview-tab">
+                <div class="tab-grid">
+                    <!-- Learning Goals -->
+                    <div class="tab-card">
+                        <h3>🎯 Learning Goals</h3>
+                        <div class="goals-list">
+                            <div class="goal-item">
+                                <div class="goal-header">
+                                    <span class="goal-title">Pass HSK 5 Exam</span>
+                                    <span class="goal-deadline">Target: Mar 2026</span>
+                                </div>
+                                <div class="goal-progress-bar">
+                                    <div class="goal-progress-fill" style="width: 75%"></div>
+                                </div>
+                                <div class="goal-stats">
+                                    <span>750/1000 words</span>
+                                    <span class="goal-percentage">75%</span>
+                                </div>
+                            </div>
+
+                            <div class="goal-item">
+                                <div class="goal-header">
+                                    <span class="goal-title">Daily Study Streak</span>
+                                    <span class="goal-deadline">Current: 30 days</span>
+                                </div>
+                                <div class="goal-progress-bar">
+                                    <div class="goal-progress-fill green" style="width: 60%"></div>
+                                </div>
+                                <div class="goal-stats">
+                                    <span>30/50 days</span>
+                                    <span class="goal-percentage">60%</span>
+                                </div>
+                            </div>
+
+                            <div class="goal-item">
+                                <div class="goal-header">
+                                    <span class="goal-title">Read 50 Articles</span>
+                                    <span class="goal-deadline">This Month</span>
+                                </div>
+                                <div class="goal-progress-bar">
+                                    <div class="goal-progress-fill purple" style="width: 42%"></div>
+                                </div>
+                                <div class="goal-stats">
+                                    <span>21/50 articles</span>
+                                    <span class="goal-percentage">42%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary btn-block">+ Add New Goal</button>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="tab-card">
+                        <h3>📊 Recent Activity</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">🏆</div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Unlocked "30 Day Streak" achievement</div>
+                                    <div class="activity-time">2 hours ago</div>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-icon">📖</div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Completed article: 北京传统美食文化</div>
+                                    <div class="activity-time">5 hours ago</div>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-icon">✅</div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Added 12 words to word bank</div>
+                                    <div class="activity-time">Yesterday</div>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-icon">🎯</div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Completed daily review (85% accuracy)</div>
+                                    <div class="activity-time">Yesterday</div>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-icon">🏆</div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Unlocked "700 Words" achievement</div>
+                                    <div class="activity-time">3 days ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Current Level -->
+                    <div class="tab-card level-card">
+                        <h3>📈 Current Level</h3>
+                        <div class="level-display">
+                            <div class="level-number">15</div>
+                            <div class="level-label">Intermediate Scholar</div>
+                        </div>
+                        <div class="level-progress">
+                            <div class="level-progress-bar">
+                                <div class="level-progress-fill" style="width: 65%"></div>
+                            </div>
+                            <div class="level-xp">1,950 / 3,000 XP</div>
+                        </div>
+                        <div class="level-next">
+                            <span>Next level: Advanced Learner</span>
+                            <span class="xp-needed">1,050 XP needed</span>
+                        </div>
+                    </div>
+
+                    <!-- Badges -->
+                    <div class="tab-card">
+                        <h3>🎖️ Recent Badges</h3>
+                        <div class="badges-grid">
+                            <div class="badge-item unlocked">
+                                <div class="badge-icon">🔥</div>
+                                <div class="badge-name">30 Day Streak</div>
+                            </div>
+                            <div class="badge-item unlocked">
+                                <div class="badge-icon">📚</div>
+                                <div class="badge-name">700 Words</div>
+                            </div>
+                            <div class="badge-item unlocked">
+                                <div class="badge-icon">✅</div>
+                                <div class="badge-name">HSK 2 Master</div>
+                            </div>
+                            <div class="badge-item locked">
+                                <div class="badge-icon">🎯</div>
+                                <div class="badge-name">HSK 5 Ready</div>
+                            </div>
+                            <div class="badge-item locked">
+                                <div class="badge-icon">⭐</div>
+                                <div class="badge-name">100 Day Streak</div>
+                            </div>
+                            <div class="badge-item locked">
+                                <div class="badge-icon">🏆</div>
+                                <div class="badge-name">1000 Words</div>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary btn-block">View All Badges</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="achievements-tab" style="display: none;">
+                <div class="achievements-grid">
+                    <!-- Achievements content -->
+                    <div class="achievement-category">
+                        <h3>🎓 Learning Milestones</h3>
+                        <!-- Achievement items -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="activity-tab" style="display: none;">
+                <!-- Activity feed -->
+            </div>
+
+            <div class="tab-content" id="settings-tab" style="display: none;">
+                <div class="settings-sections">
+                    <div class="settings-section">
+                        <h3>👤 Account Settings</h3>
+                        <div class="setting-item">
+                            <label>Email</label>
+                            <input type="email" class="form-input" value="sarah@example.com">
+                        </div>
+                        <div class="setting-item">
+                            <label>Username</label>
+                            <input type="text" class="form-input" value="sarah_learns_chinese">
+                        </div>
+                        <button class="btn btn-primary">Save Changes</button>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>🔔 Notifications</h3>
+                        <div class="setting-toggle">
+                            <span>Daily reminder</span>
+                            <input type="checkbox" checked>
+                        </div>
+                        <div class="setting-toggle">
+                            <span>Achievement alerts</span>
+                            <input type="checkbox" checked>
+                        </div>
+                        <div class="setting-toggle">
+                            <span>Weekly progress report</span>
+                            <input type="checkbox">
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>🎨 Preferences</h3>
+                        <div class="setting-item">
+                            <label>Language Interface</label>
+                            <select class="form-input">
+                                <option selected>English</option>
+                                <option>中文</option>
+                                <option>Español</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label>Theme</label>
+                            <select class="form-input">
+                                <option selected>Light</option>
+                                <option>Dark</option>
+                                <option>Auto</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="mock-data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            
+            // Remove active class from all tab buttons
+            document.querySelectorAll('.profile-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(`${tabName}-tab`).style.display = 'block';
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        function editProfile() {
+            showNotification('✏️ Edit profile mode activated', 'info');
+        }
+    </script>
+    <style>
+        .profile-container {
+            max-width: 1200px;
+            padding: var(--spacing-xl) var(--spacing-lg);
+        }
+
+        .profile-header-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .profile-banner {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .profile-main-info {
+            display: flex;
+            align-items: flex-end;
+            gap: var(--spacing-xl);
+            padding: 0 var(--spacing-2xl) var(--spacing-2xl);
+            margin-top: -60px;
+            position: relative;
+        }
+
+        .profile-avatar-section {
+            position: relative;
+        }
+
+        .profile-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 6px solid white;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-edit-avatar {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid white;
+            background: var(--primary);
+            cursor: pointer;
+            font-size: 1.25rem;
+        }
+
+        .profile-details {
+            flex: 1;
+            padding-top: var(--spacing-xl);
+        }
+
+        .profile-name {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .profile-bio {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .profile-meta {
+            display: flex;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+        }
+
+        .profile-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .profile-stat-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+
+        .stat-icon-large {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .stat-value-large {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .stat-label-large {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .stat-progress {
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: 999px;
+            overflow: hidden;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .stat-progress-bar {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 999px;
+            transition: width 0.5s;
+        }
+
+        .stat-progress-bar.green {
+            background: var(--success);
+        }
+
+        .stat-progress-bar.purple {
+            background: #8b5cf6;
+        }
+
+        .stat-progress-bar.orange {
+            background: var(--warning);
+        }
+
+        .stat-subtext {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        .profile-tabs {
+            display: flex;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-lg);
+            border-bottom: 2px solid var(--gray-200);
+        }
+
+        .profile-tab {
+            padding: var(--spacing-md) var(--spacing-xl);
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gray-600);
+            transition: all 0.2s;
+            margin-bottom: -2px;
+        }
+
+        .profile-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .tab-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tab-card h3 {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .goals-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .goal-item {
+            padding: var(--spacing-lg);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+        }
+
+        .goal-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .goal-title {
+            font-weight: 600;
+        }
+
+        .goal-deadline {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        .goal-progress-bar {
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: 999px;
+            overflow: hidden;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .goal-progress-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 999px;
+        }
+
+        .goal-progress-fill.green {
+            background: var(--success);
+        }
+
+        .goal-progress-fill.purple {
+            background: #8b5cf6;
+        }
+
+        .goal-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        .goal-percentage {
+            font-weight: 700;
+        }
+
+        .activity-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .activity-item {
+            display: flex;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            border-left: 3px solid var(--gray-200);
+        }
+
+        .activity-icon {
+            font-size: 1.5rem;
+        }
+
+        .activity-title {
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .activity-time {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        .level-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .level-display {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .level-number {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .level-label {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .level-progress {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .level-progress-bar {
+            height: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 999px;
+            overflow: hidden;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .level-progress-fill {
+            height: 100%;
+            background: white;
+            border-radius: 999px;
+        }
+
+        .level-xp {
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .level-next {
+            display: flex;
+            justify-content: space-between;
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .xp-needed {
+            font-weight: 700;
+        }
+
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .badge-item {
+            text-align: center;
+            padding: var(--spacing-lg);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            transition: all 0.2s;
+        }
+
+        .badge-item.unlocked {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE047 100%);
+        }
+
+        .badge-item.locked {
+            opacity: 0.4;
+        }
+
+        .badge-item:hover {
+            transform: scale(1.05);
+        }
+
+        .badge-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .badge-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .settings-sections {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xl);
+        }
+
+        .settings-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .settings-section h3 {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .setting-item {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .setting-item label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .setting-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        @media (max-width: 768px) {
+            .profile-main-info {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .tab-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .badges-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</body>
+</html>
+

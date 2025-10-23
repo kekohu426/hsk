@@ -1,0 +1,306 @@
+📋 产品需求理解（基于UI界面）
+一、产品定位
+ChineseMaster - 面向英语母语者的HSK考试备考平台，通过AI生成深度内容+游戏化学习+间隔重复算法，帮助学习者在180天内通过HSK 6级考试。
+二、核心功能模块（从HTML文件分析）
+1. 首页 (index.html)
+功能：营销落地页，吸引用户注册
+Hero区：180天通过HSK 6的价值主张
+社会证明：12,847+用户，4.9/5评分
+互动试用：文本分析器试用窗口（输入中文立即分析）
+功能展示：10,000+词汇、每日任务、间隔重复、文章阅读
+定价：免费试用7天、Pro $9.99/月、终身 $199
+CTA：多处引导注册/试用
+SEO重点：
+Schema.org标记（Organization、Course）
+Open Graph标签
+关键词：HSK prep, learn Chinese, vocabulary
+2. 用户仪表盘 (dashboard.html)
+功能：学习者的每日控制中心 核心模块：
+欢迎栏：
+问候语 + 用户名（Sarah）
+30天连续学习火焰🔥标记
+Level 12 + 2450 XP
+HSK 4考试倒计时卡片：
+圆形进度环：87天剩余，64%准备度
+AI洞察："Focus on grammar patterns - your weakest area"
+已掌握：768/1200词
+每日平均学习：18分钟
+今日任务（Daily Mission）：
+✅ 复习10个词（已完成，+10 XP）
+✅ 阅读1篇文章（已完成，+20 XP）
+⬜ 添加5个新词（0/5，+15 XP）
+快速添加输入框（直接输入中文词汇）
+完成奖励：解锁"Study Master"徽章
+学习路径：
+技能树可视化（HSK 1→2→3→4）
+HSK 1: ✓ 150/150 (100%)
+HSK 2: ✓ 300/300 (100%)
+HSK 3: ⚡ 390/600 (65%) ← 当前位置
+HSK 4: 🔒 已锁定
+快速操作卡片：
+复习词汇（23个词待复习）
+今日文章：《北京的美食》
+HSK词库（浏览10,000+词汇）
+成就系统：
+🏁 First 100 Words（已解锁，Common）
+🔥 30-Day Streak（已解锁，Rare）
+📚 Reading Marathon（25/50进度，Epic）
+👑 HSK Master（锁定，Legendary）
+最近添加的词：
+学习（xuéxí）- HSK 2 - Learning状态
+认识（rènshi）- HSK 2 - New状态
+重要（zhòngyào）- HSK 3 - Mastered状态
+3. HSK词汇库 (hsk-library.html)
+功能：浏览HSK 1-6全部10,000+词汇 核心展示：
+进度可视化：
+当前推荐：HSK 3（390/600，65%）
+6个等级进度条（HSK 1-6）
+✓ 已完成、⚡当前、🔒锁定状态
+等级卡片（6个）：
+HSK 1：150词，基础对话
+HSK 2：300词，简单句子
+HSK 3：600词，表达观点（当前学习）
+HSK 4：1,200词，抽象话题（需完成HSK 3解锁）
+HSK 5：2,500词，流利交流
+HSK 6：5,000词，母语水平
+每个等级卡片包含：
+颜色主题（HSK 1蓝色→HSK 6紫色）
+Emoji图标
+词汇数量
+难度描述
+解锁状态
+CTA按钮（继续学习/查看路线图/已锁定）
+SEO规划区域（页面底部）：
+HSK考试指南（/guides/hsk-exam-overview.html）
+90天学习计划（/guides/hsk-study-plan-90-days.html）
+等级落地页（/hsk-1-vocabulary-list.html）
+工具页面（/tools/text-analyzer.html）
+4. 词条详情页 (word-detail.html) - 核心！
+功能：HSK词汇的深度学习页面，这是SEO静态落地页的模板 URL结构：
+格式：/word/[slug] 如 /word/ni-hao
+SEO优化的meta标签
+三个标签页结构：
+Tab 1: ⚡ Quick Learn（3分钟速学）
+左侧主内容区：
+📝 Key Points（关键点）：
+4条要点列表
+例："Most common greeting in Chinese"
+💬 Example Sentences（例句）：
+每个例句包含：
+中文：你好！很高兴认识你。
+拼音：Nǐ hǎo! Hěn gāoxìng rènshi nǐ.
+英文：Hello! Nice to meet you.
+🔊 音频播放按钮
+💡 使用提示（如：称呼老师用"老师好"）
+⚠️ Common Mistakes（常见错误）：
+错误示例 ❌：你好吗？(as a greeting)
+正确示例 ✓：你好！
+解释：为什么错误
+✅ Quick Quiz（快速测验）：
+2-3道选择题
+即时反馈
++10 XP奖励
+CTA区：引导到Deep Dive标签
+右侧边栏：
+词汇卡片：
+大字显示：你好
+拼音：nǐ hǎo
+英文：Hello / Hi
+HSK等级标签
+💡 记忆技巧："Think 'You good?'"
+🔊 播放音频按钮
+🔗 Related Words（相关词汇）：
+Similar Greetings：早上好、晚上好
+Other Basic Words：谢谢、再见
+资源链接：HSK考试指南、文本分析器
+📊 Your Mastery（掌握度）：
+圆形进度环：75%
+"Keep practicing to reach 100%!"
+Tab 2: 📚 Deep Dive（850+字深度内容）
+目录导航（sticky侧边栏）：
+Overview
+Cultural Background
+Grammar Patterns
+Usage Scenarios
+FAQ
+详细内容：
+Etymology and Structure（词源和结构）
+Historical Context（历史背景）
+Tone and Pronunciation（声调图示）
+Cultural Background（文化洞察）
+预计阅读时间：8分钟
+Tab 3: 🎮 Practice（练习）
+✍️ Writing Practice：
+文本框：用"你好"造句
+AI反馈按钮
+🎤 Pronunciation Check：
+录音按钮
+AI评分（85分）
+声调改进建议
+进度跟踪：
+Recognition：100%
+Pronunciation：75%
+Writing：60%
+顶部悬浮栏（Sticky Reference Bar）：
+词汇：你好
+拼音：nǐ hǎo
+英文：Hello / Hi
+动态按钮（根据来源变化）：
+来自HSK Library：➕ Add to My Words
+来自My Words：🎯 Start Practice、🗑️ Remove
+5. 文章列表页 (articles.html)
+功能：浏览AI生成的中文阅读文章 筛选标签：
+All Levels / Beginner / Intermediate / Advanced
+今日推荐文章（Featured）：
+标题：北京的美食文化
+副标题：Beijing's Food Culture
+摘要预览（中文）
+Meta信息：
+HSK 3-4等级
+⏱️ 5 min read
+📝 280 characters
+🆕 12 new words
+🎯 85% match（匹配度）
+CTA：Start Reading → / 📘 HSK Exam Guide
+文章卡片网格（6篇示例）：
+在咖啡店（☕ HSK 2）
+周末去公园（🏞️ HSK 2）
+中国的教育系统（🎓 HSK 3）
+中国的交通发展（🚗 HSK 3）
+中国的创业文化（💼 HSK 4-5）
+京剧艺术的传承（🎭 HSK 5）
+每个卡片：
+Emoji + HSK等级
+中英文标题
+中文摘要
+统计：阅读时间、字数、生词数
+Read Article按钮
+6. 文章详情页 (article-detail.html)
+功能：沉浸式中文阅读+学习工具 顶部区域：
+面包屑：← Back to Articles
+Meta标签：Intermediate、HSK 4-5、更新日期
+标题：北京传统美食文化
+副标题：Traditional Beijing Cuisine Culture
+统计：
+📖 8 min read
+📝 586 characters
+🆕 23 new words
+🎯 85% match
+快速操作按钮：
+👁️ Reading Mode（阅读模式）
+🔊 Listen（朗读）
+📌 Show Pinyin（显示拼音）
+✏️ Start Learning（开始学习）
+📥 Download Study Plan
+两栏布局： 左侧主内容：
+文章正文（可点击词汇）：
+每个词都是可点击的span
+data-word="北京" data-pinyin="Běijīng" data-meaning="Beijing"
+HSK等级颜色标记（hsk-4类名）
+点击显示释义气泡
+Show Translation按钮：
+点击显示完整英文翻译
+📖 Key Grammar Points（语法要点）：
+作为 (zuòwéi) - HSK 3
+除了...还有... - HSK 4
+之一 (zhīyī) - HSK 2
+每个语法卡片：模式、含义、例句
+💬 Discussion Questions（讨论问题）：
+3个中英文问题
+引导思考和输出
+右侧边栏：
+📝 New Vocabulary (23)：
+筛选标签：All / HSK 4 / HSK 5
+词汇列表卡片：
+中文：北京
+拼音：Běijīng
+英文：Beijing
+🔊 播放音频
+➕ 添加到词库
+三、关键技术需求
+1. HSK词汇静态落地页生成
+目标：为每个HSK词汇生成独立的SEO优化页面
+实现：
+后台管理系统：批量导入词汇（Excel/CSV）
+AI生成内容：调用GLM-4 API，使用词条规则提示词
+生成JSON内容：完整的Quick Learn、Deep Dive、Practice数据
+渲染HTML：根据word-detail.html模板生成静态页面
+SEO优化：meta标签、Schema.org、breadcrumb
+存储：JSON内容存数据库，静态HTML存文件系统
+2. 文章AI生成系统
+目标：后台管理系统生成中文阅读文章
+实现：
+管理员输入：主题、HSK等级、字数
+AI生成：完整文章+拼音标注+生词列表+语法点+讨论题
+词汇分词：自动标记每个词的HSK等级
+渲染：article-detail.html模板
+存储：JSON格式（支持富文本+拼音）
+3. 用户学习系统
+间隔重复算法（SuperMemo 2）
+每日任务生成和进度跟踪
+XP和等级系统
+成就系统（4个稀有度）
+学习统计（90天热力图）
+4. SEO落地页系统
+词汇页面：/word/[slug]
+文章页面：/article/[slug]
+HSK等级页面：/hsk-[1-6]-vocabulary-list
+指南页面：/guides/hsk-exam-overview
+工具页面：/tools/text-analyzer
+所有页面需要：Schema.org、Open Graph、Sitemap
+四、数据库核心模型
+WordEntry：词汇条目（word、slug、contentJson、status、SEO字段）
+Article：文章（title、content JSON、level、newWords、quiz）
+UserWord：用户学习记录（status、SRS字段、复习时间）
+LearningSession：学习会话（时间、正确率）
+Achievement：成就（解锁状态、进度）
+DailyMission：每日任务（完成状态、XP）
+五、后台管理系统功能
+词条生成模块：
+批量导入词汇
+选择HSK等级
+触发AI生成
+预览+编辑JSON
+发布→生成静态HTML
+文章生成模块：
+创建新文章（主题、等级、字数）
+AI生成内容
+富文本编辑器（支持拼音标注）
+生词列表管理
+语法点编辑
+发布
+SEO监控面板：
+页面收录状态
+关键词排名
+流量统计
+AI配置：
+API Key管理
+模型选择（GLM-4 / GPT-3.5）
+Token使用统计
+成本跟踪
+六、前端技术栈（从HTML分析）
+样式系统：styles.css（自定义设计系统）
+字体：Inter（英文）+ Noto Sans SC（中文）
+交互：app.js（vanilla JavaScript）
+数据：mock-data.js（原型数据）
+SEO：完整的meta标签、Schema.org、Open Graph
+响应式：移动端底部导航栏（mobile-nav）
+✅ 总结：核心需求
+核心1：HSK词汇AI生成+SEO落地页
+每个词一个页面（如 /word/ni-hao）
+3个标签页：Quick Learn、Deep Dive、Practice
+AI生成850+字内容
+完整SEO优化
+核心2：文章AI生成系统
+后台生成中文阅读文章
+自动标注拼音和HSK等级
+语法点和练习题自动生成
+核心3：游戏化学习系统
+每日任务（复习词、读文章、加新词）
+XP和等级系统
+间隔重复算法
+成就和连续学习激励
+核心4：进度跟踪和考试倒计时
+6个HSK等级进度可视化
+考试倒计时+准备度评估
+AI学习建议

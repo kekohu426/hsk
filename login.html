@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - ChineseMaster</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="auth-body">
+    <div class="auth-container">
+        <div class="auth-content">
+            <!-- Left Side - Branding -->
+            <div class="auth-branding">
+                <div class="auth-brand-header">
+                    <span class="logo-large">🎓</span>
+                    <h1 class="brand-name-large">ChineseMaster</h1>
+                </div>
+                <h2 class="auth-tagline">Pass HSK 6 in 180 Days</h2>
+                <p class="auth-description">Join 12,847+ students mastering Chinese with AI-powered learning</p>
+                
+                <div class="auth-features">
+                    <div class="auth-feature">
+                        <span class="feature-icon">✅</span>
+                        <span>10,000+ HSK vocabulary with deep explanations</span>
+                    </div>
+                    <div class="auth-feature">
+                        <span class="feature-icon">✅</span>
+                        <span>Daily missions with gamified XP system</span>
+                    </div>
+                    <div class="auth-feature">
+                        <span class="feature-icon">✅</span>
+                        <span>Smart spaced repetition algorithm</span>
+                    </div>
+                    <div class="auth-feature">
+                        <span class="feature-icon">✅</span>
+                        <span>AI-powered text analyzer</span>
+                    </div>
+                </div>
+
+                <div class="auth-testimonial">
+                    <div class="testimonial-quote">"I passed HSK 5 in just 4 months!"</div>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=10" alt="Sarah">
+                        <div>
+                            <div class="author-name">Sarah Johnson</div>
+                            <div class="author-role">Stanford Student</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side - Login Form -->
+            <div class="auth-form-container">
+                <div class="auth-form-card">
+                    <div class="form-header">
+                        <h2>Welcome Back</h2>
+                        <p>Sign in to continue your Chinese learning journey</p>
+                    </div>
+
+                    <!-- Social Login -->
+                    <div class="social-login">
+                        <button class="btn-social google" onclick="socialLogin('google')">
+                            <span class="social-icon">🔷</span>
+                            <span>Continue with Google</span>
+                        </button>
+                        <button class="btn-social apple" onclick="socialLogin('apple')">
+                            <span class="social-icon">🍎</span>
+                            <span>Continue with Apple</span>
+                        </button>
+                    </div>
+
+                    <div class="divider">
+                        <span>or</span>
+                    </div>
+
+                    <!-- Email Login Form -->
+                    <form onsubmit="handleLogin(event)" class="auth-form">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                class="form-input" 
+                                placeholder="you@example.com"
+                                value="user@demo.com"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                class="form-input" 
+                                placeholder="Enter your password"
+                                value="demo123"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked>
+                                <span>Remember me</span>
+                            </label>
+                            <a href="#" class="link-primary">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            Sign In
+                        </button>
+                    </form>
+
+                    <!-- Demo Account Notice -->
+                    <div class="demo-notice">
+                        <div class="notice-icon">🧪</div>
+                        <div class="notice-content">
+                            <strong>Demo Mode</strong>
+                            <p>Email: user@demo.com / Password: demo123</p>
+                        </div>
+                    </div>
+
+                    <div class="auth-footer">
+                        Don't have an account? 
+                        <a href="register.html" class="link-primary">Sign up free</a>
+                    </div>
+                </div>
+
+                <div class="auth-back">
+                    <a href="index.html" class="link-secondary">← Back to homepage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="mock-data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            
+            // Simulate login
+            showNotification('✅ Login successful! Where would you like to go?', 'success');
+            
+            // Show navigation options after login
+            setTimeout(() => {
+                showLoginOptions();
+            }, 1000);
+        }
+
+        function showLoginOptions() {
+            const optionsHTML = `
+                <div class="login-options-overlay" id="loginOptionsOverlay">
+                    <div class="login-options-card">
+                        <h3>Welcome back! Where would you like to go?</h3>
+                        <div class="login-options-buttons">
+                            <button class="btn btn-primary btn-lg" onclick="goToDashboard()">
+                                🏠 Go to Dashboard
+                            </button>
+                            <button class="btn btn-outline btn-lg" onclick="goToHome()">
+                                🏡 Back to Homepage
+                            </button>
+                            <button class="btn btn-secondary btn-lg" onclick="goToOnboarding()">
+                                🎯 Start Learning Journey
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', optionsHTML);
+        }
+
+        function goToDashboard() {
+            closeLoginOptions();
+            window.location.href = 'dashboard.html';
+        }
+
+        function goToHome() {
+            closeLoginOptions();
+            window.location.href = 'index.html';
+        }
+
+        function goToOnboarding() {
+            closeLoginOptions();
+            window.location.href = 'onboarding.html';
+        }
+
+        function closeLoginOptions() {
+            const overlay = document.getElementById('loginOptionsOverlay');
+            if (overlay) {
+                overlay.remove();
+            }
+        }
+
+        function socialLogin(provider) {
+            showNotification(`🔐 Logging in with ${provider}...`, 'info');
+            setTimeout(() => {
+                window.location.href = 'onboarding.html';
+            }, 1500);
+        }
+    </script>
+    <style>
+        /* Login Options Overlay */
+        .login-options-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .login-options-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            animation: slideUp 0.3s ease;
+        }
+
+        .login-options-card h3 {
+            margin-bottom: 1.5rem;
+            color: var(--gray-900);
+            font-size: 1.25rem;
+        }
+
+        .login-options-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .login-options-buttons .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (min-width: 640px) {
+            .login-options-buttons {
+                flex-direction: row;
+                gap: 1rem;
+            }
+            
+            .login-options-buttons .btn {
+                flex: 1;
+            }
+        }
+    </style>
+        .auth-body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-lg);
+        }
+
+        .auth-container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .auth-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            align-items: center;
+        }
+
+        .auth-branding {
+            color: white;
+        }
+
+        .auth-brand-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .logo-large {
+            font-size: 3rem;
+        }
+
+        .brand-name-large {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .auth-tagline {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .auth-description {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .auth-features {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .auth-feature {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            font-size: 1.125rem;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+        }
+
+        .auth-testimonial {
+            background: rgba(255, 255, 255, 0.15);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-quote {
+            font-size: 1.25rem;
+            font-style: italic;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .testimonial-author img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+        }
+
+        .author-name {
+            font-weight: 600;
+        }
+
+        .author-role {
+            opacity: 0.8;
+            font-size: 0.875rem;
+        }
+
+        .auth-form-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .auth-form-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .form-header h2 {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .form-header p {
+            color: var(--gray-600);
+        }
+
+        .social-login {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .btn-social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            background: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-social:hover {
+            border-color: var(--primary);
+            background: var(--gray-50);
+        }
+
+        .social-icon {
+            font-size: 1.5rem;
+        }
+
+        .divider {
+            text-align: center;
+            margin: var(--spacing-lg) 0;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: var(--gray-300);
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .divider span {
+            background: white;
+            padding: 0 var(--spacing-md);
+            color: var(--gray-500);
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .form-group label {
+            font-weight: 600;
+        }
+
+        .form-input {
+            padding: var(--spacing-md);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            cursor: pointer;
+        }
+
+        .demo-notice {
+            background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .notice-icon {
+            font-size: 1.5rem;
+        }
+
+        .notice-content strong {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .notice-content p {
+            font-size: 0.875rem;
+            color: var(--gray-700);
+            margin: 0;
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: var(--spacing-lg);
+            color: var(--gray-600);
+        }
+
+        .auth-back {
+            text-align: center;
+        }
+
+        .link-primary {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .link-primary:hover {
+            text-decoration: underline;
+        }
+
+        .link-secondary {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+        }
+
+        .link-secondary:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .auth-content {
+                grid-template-columns: 1fr;
+            }
+
+            .auth-branding {
+                display: none;
+            }
+        }
+    </style>
+</body>
+</html>
+

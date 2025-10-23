@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Text Analyzer | HSK Vocabulary Extractor | ChineseMaster</title>
+    <meta name="description" content="Paste any Mandarin text to get instant HSK level analysis, vocabulary extraction, and study prompts with the ChineseMaster text analyzer.">
+    <link rel="canonical" href="https://www.chinesemaster.com/tools/text-analyzer">
+    <meta property="og:title" content="Chinese Text Analyzer | ChineseMaster">
+    <meta property="og:description" content="Analyze Chinese text for HSK levels, new words, and personalized study missions in seconds.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.chinesemaster.com/tools/text-analyzer">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "ChineseMaster Text Analyzer",
+        "operatingSystem": "Web",
+        "applicationCategory": "EducationalApplication",
+        "description": "Analyze Chinese text, detect HSK levels, and generate vocabulary lists.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "url": "https://www.chinesemaster.com/tools/text-analyzer"
+    }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="container header-content">
+            <div class="header-brand">
+                <a href="index.html" class="brand-link">
+                    <span class="logo">🎓</span>
+                    <span class="brand-name">ChineseMaster</span>
+                </a>
+            </div>
+            <nav class="header-nav">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="articles.html">Daily Articles</a>
+                <a href="analyzer.html" class="active">Text Analyzer</a>
+                <a href="words.html">My Words</a>
+                <a href="hsk-library.html">HSK Library</a>
+                <a href="stats.html">Statistics</a>
+            </nav>
+            <div class="header-user">
+                <button class="btn btn-icon">🔔</button>
+                <div class="user-menu">
+                    <img src="https://i.pravatar.cc/100?img=20" alt="ChineseMaster learner avatar" class="user-avatar">
+                    <span>Sarah</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="container" style="max-width: 1000px;">
+            <!-- Header -->
+            <div class="welcome-section">
+                <div class="welcome-text">
+                    <h1>✍️ Smart Text Analyzer</h1>
+                    <p>Transform any Chinese text into your learning material</p>
+                </div>
+            </div>
+
+            <!-- Quick Tips -->
+            <div class="tips-banner">
+                <span class="tips-icon">💡</span>
+                <div class="tips-content">
+                    <strong>Pro Tip:</strong> Paste any Chinese text (article, email, song lyrics) and we'll extract all the vocabulary for you to learn!
+                </div>
+            </div>
+
+            <!-- Input Section -->
+            <div class="analyzer-card">
+                <h2>📄 Input Text</h2>
+                <p class="card-description">Paste any Chinese text or upload a file</p>
+                
+                <textarea 
+                    id="analyzerInput" 
+                    class="analyzer-textarea" 
+                    placeholder="在这里输入或粘贴中文文本...
+
+示例：
+我今天去超市买了很多东西。超市里的东西很便宜。我买了一些水果和蔬菜。回家的路上，我遇到了我的老朋友。我们聊了很长时间。
+
+或者试试更高级的文本..."
+                ></textarea>
+
+                <div class="input-actions">
+                    <div class="character-count">
+                        <span id="charCount">0</span> characters
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-outline" onclick="clearText()">
+                            Clear
+                        </button>
+                        <button class="btn btn-outline" onclick="pasteExample()">
+                            📋 Paste Example
+                        </button>
+                        <button class="btn btn-primary" onclick="analyzeText()">
+                            <span>⚡</span> Analyze
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="resultsSection" class="results-section" style="display: none;">
+                <!-- Quick Stats -->
+                <div class="analyzer-card stats-card">
+                    <div class="stats-summary">
+                        <div class="stat-item">
+                            <span class="stat-icon">📝</span>
+                            <span class="stat-value" id="resultChars">125</span>
+                            <span class="stat-label">Characters</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">📚</span>
+                            <span class="stat-value" id="resultWords">28</span>
+                            <span class="stat-label">Unique Words</span>
+                        </div>
+                    </div>
+
+                    <div class="quick-actions">
+                        <button class="btn btn-primary" onclick="addAllWordsToBank()">
+                            ➕ Add All to My Word Bank
+                        </button>
+                        <button class="btn btn-success" onclick="startPracticeNow()">
+                            🚀 Start Practice Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Vocabulary Breakdown -->
+                <div class="analyzer-card">
+                    <h2>📚 Vocabulary Breakdown</h2>
+                    <p class="card-description">Words found in your text</p>
+
+                    <!-- HSK Distribution -->
+                    <div class="hsk-distribution">
+                        <h3>HSK Level Distribution</h3>
+                        <div class="distribution-bars">
+                            <div class="dist-bar">
+                                <span class="dist-label">HSK 1</span>
+                                <div class="dist-bar-bg">
+                                    <div class="dist-bar-fill hsk-1" style="width: 40%"></div>
+                                </div>
+                                <span class="dist-count">12 words (40%)</span>
+                            </div>
+                            <div class="dist-bar">
+                                <span class="dist-label">HSK 2</span>
+                                <div class="dist-bar-bg">
+                                    <div class="dist-bar-fill hsk-2" style="width: 35%"></div>
+                                </div>
+                                <span class="dist-count">10 words (35%)</span>
+                            </div>
+                            <div class="dist-bar">
+                                <span class="dist-label">HSK 3</span>
+                                <div class="dist-bar-bg">
+                                    <div class="dist-bar-fill hsk-3" style="width: 20%"></div>
+                                </div>
+                                <span class="dist-count">6 words (20%)</span>
+                            </div>
+                            <div class="dist-bar">
+                                <span class="dist-label">HSK 4+</span>
+                                <div class="dist-bar-bg">
+                                    <div class="dist-bar-fill hsk-4" style="width: 5%"></div>
+                                </div>
+                                <span class="dist-count">2 words (5%)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Word List -->
+                    <div class="word-list-analyzer">
+                        <div class="word-item-analyzer" data-hsk="1">
+                            <input type="checkbox" id="word1" class="word-checkbox">
+                            <label for="word1" class="word-label">
+                                <div class="word-main">
+                                    <span class="word-chinese">今天</span>
+                                    <span class="word-pinyin">jīntiān</span>
+                                    <span class="badge badge-sm">HSK 1</span>
+                                </div>
+                                <div class="word-meaning">today</div>
+                            </label>
+                        </div>
+
+                        <div class="word-item-analyzer" data-hsk="1">
+                            <input type="checkbox" id="word2" class="word-checkbox">
+                            <label for="word2" class="word-label">
+                                <div class="word-main">
+                                    <span class="word-chinese">超市</span>
+                                    <span class="word-pinyin">chāoshì</span>
+                                    <span class="badge badge-sm">HSK 2</span>
+                                </div>
+                                <div class="word-meaning">supermarket</div>
+                            </label>
+                        </div>
+
+                        <div class="word-item-analyzer" data-hsk="2">
+                            <input type="checkbox" id="word3" class="word-checkbox">
+                            <label for="word3" class="word-label">
+                                <div class="word-main">
+                                    <span class="word-chinese">便宜</span>
+                                    <span class="word-pinyin">piányi</span>
+                                    <span class="badge badge-sm">HSK 2</span>
+                                </div>
+                                <div class="word-meaning">cheap, inexpensive</div>
+                            </label>
+                        </div>
+
+                        <div class="word-item-analyzer" data-hsk="2">
+                            <input type="checkbox" id="word4" class="word-checkbox">
+                            <label for="word4" class="word-label">
+                                <div class="word-main">
+                                    <span class="word-chinese">水果</span>
+                                    <span class="word-pinyin">shuǐguǒ</span>
+                                    <span class="badge badge-sm">HSK 2</span>
+                                </div>
+                                <div class="word-meaning">fruit</div>
+                            </label>
+                        </div>
+
+                        <div class="word-item-analyzer" data-hsk="3">
+                            <input type="checkbox" id="word5" class="word-checkbox">
+                            <label for="word5" class="word-label">
+                                <div class="word-main">
+                                    <span class="word-chinese">蔬菜</span>
+                                    <span class="word-pinyin">shūcài</span>
+                                    <span class="badge badge-sm">HSK 3</span>
+                                </div>
+                                <div class="word-meaning">vegetables</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="selected-words-actions">
+                        <button class="btn btn-primary" onclick="addSelectedWords()">
+                            Add Selected Words (<span id="selectedCount">0</span>)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Analysis History -->
+                <div class="analyzer-card">
+                    <h2>📋 Recent Analyses</h2>
+                    <div class="history-list">
+                        <div class="history-item">
+                            <div class="history-icon">📝</div>
+                            <div class="history-content">
+                                <div class="history-title">Shopping at the Supermarket</div>
+                                <div class="history-meta">125 characters • HSK 2-3 • 2 hours ago</div>
+                            </div>
+                            <button class="btn btn-sm btn-outline">Load</button>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-icon">📰</div>
+                            <div class="history-content">
+                                <div class="history-title">Beijing Food Culture</div>
+                                <div class="history-meta">280 characters • HSK 3-4 • Yesterday</div>
+                            </div>
+                            <button class="btn btn-sm btn-outline">Load</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="mock-data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        const textarea = document.getElementById('analyzerInput');
+        const charCount = document.getElementById('charCount');
+
+        textarea.addEventListener('input', () => {
+            charCount.textContent = textarea.value.length;
+        });
+
+        function clearText() {
+            textarea.value = '';
+            charCount.textContent = '0';
+            document.getElementById('resultsSection').style.display = 'none';
+        }
+
+        function pasteExample() {
+            const example = '我今天去超市买了很多东西。超市里的东西很便宜。我买了一些水果和蔬菜。回家的路上，我遇到了我的老朋友。我们聊了很长时间。';
+            textarea.value = example;
+            charCount.textContent = example.length;
+        }
+
+        function analyzeText() {
+            if (!textarea.value.trim()) {
+                showNotification('⚠️ Please enter some Chinese text first!', 'error');
+                return;
+            }
+
+            // Show loading notification
+            showNotification('🔍 Analyzing text...', 'info');
+
+            // Simulate processing
+            setTimeout(() => {
+                document.getElementById('resultsSection').style.display = 'block';
+                document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+
+                // Update counts
+                const charCount = textarea.value.length;
+                const wordCount = Math.floor(charCount / 3);
+                
+                document.getElementById('resultChars').textContent = charCount;
+                document.getElementById('resultWords').textContent = wordCount;
+                
+                showNotification('✅ Analysis complete! ' + wordCount + ' words extracted.', 'success');
+            }, 800);
+        }
+
+        function addAllWordsToBank() {
+            const wordCount = document.getElementById('resultWords').textContent;
+            showNotification(`✅ All ${wordCount} words added to your word bank!`, 'success');
+        }
+
+        function startPracticeNow() {
+            const wordCount = document.getElementById('resultWords').textContent;
+            showNotification(`🚀 Starting practice with ${wordCount} words...`, 'success');
+            setTimeout(() => {
+                window.location.href = 'learning.html';
+            }, 1000);
+        }
+
+        function addSelectedWords() {
+            const selected = document.querySelectorAll('.word-checkbox:checked').length;
+            if (selected > 0) {
+                showNotification(`✅ Added ${selected} words to your word bank!`, 'success');
+            }
+        }
+
+        // Update selected count
+        document.addEventListener('change', (e) => {
+            if (e.target.classList.contains('word-checkbox')) {
+                const count = document.querySelectorAll('.word-checkbox:checked').length;
+                document.getElementById('selectedCount').textContent = count;
+            }
+        });
+    </script>
+    <style>
+        .tips-banner {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+            border: 2px solid #F59E0B;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .tips-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .tips-content {
+            color: #92400E;
+            line-height: 1.6;
+        }
+
+        .analyzer-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .analyzer-card h2 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .card-description {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .analyzer-textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: var(--spacing-lg);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            font-family: var(--font-chinese);
+            font-size: 1.125rem;
+            line-height: 1.8;
+            resize: vertical;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .analyzer-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .input-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        .character-count {
+            color: var(--gray-600);
+            font-weight: 600;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .stats-card {
+            background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+        }
+
+        .stats-summary {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-lg) 0;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: var(--spacing-md) var(--spacing-xl);
+            background: white;
+            border-radius: var(--radius-md);
+            min-width: 140px;
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        .quick-actions {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .quick-actions .btn {
+            min-width: 200px;
+        }
+
+        .hsk-distribution {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .hsk-distribution h3 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .distribution-bars {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .dist-bar {
+            display: grid;
+            grid-template-columns: 60px 1fr 120px;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        .dist-label {
+            font-weight: 600;
+        }
+
+        .dist-bar-bg {
+            height: 24px;
+            background: var(--gray-200);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .dist-bar-fill {
+            height: 100%;
+            border-radius: 999px;
+            transition: width 0.5s;
+        }
+
+        .dist-bar-fill.hsk-1 { background: var(--hsk-1); }
+        .dist-bar-fill.hsk-2 { background: var(--hsk-2); }
+        .dist-bar-fill.hsk-3 { background: var(--hsk-3); }
+        .dist-bar-fill.hsk-4 { background: var(--hsk-4); }
+
+        .dist-count {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        .word-list-analyzer {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .word-item-analyzer {
+            display: flex;
+            align-items: start;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            transition: all 0.2s;
+        }
+
+        .word-item-analyzer:hover {
+            border-color: var(--primary);
+            background: var(--gray-50);
+        }
+
+        .word-checkbox {
+            margin-top: 0.25rem;
+        }
+
+        .word-label {
+            flex: 1;
+            cursor: pointer;
+        }
+
+        .word-main {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xs);
+            flex-wrap: wrap;
+        }
+
+        .word-chinese {
+            font-size: 1.25rem;
+            font-weight: 700;
+            font-family: var(--font-chinese);
+        }
+
+        .word-pinyin {
+            color: var(--primary);
+        }
+
+        .word-meaning {
+            color: var(--gray-700);
+        }
+
+        .selected-words-actions {
+            text-align: center;
+        }
+
+        .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .history-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+        }
+
+        .history-icon {
+            font-size: 1.5rem;
+        }
+
+        .history-content {
+            flex: 1;
+        }
+
+        .history-title {
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .history-meta {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        @media (max-width: 768px) {
+            .stats-summary {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+
+            .stat-item {
+                min-width: 100%;
+            }
+
+            .quick-actions {
+                flex-direction: column;
+            }
+
+            .quick-actions .btn {
+                width: 100%;
+                min-width: auto;
+            }
+
+            .dist-bar {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-xs);
+            }
+
+            .tips-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</body>
+</html>
+
